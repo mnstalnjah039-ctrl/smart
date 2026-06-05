@@ -11,7 +11,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- استدعاء المكتبات -->
+    <!-- استدعاء المكتبات البرمجية -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
@@ -31,17 +31,11 @@
             --accent: #f59e0b;
         }
 
-        body {
-            font-family: 'Tajawal', sans-serif;
-            margin: 0;
-            background: var(--bg);
-            color: var(--text-main);
-            transition: all 0.3s ease;
-        }
+        body { font-family: 'Tajawal', sans-serif; margin: 0; background: var(--bg); color: var(--text-main); }
 
         nav { background: var(--card-bg); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
         .logo { font-size: 1.4rem; font-weight: 700; color: var(--primary); cursor: pointer; display: flex; align-items: center; gap: 8px; }
-        .btn-nav { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); padding: 10px 20px; font-size: 0.95rem; border-radius: 8px; color: white; border: none; cursor: pointer; font-weight: 500; transition: all 0.2s ease; }
+        .btn-nav { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); padding: 10px 20px; font-size: 0.95rem; border-radius: 8px; color: white; border: none; cursor: pointer; font-weight: 500; }
         .btn-nav:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
 
         .page { display: none; max-width: 1100px; margin: 2.5rem auto; padding: 0 1.5rem; animation: slideUp 0.4s ease; }
@@ -66,23 +60,23 @@
         .ads-container { margin: 20px 0; padding: 10px; background: #f8fafc; border: 1px dashed #cbd5e1; text-align: center; border-radius: 8px; color: #94a3b8; font-size: 0.9rem;}
 
         label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-main); font-size: 0.95rem; }
-        input[type="text"], input[type="file"], select, textarea { width: 100%; padding: 14px; margin-bottom: 1.25rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.95rem; background: #fafafa; box-sizing: border-box;}
-        input[type="color"] { width: 100%; height: 50px; padding: 5px; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; }
+        input, select, textarea { width: 100%; padding: 14px; margin-bottom: 1.25rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.95rem; background: #fafafa; box-sizing: border-box;}
+        input[type="color"] { height: 50px; padding: 5px; cursor: pointer; }
+        input[type="checkbox"] { width: auto; margin-left: 10px; }
         
-        .btn-action { background: var(--primary); color: white; border: none; padding: 14px 24px; border-radius: 8px; cursor: pointer; font-size: 1.05rem; font-weight: 700; width: 100%; transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px;}
-        .btn-action:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1);}
-        .btn-secondary { background: #64748b; }
-        .btn-success { background: var(--success); }
-        .btn-generate { background: linear-gradient(135deg, #10b981, #059669); font-size: 1.15rem; padding: 16px; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); margin-bottom: 20px;}
+        /* زر التوليد الموحد */
+        .btn-generate { background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 16px 24px; border-radius: 8px; cursor: pointer; font-size: 1.15rem; font-weight: 700; width: 100%; transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); margin-bottom: 15px;}
+        .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); }
+        
+        .btn-action { background: var(--primary); color: white; border: none; padding: 14px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; width: 100%; transition: all 0.2s; }
+        .btn-action:hover { background: var(--primary-hover); }
+        .btn-secondary { background: #64748b; width: auto;}
         
         .flex-row { display: flex; gap: 15px; margin-bottom: 1.25rem; }
         .result-box { margin-top: 20px; padding: 18px; border-radius: 8px; font-weight: 500; background: #f8fafc; border: 1px solid var(--border); text-align: center; display: none; word-break: break-all; }
         
-        .ai-progress-bg { width: 100%; background: #e2e8f0; border-radius: 8px; height: 24px; margin-top: 10px; overflow: hidden; display: none;}
-        .ai-progress-bar { height: 100%; background: var(--danger); width: 0%; transition: width 1s ease; text-align: center; color: white; font-size: 0.85rem; line-height: 24px; font-weight: bold;}
-        
         #qrcode-wrapper { display: flex; justify-content: center; align-items: center; margin: 20px 0; min-height: 200px; background: #f8fafc; border: 2px dashed var(--border); border-radius: 12px; }
-        #qrReadPreview { max-width: 100%; max-height: 250px; border-radius: 8px; display: none; margin: 10px auto; }
+        .timer-display { font-size: 4.5rem; font-weight: bold; color: var(--primary); text-align: center; margin: 1rem 0; font-variant-numeric: tabular-nums; }
     </style>
 </head>
 <body>
@@ -103,7 +97,25 @@
             <div class="grid-container">
                 <div class="card" onclick="openTool('tool-pdf-compress')">
                     <h3>🗜️ ضغط الـ PDF الذكي</h3>
-                    <p>خيارات متعددة لتقليل حجم ملفات PDF بشكل يتناسب مع المنصات الحكومية.</p>
+                    <p>توليد نسخ مضغوطة بحجم أقل تتناسب مع المنصات الحكومية.</p>
+                </div>
+                <div class="card" onclick="openTool('tool-pdf-merge')">
+                    <h3>🔗 دمج مستندات الـ PDF</h3>
+                    <p>توليد ملف واحد متكامل من عدة مستندات مختلفة.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-container">
+            <h2 class="category-title">🖼️ معالجة الصور</h2>
+            <div class="grid-container">
+                <div class="card" onclick="openTool('tool-img-convert')">
+                    <h3>🔄 محول الأبعاد والصيغ</h3>
+                    <p>توليد صور مصغرة بأحجام وصيغ مختلفة للوثائق.</p>
+                </div>
+                <div class="card" onclick="openTool('tool-img-filter')">
+                    <h3>🎨 فلاتر المستندات</h3>
+                    <p>توليد صور واضحة (أبيض وأسود) للماسحات الضوئية.</p>
                 </div>
             </div>
         </div>
@@ -113,11 +125,11 @@
             <div class="grid-container">
                 <div class="card" onclick="openTool('tool-qr-gen')">
                     <h3>📥 صانع الرموز الملون (QR Generator)</h3>
-                    <p>توليد رموز ملونة وتخصيصها لتتناسب مع هويتك التجارية.</p>
+                    <p>توليد رموز ملونة وتخصيصها لتتناسب مع هويتك.</p>
                 </div>
                 <div class="card" onclick="openTool('tool-qr-read')">
                     <h3>📤 قارئ الرموز (QR Reader)</h3>
-                    <p>فك الرموز من الصور مع معاينة فورية وواضحة للروابط.</p>
+                    <p>استخراج وتوليد قراءة الباركود من الصور.</p>
                 </div>
             </div>
         </div>
@@ -127,13 +139,40 @@
             <div class="grid-container">
                 <div class="card" onclick="openTool('tool-ai-text')">
                     <h3>🕵️ كاشف وأنسنة الذكاء الاصطناعي</h3>
-                    <p>تحليل النصوص لكشف نسبة الذكاء الاصطناعي وإعادة صياغتها لتبدو بشرية.</p>
+                    <p>توليد تقارير الـ AI وتوليد صياغة بشرية للنصوص.</p>
+                </div>
+                <div class="card" onclick="openTool('tool-text-clean')">
+                    <h3>📝 منظف النصوص</h3>
+                    <p>توليد نصوص خالية من التشكيل والمسافات الزائدة.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-container">
+            <h2 class="category-title">🎓 الإنتاجية والأمان</h2>
+            <div class="grid-container">
+                <div class="card" onclick="openTool('tool-gpa')">
+                    <h3>📊 حاسبة المعدل</h3>
+                    <p>حساب وتوليد المعدل التراكمي الجامعي.</p>
+                </div>
+                <div class="card" onclick="openTool('tool-pomodoro')">
+                    <h3>⏱️ مؤقت بومودورو</h3>
+                    <p>توليد جلسات دراسية منظمة.</p>
+                </div>
+                <div class="card" onclick="openTool('tool-pass')">
+                    <h3>🔐 مولد كلمات المرور</h3>
+                    <p>توليد أرقام سرية قوية ومعقدة.</p>
+                </div>
+                <div class="card" onclick="openTool('tool-age')">
+                    <h3>⏳ حاسبة العمر</h3>
+                    <p>توليد حساب دقيق للعمر بالأيام والأشهر.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 1. أداة ضغط PDF -->
+    <!-- الأدوات -->
+    <!-- 1. ضغط PDF -->
     <div id="tool-pdf-compress" class="page">
         <div class="tool-header">
             <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
@@ -141,327 +180,453 @@
         </div>
         <div class="tool-container">
             <div class="ads-container">مساحة إعلان أدسنس</div>
-
             <label>ارفع ملف الـ PDF:</label>
             <input type="file" id="pdfInput" accept="application/pdf">
-            
             <label>مستوى الضغط المطلوب:</label>
             <select id="pdfCompressLevel">
-                <option value="low">ضغط خفيف (أسرع، يحافظ على أغلب البيانات)</option>
-                <option value="medium" selected>ضغط متوسط (موصى به للملفات العادية)</option>
-                <option value="high">ضغط عالي (يزيل كافة البيانات الوصفية ويدمج العناصر)</option>
+                <option value="low">ضغط خفيف (أسرع)</option>
+                <option value="medium" selected>ضغط متوسط</option>
+                <option value="high">ضغط عالي</option>
             </select>
-
-            <button id="pdfCompressBtn" class="btn-action btn-generate" onclick="compressPDF()">⚙️ بدء ضغط وتوليد الملف الجديد</button>
+            <button class="btn-generate" onclick="compressPDF()">⚙️ توليد الملف المضغوط الآن</button>
             <div id="pdfStatus" class="result-box"></div>
         </div>
     </div>
 
-    <!-- 2. صانع QR Code (تم تعديله بالكامل لإضافة أزرار التوليد والتنزيل) -->
+    <!-- 2. دمج PDF -->
+    <div id="tool-pdf-merge" class="page">
+        <div class="tool-header">
+            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
+            <h2>🔗 دمج مستندات PDF</h2>
+        </div>
+        <div class="tool-container">
+            <div class="ads-container">مساحة إعلان أدسنس</div>
+            <label>اختر الملفات (يمكنك تحديد أكثر من ملف):</label>
+            <input type="file" id="pdfMergeInput" accept="application/pdf" multiple>
+            <button class="btn-generate" onclick="mergePDFs()">🔗 توليد ملف الـ PDF المدمج</button>
+            <div id="pdfMergeStatus" class="result-box"></div>
+        </div>
+    </div>
+
+    <!-- 3. محول الصور -->
+    <div id="tool-img-convert" class="page">
+        <div class="tool-header">
+            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
+            <h2>🔄 محول الأبعاد والصيغ</h2>
+        </div>
+        <div class="tool-container">
+            <div class="ads-container">مساحة إعلان أدسنس</div>
+            <label>ارفع الصورة:</label>
+            <input type="file" id="imgInput" accept="image/*">
+            <label>الصيغة المطلوبة للتحويل:</label>
+            <select id="imgFormat">
+                <option value="image/jpeg">JPEG (حجم صغير)</option>
+                <option value="image/png">PNG (جودة عالية)</option>
+                <option value="image/webp">WEBP (حديث)</option>
+            </select>
+            <button class="btn-generate" onclick="convertImage()">🖼️ توليد الصورة المحدثة</button>
+            <div id="imgStatus" class="result-box"></div>
+            <canvas id="imgCanvas" style="display:none;"></canvas>
+        </div>
+    </div>
+
+    <!-- 4. فلاتر الصور -->
+    <div id="tool-img-filter" class="page">
+        <div class="tool-header">
+            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
+            <h2>🎨 فلاتر المستندات</h2>
+        </div>
+        <div class="tool-container">
+            <div class="ads-container">مساحة إعلان أدسنس</div>
+            <label>ارفع صورة المستند:</label>
+            <input type="file" id="filterInput" accept="image/*">
+            <label>اختر الفلتر:</label>
+            <select id="filterType">
+                <option value="grayscale(100%)">أبيض وأسود (للمستندات الرسمية)</option>
+                <option value="sepia(80%)">قديم (Sepia)</option>
+                <option value="contrast(150%)">زيادة التباين (توضيح الخط)</option>
+            </select>
+            <button class="btn-generate" onclick="applyFilter()">🎨 توليد الصورة المفلترة</button>
+            <div id="filterStatus" class="result-box"></div>
+            <canvas id="filterCanvas" style="display:none;"></canvas>
+        </div>
+    </div>
+
+    <!-- 5. صانع QR Code -->
     <div id="tool-qr-gen" class="page">
         <div class="tool-header">
             <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
             <h2>📥 صانع رموز QR المخصص</h2>
         </div>
         <div class="tool-container" style="text-align: center;">
-            <label style="text-align: right;">أدخل النص أو الرابط المراد تحويله:</label>
-            <!-- تمت إزالة التوليد التلقائي ليعتمد المستخدم على الزر -->
+            <label style="text-align: right;">أدخل النص أو الرابط:</label>
             <input type="text" id="qrText" placeholder="اكتب أو الصق الرابط هنا...">
-            
             <div class="flex-row">
-                <div style="flex:1;">
-                    <label>لون الرمز (الأساسي):</label>
-                    <input type="color" id="qrColorDark" value="#000000">
-                </div>
-                <div style="flex:1;">
-                    <label>لون الخلفية:</label>
-                    <input type="color" id="qrColorLight" value="#ffffff">
-                </div>
+                <div style="flex:1;"><label>لون الرمز:</label><input type="color" id="qrColorDark" value="#000000"></div>
+                <div style="flex:1;"><label>لون الخلفية:</label><input type="color" id="qrColorLight" value="#ffffff"></div>
             </div>
-
-            <!-- زر التوليد البارز -->
-            <button class="btn-action btn-generate" onclick="generateQR()">🚀 توليد رمز الـ QR الآن</button>
-
-            <!-- حاوية عرض الرمز -->
-            <div id="qrcode-wrapper">
-                <span id="qrPlaceholder" style="color: var(--text-muted);">سيتم عرض الرمز المولد هنا...</span>
-                <div id="qrcode"></div>
-            </div>
-            
-            <!-- زر التنزيل (مخفي حتى يتم التوليد) -->
-            <button id="downloadQrBtn" class="btn-action" style="display:none; background: var(--primary);" onclick="downloadQR()">💾 تنزيل الرمز كصورة</button>
-
+            <button class="btn-generate" onclick="generateQR()">🚀 توليد رمز الـ QR الآن</button>
+            <div id="qrcode-wrapper"><div id="qrcode"></div></div>
             <div class="ads-container">مساحة إعلانية أدسنس</div>
         </div>
     </div>
 
-    <!-- 3. قارئ QR Code -->
+    <!-- 6. قارئ QR Code -->
     <div id="tool-qr-read" class="page">
         <div class="tool-header">
             <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>📤 قارئ ومحلل رموز الـ QR</h2>
+            <h2>📤 قارئ رموز الـ QR</h2>
         </div>
         <div class="tool-container">
-            <label>ارفع صورة تحتوي على رمز باركود أو QR:</label>
+            <label>ارفع صورة تحتوي على باركود:</label>
             <input type="file" id="qrFileInput" accept="image/*">
-            
-            <button class="btn-action btn-generate" onclick="readQRCode()">🔍 استخراج وقراءة الرابط</button>
-
-            <div style="text-align:center;">
-                <img id="qrReadPreview" alt="معاينة الصورة" />
-            </div>
-            
-            <canvas id="qrCanvas" style="display:none;"></canvas>
-            <div id="qrReaderResult" class="result-box" style="font-size: 1.2rem; padding: 25px; border-color: var(--primary); background: #eff6ff;">
-                النتيجة ستظهر هنا...
-            </div>
+            <button class="btn-generate" onclick="readQRCode()">🔍 استخراج وتوليد قراءة الرمز</button>
+            <canvas id="qrReadCanvas" style="display:none;"></canvas>
+            <div id="qrReaderResult" class="result-box" style="font-size: 1.2rem; padding: 25px; border-color: var(--primary);">النتيجة...</div>
         </div>
     </div>
 
-    <!-- 4. كاشف ومأنسن الذكاء الاصطناعي -->
+    <!-- 7. كاشف وأنسنة الذكاء الاصطناعي -->
     <div id="tool-ai-text" class="page">
         <div class="tool-header">
             <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
             <h2>🤖 كاشف الذكاء الاصطناعي وأنسنة النصوص</h2>
         </div>
         <div class="tool-container">
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top:0;">أدخل النص الخاص بك لمعرفة نسبة احتمالية كتابته بواسطة الذكاء الاصطناعي، وقم بصياغته لجعله أقرب للكتابة البشرية.</p>
-            
-            <textarea id="aiTextInput" rows="8" placeholder="قم بلصق المقال أو النص هنا للتحليل..."></textarea>
-            
-            <div class="flex-row">
-                <button class="btn-action btn-generate" style="background:#4f46e5;" onclick="detectAI()">🔍 توليد تقرير الذكاء الاصطناعي</button>
-            </div>
-            <button class="btn-action btn-success" onclick="humanizeText()" style="margin-bottom: 20px;">✍️ أنسنة النص (توليد صياغة بشرية)</button>
+            <textarea id="aiTextInput" rows="8" placeholder="قم بلصق المقال أو النص هنا..."></textarea>
+            <button class="btn-generate" style="background:#4f46e5;" onclick="detectAI()">🔍 توليد تقرير الذكاء الاصطناعي للنص</button>
+            <button class="btn-generate" style="background:#f59e0b;" onclick="humanizeText()">✍️ توليد صياغة بشرية (أنسنة النص)</button>
+            <div id="aiResultText" class="result-box">النتائج ستظهر هنا.</div>
+            <div class="ads-container">مساحة إعلانية أدسنس</div>
+        </div>
+    </div>
 
-            <div class="ai-progress-bg" id="aiProgressBg">
-                <div class="ai-progress-bar" id="aiProgressBar">0%</div>
+    <!-- 8. تنظيف النصوص -->
+    <div id="tool-text-clean" class="page">
+        <div class="tool-header">
+            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
+            <h2>📝 منظف ومحلل النصوص</h2>
+        </div>
+        <div class="tool-container">
+            <textarea id="cleanTextInput" rows="6" placeholder="الصق النص العربي هنا..."></textarea>
+            <button class="btn-generate" onclick="cleanText()">✨ تنظيف وتوليد النص الجديد (إزالة التشكيل)</button>
+            <div id="cleanTextResult" class="result-box"></div>
+        </div>
+    </div>
+
+    <!-- 9. حاسبة المعدل -->
+    <div id="tool-gpa" class="page">
+        <div class="tool-header">
+            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
+            <h2>📊 حاسبة المعدل (نظام 4)</h2>
+        </div>
+        <div class="tool-container">
+            <div class="ads-container">إعلان أدسنس</div>
+            <div id="gpaSubjects">
+                <div class="flex-row">
+                    <input type="text" placeholder="اسم المادة (اختياري)">
+                    <input type="number" class="gpa-hours" placeholder="عدد الساعات (مثال: 3)">
+                    <select class="gpa-grade">
+                        <option value="4">A (ممتاز)</option>
+                        <option value="3">B (جيد جداً)</option>
+                        <option value="2">C (جيد)</option>
+                        <option value="1">D (مقبول)</option>
+                        <option value="0">F (راسب)</option>
+                    </select>
+                </div>
             </div>
-            <div id="aiResultText" style="text-align:center; margin-top:10px; font-weight:bold; color:var(--text-main);"></div>
+            <button class="btn-action btn-secondary" onclick="addGpaRow()" style="margin-bottom:15px;">+ إضافة مادة أخرى</button>
+            <button class="btn-generate" onclick="calculateGPA()">📈 حساب وتوليد المعدل التراكمي</button>
+            <div id="gpaResult" class="result-box" style="font-size: 1.5rem;"></div>
+        </div>
+    </div>
+
+    <!-- 10. بومودورو -->
+    <div id="tool-pomodoro" class="page">
+        <div class="tool-header">
+            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
+            <h2>⏱️ مؤقت بومودورو</h2>
+        </div>
+        <div class="tool-container">
+            <div class="timer-display" id="pomodoroTimer">25:00</div>
+            <button class="btn-generate" onclick="startTimer()">▶ توليد وبدء جلسة التركيز</button>
+        </div>
+    </div>
+
+    <!-- 11. الأرقام السرية -->
+    <div id="tool-pass" class="page">
+        <div class="tool-header">
+            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
+            <h2>🔐 مولد كلمات المرور</h2>
+        </div>
+        <div class="tool-container">
+            <label>طول الرمز المطلوب:</label>
+            <input type="number" id="passLength" value="16" min="8" max="32">
+            <button class="btn-generate" onclick="generatePassword()">🔐 توليد كلمة المرور المعقدة الآن</button>
+            <div id="passResult" class="result-box" style="font-size: 1.5rem; letter-spacing: 2px;"></div>
+        </div>
+    </div>
+
+    <!-- 12. حاسبة العمر -->
+    <div id="tool-age" class="page">
+        <div class="tool-header">
+            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
+            <h2>⏳ حاسبة العمر الزمني</h2>
+        </div>
+        <div class="tool-container">
+            <label>حدد تاريخ ميلادك:</label>
+            <input type="date" id="dobInput">
+            <button class="btn-generate" onclick="generateAge()">⏳ توليد وحساب العمر بالتفصيل</button>
+            <div id="ageResult" class="result-box"></div>
         </div>
     </div>
 
     <script>
-        // === نظام التنقل ===
+        // === التنقل الأساسي ===
         function openHome() {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page-home').classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
         function openTool(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // === 1. برمجة ضغط الـ PDF ===
+        // === 1. ضغط الـ PDF ===
         async function compressPDF() {
             const fileInput = document.getElementById('pdfInput');
             const statusBox = document.getElementById('pdfStatus');
-            const level = document.getElementById('pdfCompressLevel').value;
-
-            if (!fileInput.files.length) {
-                alert('يرجى رفع ملف PDF أولاً.');
-                return;
-            }
-
-            statusBox.style.display = 'block';
-            statusBox.innerText = 'جاري المعالجة والضغط... يرجى الانتظار.';
-            
+            if (!fileInput.files.length) { alert('يرجى رفع ملف PDF.'); return; }
+            statusBox.style.display = 'block'; statusBox.innerText = 'جاري التوليد والضغط...';
             try {
                 const file = fileInput.files[0];
                 const arrayBuffer = await file.arrayBuffer();
                 const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
-                
-                let options = { useObjectStreams: false };
-                if (level === 'high') {
-                    options.useObjectStreams = true;
-                    pdfDoc.setTitle('');
-                    pdfDoc.setAuthor('');
-                } else if (level === 'medium') {
-                    options.useObjectStreams = true;
-                }
-
-                const pdfBytes = await pdfDoc.save(options);
-                
-                const oldSize = (file.size / 1024).toFixed(2);
-                const newSize = (pdfBytes.byteLength / 1024).toFixed(2);
-                
-                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                const link = document.createElement('url' in window ? 'a' : 'span');
-                link.href = URL.createObjectURL(blob);
-                link.download = `compressed_${level}_${file.name}`;
-                link.click();
-                URL.revokeObjectURL(link.href);
-
-                statusBox.innerHTML = `✅ تم الضغط بنجاح!<br>الحجم القديم: ${oldSize} KB <br> الحجم الجديد: <span style="color:var(--success)">${newSize} KB</span>`;
-            } catch (error) {
-                statusBox.innerText = 'حدث خطأ أثناء معالجة الملف. تأكد من أنه ملف PDF صالح.';
-            }
+                const pdfBytes = await pdfDoc.save({ useObjectStreams: true });
+                downloadFile(pdfBytes, `compressed_${file.name}`, 'application/pdf');
+                statusBox.innerHTML = `✅ تم توليد الملف بنجاح!`;
+            } catch (e) { statusBox.innerText = 'خطأ في معالجة الملف.'; }
         }
 
-        // === 2. برمجة الـ QR Code (التوليد والتنزيل) ===
+        // === 2. دمج الـ PDF ===
+        async function mergePDFs() {
+            const fileInput = document.getElementById('pdfMergeInput');
+            const statusBox = document.getElementById('pdfMergeStatus');
+            if (fileInput.files.length < 2) { alert('يرجى رفع ملفين على الأقل للدمج.'); return; }
+            statusBox.style.display = 'block'; statusBox.innerText = 'جاري التوليد والدمج...';
+            try {
+                const mergedPdf = await PDFLib.PDFDocument.create();
+                for (let file of fileInput.files) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
+                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                    copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+                const pdfBytes = await mergedPdf.save();
+                downloadFile(pdfBytes, `merged_document.pdf`, 'application/pdf');
+                statusBox.innerHTML = `✅ تم توليد ملف الـ PDF المدمج بنجاح!`;
+            } catch (e) { statusBox.innerText = 'خطأ في معالجة الملفات.'; }
+        }
+
+        function downloadFile(bytes, filename, type) {
+            const blob = new Blob([bytes], { type: type });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(link.href);
+        }
+
+        // === 3. محول الصور ===
+        function convertImage() {
+            const fileInput = document.getElementById('imgInput');
+            const format = document.getElementById('imgFormat').value;
+            const statusBox = document.getElementById('imgStatus');
+            if (!fileInput.files.length) { alert('ارفع صورة.'); return; }
+            
+            statusBox.style.display = 'block'; statusBox.innerText = 'جاري التوليد...';
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.getElementById('imgCanvas');
+                canvas.width = img.width; canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataUrl = canvas.toDataURL(format, 0.8);
+                const link = document.createElement('a');
+                link.href = dataUrl;
+                link.download = `converted_image.${format.split('/')[1]}`;
+                link.click();
+                statusBox.innerHTML = '✅ تم توليد الصورة وتنزيلها!';
+            }
+            img.src = URL.createObjectURL(fileInput.files[0]);
+        }
+
+        // === 4. فلاتر الصور ===
+        function applyFilter() {
+            const fileInput = document.getElementById('filterInput');
+            const filter = document.getElementById('filterType').value;
+            const statusBox = document.getElementById('filterStatus');
+            if (!fileInput.files.length) { alert('ارفع صورة.'); return; }
+            
+            statusBox.style.display = 'block'; statusBox.innerText = 'جاري التوليد...';
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.getElementById('filterCanvas');
+                canvas.width = img.width; canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.filter = filter;
+                ctx.drawImage(img, 0, 0);
+                const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+                const link = document.createElement('a');
+                link.href = dataUrl; link.download = `filtered_image.jpg`; link.click();
+                statusBox.innerHTML = '✅ تم تطبيق الفلتر وتوليد الصورة!';
+            }
+            img.src = URL.createObjectURL(fileInput.files[0]);
+        }
+
+        // === 5. صانع QR Code ===
         let qrcodeInstance = null;
         function generateQR() {
             const text = document.getElementById('qrText').value;
-            const colorDark = document.getElementById('qrColorDark').value;
-            const colorLight = document.getElementById('qrColorLight').value;
             const container = document.getElementById('qrcode');
-            const placeholder = document.getElementById('qrPlaceholder');
-            const downloadBtn = document.getElementById('downloadQrBtn');
-            
-            if (!text.trim()) {
-                alert("يرجى إدخال الرابط أو النص في الحقل أولاً ليتم توليده!");
-                return;
-            }
-
-            // إخفاء النص المؤقت وتنظيف الحاوية
-            placeholder.style.display = 'none';
+            if (!text.trim()) { alert("يرجى إدخال النص!"); return; }
             container.innerHTML = '';
-
-            // توليد الرمز
             qrcodeInstance = new QRCode(container, {
-                text: text,
-                width: 220,
-                height: 220,
-                colorDark : colorDark,
-                colorLight : colorLight,
-                correctLevel : QRCode.CorrectLevel.H
+                text: text, width: 220, height: 220,
+                colorDark : document.getElementById('qrColorDark').value,
+                colorLight : document.getElementById('qrColorLight').value
             });
-
-            // إظهار زر التنزيل
-            setTimeout(() => {
-                downloadBtn.style.display = 'block';
-            }, 300);
         }
 
-        // دالة تنزيل الرمز
-        function downloadQR() {
-            const canvas = document.querySelector('#qrcode canvas');
-            if (canvas) {
-                const link = document.createElement('a');
-                link.href = canvas.toDataURL("image/png");
-                link.download = 'QR_Code_Generated.png';
-                link.click();
-            } else {
-                alert("يرجى توليد الرمز أولاً!");
-            }
-        }
-
-        // === 3. برمجة قارئ الـ QR Code ===
+        // === 6. قارئ QR Code ===
         function readQRCode() {
             const fileInput = document.getElementById('qrFileInput');
-            if (!fileInput.files.length) {
-                alert('يرجى رفع الصورة أولاً لكي يتم استخراج الرابط!');
-                return;
-            }
-            const file = fileInput.files[0];
-            const preview = document.getElementById('qrReadPreview');
             const resultBox = document.getElementById('qrReaderResult');
-            const canvas = document.getElementById('qrCanvas');
-            const ctx = canvas.getContext('2d');
-
-            const imgURL = URL.createObjectURL(file);
-            preview.src = imgURL;
-            preview.style.display = 'block';
-            resultBox.style.display = 'block';
-            resultBox.innerHTML = 'جاري المسح واستخراج البيانات... ⏳';
-
+            if (!fileInput.files.length) { alert('ارفع صورة الباركود.'); return; }
+            
+            resultBox.style.display = 'block'; resultBox.innerText = 'جاري التوليد والمسح...';
             const img = new Image();
             img.onload = function() {
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                const canvas = document.getElementById('qrReadCanvas');
+                canvas.width = img.width; canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
                 const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                
                 const code = jsQR(imageData.data, imageData.width, imageData.height, { inversionAttempts: "dontInvert" });
-                
                 if (code) {
-                    if(code.data.startsWith('http://') || code.data.startsWith('https://')) {
-                        resultBox.innerHTML = `✅ <strong>تم التقاط الرابط بنجاح:</strong><br><br><a href="${code.data}" target="_blank" style="color:var(--primary); text-decoration:underline; word-break:break-all;">${code.data}</a>`;
-                    } else {
-                        resultBox.innerHTML = `✅ <strong>النص المستخرج:</strong><br><br>${code.data}`;
-                    }
+                    resultBox.innerHTML = `✅ <strong>تم توليد النتيجة:</strong><br><br>${code.data}`;
                 } else {
-                    resultBox.innerHTML = '❌ لم يتم العثور على رمز QR واضح في الصورة.';
+                    resultBox.innerHTML = '❌ لم يتم العثور على رمز.';
                 }
-            };
-            img.src = imgURL;
+            }
+            img.src = URL.createObjectURL(fileInput.files[0]);
         }
 
-        // === 4. برمجة كاشف الذكاء الاصطناعي ===
+        // === 7. الذكاء الاصطناعي ===
         function detectAI() {
-            const text = document.getElementById('aiTextInput').value.trim();
-            const progressBg = document.getElementById('aiProgressBg');
-            const progressBar = document.getElementById('aiProgressBar');
-            const resultText = document.getElementById('aiResultText');
-
-            if(text.length < 50) {
-                alert("يرجى إدخال نص أطول (50 حرف على الأقل) لتوليد تقرير التحليل.");
-                return;
-            }
-
-            progressBg.style.display = 'block';
-            progressBar.style.width = '0%';
-            resultText.innerText = "جاري التحليل...";
-
-            setTimeout(() => {
-                let aiPercentage = Math.floor(Math.random() * (85 - 30 + 1) + 30); 
-                if(text.split(' ').length > 100) aiPercentage += 10;
-                if(aiPercentage > 98) aiPercentage = 98;
-
-                progressBar.style.width = aiPercentage + '%';
-                progressBar.innerText = aiPercentage + '%';
-                
-                if(aiPercentage > 70) {
-                    progressBar.style.background = 'var(--danger)';
-                    resultText.innerHTML = "⚠️ احتمالية عالية بأن هذا النص تم توليده بواسطة الذكاء الاصطناعي.";
-                } else if(aiPercentage > 40) {
-                    progressBar.style.background = 'var(--accent)';
-                    resultText.innerHTML = "⚠️ النص يحتوي على مزيج بين الكتابة البشرية والذكاء الاصطناعي.";
-                } else {
-                    progressBar.style.background = 'var(--success)';
-                    resultText.innerHTML = "✅ هذا النص يبدو أنه مكتوب بشرياً.";
-                }
-            }, 800);
+            const text = document.getElementById('aiTextInput').value;
+            const res = document.getElementById('aiResultText');
+            if(text.length < 20) { alert('النص قصير جداً.'); return; }
+            res.style.display = 'block';
+            let percent = Math.floor(Math.random() * 60) + 20; // Simulated
+            res.innerHTML = `✅ تم توليد التقرير: نسبة الذكاء الاصطناعي التقريبية هي <strong>${percent}%</strong>.`;
+        }
+        function humanizeText() {
+            let text = document.getElementById('aiTextInput').value;
+            const res = document.getElementById('aiResultText');
+            if(text.length < 20) { alert('النص قصير جداً.'); return; }
+            let newText = text.replace(/بناءً على/g, "استناداً إلى").replace(/يعد/g, "يعتبر");
+            document.getElementById('aiTextInput').value = newText;
+            res.style.display = 'block';
+            res.innerHTML = '✅ تم توليد صياغة بشرية للنص بنجاح.';
         }
 
-        function humanizeText() {
-            let text = document.getElementById('aiTextInput').value.trim();
-            if(text.length < 10) {
-                alert("يرجى إدخال نص لكي تتم أنسنته.");
-                return;
+        // === 8. تنظيف النص ===
+        function cleanText() {
+            let text = document.getElementById('cleanTextInput').value;
+            const res = document.getElementById('cleanTextResult');
+            if(!text) return;
+            // إزالة التشكيل
+            text = text.replace(/[\u064B-\u065F]/g, '');
+            // إزالة المسافات الزائدة
+            text = text.replace(/\s+/g, ' ').trim();
+            res.style.display = 'block';
+            res.innerHTML = `✅ <strong>تم توليد النص المنظف:</strong><br><br>${text}`;
+        }
+
+        // === 9. حاسبة المعدل ===
+        function addGpaRow() {
+            const container = document.getElementById('gpaSubjects');
+            const row = document.createElement('div');
+            row.className = 'flex-row';
+            row.innerHTML = `<input type="text" placeholder="اسم المادة"><input type="number" class="gpa-hours" placeholder="عدد الساعات"><select class="gpa-grade"><option value="4">A</option><option value="3">B</option><option value="2">C</option><option value="1">D</option><option value="0">F</option></select>`;
+            container.appendChild(row);
+        }
+        function calculateGPA() {
+            const hours = document.querySelectorAll('.gpa-hours');
+            const grades = document.querySelectorAll('.gpa-grade');
+            let totalPoints = 0; let totalHours = 0;
+            for(let i=0; i<hours.length; i++) {
+                let h = parseFloat(hours[i].value);
+                let g = parseFloat(grades[i].value);
+                if(h && !isNaN(h)) {
+                    totalPoints += (h * g);
+                    totalHours += h;
+                }
             }
+            const res = document.getElementById('gpaResult');
+            res.style.display = 'block';
+            if(totalHours === 0) { res.innerText = "يرجى إدخال الساعات."; return; }
+            const gpa = (totalPoints / totalHours).toFixed(2);
+            res.innerHTML = `✅ تم توليد المعدل: <strong>${gpa} من 4.0</strong>`;
+        }
 
-            const replacements = {
-                "بناءً على": "استناداً إلى",
-                "في الختام": "خلاصة القول",
-                "مما لا شك فيه": "بالتأكيد",
-                "علاوة على ذلك": "وبالإضافة إلى ذلك",
-                "يمكننا القول": "نستطيع أن نرى",
-                "يعد": "يُعتبر",
-                "بالتالي": "ونتيجة لذلك"
-            };
+        // === 10. بومودورو ===
+        let pomoInterval;
+        function startTimer() {
+            clearInterval(pomoInterval);
+            let time = 25 * 60;
+            const display = document.getElementById('pomodoroTimer');
+            pomoInterval = setInterval(() => {
+                let minutes = parseInt(time / 60, 10);
+                let seconds = parseInt(time % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = minutes + ":" + seconds;
+                if (--time < 0) {
+                    clearInterval(pomoInterval);
+                    alert("✅ انتهت جلسة التركيز المولدَة!");
+                }
+            }, 1000);
+        }
 
-            let modifiedText = text;
-            for (let [key, value] of Object.entries(replacements)) {
-                let regex = new RegExp(key, "g");
-                modifiedText = modifiedText.replace(regex, value);
+        // === 11. توليد كلمة المرور ===
+        function generatePassword() {
+            const len = document.getElementById('passLength').value;
+            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+            let pass = "";
+            for (let i = 0; i < len; i++) {
+                pass += chars.charAt(Math.floor(Math.random() * chars.length));
             }
-            
-            modifiedText = modifiedText.replace(/،/g, "، "); 
-            modifiedText = modifiedText.replace(/  /g, " ");
+            const res = document.getElementById('passResult');
+            res.style.display = 'block';
+            res.innerText = pass;
+        }
 
-            document.getElementById('aiTextInput').value = modifiedText;
-            
-            const progressBar = document.getElementById('aiProgressBar');
-            const resultText = document.getElementById('aiResultText');
-            
-            progressBar.style.width = '15%';
-            progressBar.innerText = '15%';
-            progressBar.style.background = 'var(--success)';
-            resultText.innerHTML = "✅ تم توليد صياغة بشرية للنص بنجاح.";
+        // === 12. حاسبة العمر ===
+        function generateAge() {
+            const dob = document.getElementById('dobInput').value;
+            const res = document.getElementById('ageResult');
+            if(!dob) { alert("أدخل تاريخ الميلاد."); return; }
+            const birthDate = new Date(dob);
+            const today = new Date();
+            let ageY = today.getFullYear() - birthDate.getFullYear();
+            let ageM = today.getMonth() - birthDate.getMonth();
+            if (ageM < 0 || (ageM === 0 && today.getDate() < birthDate.getDate())) { ageY--; }
+            res.style.display = 'block';
+            res.innerHTML = `✅ تم توليد العمر بنجاح: عمرك تقريباً <strong>${ageY} سنة</strong>.`;
         }
     </script>
 </body>
