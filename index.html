@@ -1,633 +1,375 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- كود قوقل أدسينس الأساسي -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421017699603693"
-     crossorigin="anonymous"></script>
-     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجمع الأدوات الذكية المطور | لـ أدسنس وجوجل</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- استدعاء المكتبات البرمجية -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-
-    <style>
-        /* === المتغيرات وتصميم العصر الحديث === */
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg: #f1f5f9;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --border: #cbd5e1;
-            --danger: #ef4444;
-            --success: #10b981;
-            --accent: #f59e0b;
-        }
-
-        body { font-family: 'Tajawal', sans-serif; margin: 0; background: var(--bg); color: var(--text-main); }
-
-        nav { background: var(--card-bg); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .logo { font-size: 1.4rem; font-weight: 700; color: var(--primary); cursor: pointer; display: flex; align-items: center; gap: 8px; }
-        .btn-nav { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); padding: 10px 20px; font-size: 0.95rem; border-radius: 8px; color: white; border: none; cursor: pointer; font-weight: 500; }
-        .btn-nav:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
-
-        .page { display: none; max-width: 1100px; margin: 2.5rem auto; padding: 0 1.5rem; animation: slideUp 0.4s ease; }
-        .page.active { display: block; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .hero { text-align: center; margin-bottom: 3.5rem; }
-        .hero h1 { font-size: 2.6rem; margin-bottom: 0.75rem; color: var(--text-main); font-weight: 700; }
-        .hero p { color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto; }
-
-        .category-container { background: var(--card-bg); border-radius: 16px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid var(--border); }
-        .category-title { font-size: 1.35rem; margin-top: 0; margin-bottom: 1.5rem; color: var(--text-main); font-weight: 700; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
-        .card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; cursor: pointer; transition: all 0.25s ease; }
-        .card:hover { background: var(--card-bg); transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 12px 20px -3px rgba(0,0,0,0.08); }
-        .card h3 { margin: 0 0 8px 0; font-size: 1.15rem; color: var(--text-main); }
-        .card p { margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
-
-        .tool-header { display: flex; align-items: center; margin-bottom: 2rem; gap: 1.5rem; }
-        .tool-container { background: var(--card-bg); padding: 2.5rem; border-radius: 16px; max-width: 750px; margin: 0 auto; border: 1px solid var(--border); }
-        
-        .ads-container { margin: 20px 0; padding: 10px; background: #f8fafc; border: 1px dashed #cbd5e1; text-align: center; border-radius: 8px; color: #94a3b8; font-size: 0.9rem;}
-
-        label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-main); font-size: 0.95rem; }
-        input, select, textarea { width: 100%; padding: 14px; margin-bottom: 1.25rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.95rem; background: #fafafa; box-sizing: border-box;}
-        input[type="color"] { height: 50px; padding: 5px; cursor: pointer; }
-        input[type="checkbox"] { width: auto; margin-left: 10px; }
-        
-        /* زر التوليد الموحد */
-        .btn-generate { background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 16px 24px; border-radius: 8px; cursor: pointer; font-size: 1.15rem; font-weight: 700; width: 100%; transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); margin-bottom: 15px;}
-        .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); }
-        
-        .btn-action { background: var(--primary); color: white; border: none; padding: 14px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; width: 100%; transition: all 0.2s; }
-        .btn-action:hover { background: var(--primary-hover); }
-        .btn-secondary { background: #64748b; width: auto;}
-        
-        .flex-row { display: flex; gap: 15px; margin-bottom: 1.25rem; }
-        .result-box { margin-top: 20px; padding: 18px; border-radius: 8px; font-weight: 500; background: #f8fafc; border: 1px solid var(--border); text-align: center; display: none; word-break: break-all; }
-        
-        #qrcode-wrapper { display: flex; justify-content: center; align-items: center; margin: 20px 0; min-height: 200px; background: #f8fafc; border: 2px dashed var(--border); border-radius: 12px; }
-        .timer-display { font-size: 4.5rem; font-weight: bold; color: var(--primary); text-align: center; margin: 1rem 0; font-variant-numeric: tabular-nums; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>من نحن - SMART TOOLS</title>
+  <meta name="description" content="معلومات عن منصة SMART TOOLS، رؤيتنا ورسالتنا." />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
-<body>
-
-    <nav>
-        <div class="logo" onclick="openHome()">✨ مجمع الأدوات الذكية المطور</div>
-        <button class="btn-nav" onclick="openHome()">🏠 لوحة التحكم</button>
+<body class="light">
+  <header class="site-header">
+    <div class="logo">SMART TOOLS</div>
+    <nav class="nav-menu">
+      <a href="index.html">الرئيسية</a>
+      <a href="tools.html">الأدوات</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل</a>
     </nav>
-
-    <div id="page-home" class="page active">
-        <div class="hero">
-            <h1>أدوات سريعة، كفاءة متناهية</h1>
-            <p>منصة ويب متكاملة تعمل محلياً بالكامل على متصفحك.</p>
-        </div>
-
-        <div class="category-container">
-            <h2 class="category-title">📑 إدارة وإعداد الـ PDF</h2>
-            <div class="grid-container">
-                <div class="card" onclick="openTool('tool-pdf-compress')">
-                    <h3>🗜️ ضغط الـ PDF الذكي</h3>
-                    <p>توليد نسخ مضغوطة بحجم أقل تتناسب مع المنصات الحكومية.</p>
-                </div>
-                <div class="card" onclick="openTool('tool-pdf-merge')">
-                    <h3>🔗 دمج مستندات الـ PDF</h3>
-                    <p>توليد ملف واحد متكامل من عدة مستندات مختلفة.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-container">
-            <h2 class="category-title">🖼️ معالجة الصور</h2>
-            <div class="grid-container">
-                <div class="card" onclick="openTool('tool-img-convert')">
-                    <h3>🔄 محول الأبعاد والصيغ</h3>
-                    <p>توليد صور مصغرة بأحجام وصيغ مختلفة للوثائق.</p>
-                </div>
-                <div class="card" onclick="openTool('tool-img-filter')">
-                    <h3>🎨 فلاتر المستندات</h3>
-                    <p>توليد صور واضحة (أبيض وأسود) للماسحات الضوئية.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-container">
-            <h2 class="category-title">📱 الباركود وأدوات التحقق (QR)</h2>
-            <div class="grid-container">
-                <div class="card" onclick="openTool('tool-qr-gen')">
-                    <h3>📥 صانع الرموز الملون (QR Generator)</h3>
-                    <p>توليد رموز ملونة وتخصيصها لتتناسب مع هويتك.</p>
-                </div>
-                <div class="card" onclick="openTool('tool-qr-read')">
-                    <h3>📤 قارئ الرموز (QR Reader)</h3>
-                    <p>استخراج وتوليد قراءة الباركود من الصور.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-container">
-            <h2 class="category-title">🤖 الذكاء الاصطناعي والنصوص</h2>
-            <div class="grid-container">
-                <div class="card" onclick="openTool('tool-ai-text')">
-                    <h3>🕵️ كاشف وأنسنة الذكاء الاصطناعي</h3>
-                    <p>توليد تقارير الـ AI وتوليد صياغة بشرية للنصوص.</p>
-                </div>
-                <div class="card" onclick="openTool('tool-text-clean')">
-                    <h3>📝 منظف النصوص</h3>
-                    <p>توليد نصوص خالية من التشكيل والمسافات الزائدة.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-container">
-            <h2 class="category-title">🎓 الإنتاجية والأمان</h2>
-            <div class="grid-container">
-                <div class="card" onclick="openTool('tool-gpa')">
-                    <h3>📊 حاسبة المعدل</h3>
-                    <p>حساب وتوليد المعدل التراكمي الجامعي.</p>
-                </div>
-                <div class="card" onclick="openTool('tool-pomodoro')">
-                    <h3>⏱️ مؤقت بومودورو</h3>
-                    <p>توليد جلسات دراسية منظمة.</p>
-                </div>
-                <div class="card" onclick="openTool('tool-pass')">
-                    <h3>🔐 مولد كلمات المرور</h3>
-                    <p>توليد أرقام سرية قوية ومعقدة.</p>
-                </div>
-                <div class="card" onclick="openTool('tool-age')">
-                    <h3>⏳ حاسبة العمر</h3>
-                    <p>توليد حساب دقيق للعمر بالأيام والأشهر.</p>
-                </div>
-            </div>
-        </div>
+    <button id="theme-toggle" aria-label="تبديل الوضع">🌙</button>
+    <button id="lang-toggle" aria-label="Switch Language">EN</button>
+  </header>
+  <section class="hero" style="background: linear-gradient(135deg, var(--primary), hsl(190,80%,70%));">
+    <h1>من نحن</h1>
+    <p class="tagline">قصة نجاحنا وإلتزامنا</p>
+  </section>
+  <section class="features" style="padding: 2rem 2rem;">
+    <div class="feature-card" style="grid-column: 1 / -1; text-align: left;">
+      <h2>رؤيتنا</h2>
+      <p>أن نكون المصدر الأول للأدوات الرقمية المجانية التي تمكّن الأفراد والشركات في العالم العربي من تحسين إنتاجيتهم وتوسيع آفاقهم.</p>
     </div>
-
-    <!-- الأدوات -->
-    <!-- 1. ضغط PDF -->
-    <div id="tool-pdf-compress" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>🗜️ ضغط وبناء هيكلية ملفات PDF</h2>
-        </div>
-        <div class="tool-container">
-            <div class="ads-container">مساحة إعلان أدسنس</div>
-            <label>ارفع ملف الـ PDF:</label>
-            <input type="file" id="pdfInput" accept="application/pdf">
-            <label>مستوى الضغط المطلوب:</label>
-            <select id="pdfCompressLevel">
-                <option value="low">ضغط خفيف (أسرع)</option>
-                <option value="medium" selected>ضغط متوسط</option>
-                <option value="high">ضغط عالي</option>
-            </select>
-            <button class="btn-generate" onclick="compressPDF()">⚙️ توليد الملف المضغوط الآن</button>
-            <div id="pdfStatus" class="result-box"></div>
-        </div>
+    <div class="feature-card" style="grid-column: 1 / -1; text-align: left;">
+      <h2>مهمتنا</h2>
+      <p>توفير مجموعة متكاملة من الأدوات الذكية، سهلة الاستخدام، ومُصمَّمة وفق أفضل معايير تجربة المستخدم، مع دعم كامل للغة العربية.</p>
     </div>
-
-    <!-- 2. دمج PDF -->
-    <div id="tool-pdf-merge" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>🔗 دمج مستندات PDF</h2>
-        </div>
-        <div class="tool-container">
-            <div class="ads-container">مساحة إعلان أدسنس</div>
-            <label>اختر الملفات (يمكنك تحديد أكثر من ملف):</label>
-            <input type="file" id="pdfMergeInput" accept="application/pdf" multiple>
-            <button class="btn-generate" onclick="mergePDFs()">🔗 توليد ملف الـ PDF المدمج</button>
-            <div id="pdfMergeStatus" class="result-box"></div>
-        </div>
+    <div class="feature-card" style="grid-column: 1 / -1; text-align: left;">
+      <h2>قيمنا</h2>
+      <ul style="margin: 0; padding-left: 1.2rem;">
+        <li>الابتكار المستمر</li>
+        <li>الشفافية والخصوصية</li>
+        <li>التفوق في الجودة التصميمية</li>
+        <li>المجانية وإتاحة الوصول للجميع</li>
+      </ul>
     </div>
-
-    <!-- 3. محول الصور -->
-    <div id="tool-img-convert" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>🔄 محول الأبعاد والصيغ</h2>
-        </div>
-        <div class="tool-container">
-            <div class="ads-container">مساحة إعلان أدسنس</div>
-            <label>ارفع الصورة:</label>
-            <input type="file" id="imgInput" accept="image/*">
-            <label>الصيغة المطلوبة للتحويل:</label>
-            <select id="imgFormat">
-                <option value="image/jpeg">JPEG (حجم صغير)</option>
-                <option value="image/png">PNG (جودة عالية)</option>
-                <option value="image/webp">WEBP (حديث)</option>
-            </select>
-            <button class="btn-generate" onclick="convertImage()">🖼️ توليد الصورة المحدثة</button>
-            <div id="imgStatus" class="result-box"></div>
-            <canvas id="imgCanvas" style="display:none;"></canvas>
-        </div>
+  </section>
+  <footer class="site-footer">
+    <p>&copy; 2026 SMART TOOLS. جميع الحقوق محفوظة.</p>
+    <nav class="footer-nav">
+      <a href="privacy.html">سياسة الخصوصية</a>
+      <a href="terms.html">شروط الخدمة</a>
+      <a href="disclaimer.html">إخلاء المسؤولية</a>
+    </nav>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('theme-toggle');
+  const langToggle = document.getElementById('lang-toggle');
+  const root = document.documentElement;
+  // Initialize theme from localStorage
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.body.classList.toggle('dark', savedTheme === 'dark');
+  document.body.classList.toggle('light', savedTheme === 'light');
+  themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark');
+    document.body.classList.toggle('light', !isDark);
+    const newTheme = isDark ? 'dark' : 'light';
+    localStorage.setItem('theme', newTheme);
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+  });
+  // Language toggle (simple demo, switches between AR and EN placeholders)
+  const currentLang = localStorage.getItem('lang') || 'ar';
+  if (currentLang === 'en') {
+    document.documentElement.lang = 'en';
+    document.documentElement.dir = 'ltr';
+    langToggle.textContent = 'AR';
+  }
+  langToggle.addEventListener('click', () => {
+    if (document.documentElement.lang === 'ar') {
+      document.documentElement.lang = 'en';
+      document.documentElement.dir = 'ltr';
+      langToggle.textContent = 'AR';
+      localStorage.setItem('lang', 'en');
+    } else {
+      document.documentElement.lang = 'ar';
+      document.documentElement.dir = 'rtl';
+      langToggle.textContent = 'EN';
+      localStorage.setItem('lang', 'ar');
+    }
+  });
+});
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+/* Theme Variables */
+:root {
+  --primary: hsl(210, 90%, 55%);
+  --primary-dark: hsl(210, 90%, 45%);
+  --bg-light: #f5f7fa;
+  --bg-dark: #0e1117;
+  --bg-glass-light: rgba(255, 255, 255, 0.4);
+  --bg-glass-dark: rgba(30, 34, 40, 0.6);
+  --text-light: #212529;
+  --text-dark: #eaeaea;
+  --shadow: rgba(0,0,0,0.1);
+}
+body.light {
+  --bg-color: var(--bg-light);
+  --text-color: var(--text-light);
+  --card-bg: var(--bg-glass-light);
+}
+body.dark {
+  --bg-color: var(--bg-dark);
+  --text-color: var(--text-dark);
+  --card-bg: var(--bg-glass-dark);
+}
+/* Layout */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.nav-menu a {
+  margin: 0 0.8rem;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  position: relative;
+}
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s;
+}
+.nav-menu a:hover::after { width: 100%; }
+#theme-toggle, #lang-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--primary), hsl(200,85%,70%));
+  color: #fff;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  opacity: 0.2;
+}
+.hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+.hero .tagline { font-size: 1.4rem; margin-bottom: 2rem; }
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  background: #fff;
+  color: var(--primary);
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+.cta-button:hover { transform: translateY(-3px); }
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 3rem 2rem;
+}
+.feature-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
+  text-align: center;
+}
+.feature-card h2 { margin-bottom: 0.5rem; color: var(--primary); }
+/* Footer */
+.site-footer {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.footer-nav a { margin: 0 0.5rem; color: inherit; text-decoration: none; }
+.footer-nav a:hover { text-decoration: underline; }
+/* Responsive */
+@media (max-width: 768px) {
+  .site-header { flex-direction: column; align-items: flex-start; }
+  .nav-menu { margin-top: 0.5rem; }
+}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMART TOOLS - تواصل معنا</title>
+  <meta name="description" content="صفحة التواصل مع فريق SMART TOOLS لتقديم الدعم والاستفسارات." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="light">
+  <header class="site-header">
+    <div class="logo">SMART TOOLS</div>
+    <nav class="nav-menu">
+      <a href="index.html">الرئيسية</a>
+      <a href="tools.html">الأدوات</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل</a>
+    </nav>
+    <button id="theme-toggle" aria-label="تبديل الوضع">🌙</button>
+    <button id="lang-toggle" aria-label="Switch Language">EN</button>
+  </header>
+  <section class="hero" style="background: linear-gradient(135deg, var(--primary), hsl(200,85%,70%)); color:#fff; text-align:center; padding:4rem 2rem;">
+    <h1>تواصل معنا</h1>
+    <p class="tagline">نحن هنا لخدمتك. أي استفسار أو ملاحظات؟</p>
+  </section>
+  <section class="contact-form" style="padding:2rem 2rem; max-width:600px; margin:auto;">
+    <form>
+      <label for="name">الاسم:</label>
+      <input type="text" id="name" name="name" required style="width:100%;margin-bottom:1rem;">
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" name="email" required style="width:100%;margin-bottom:1rem;">
+      <label for="message">الرسالة:</label>
+      <textarea id="message" name="message" rows="5" required style="width:100%;margin-bottom:1rem;"></textarea>
+      <button type="submit" style="padding:0.8rem 1.6rem;background:var(--primary);color:#fff;border:none;border-radius:4px;cursor:pointer;">إرسال</button>
+    </form>
+  </section>
+  <footer class="site-footer">
+    <p>&copy; 2026 SMART TOOLS. جميع الحقوق محفوظة.</p>
+    <nav class="footer-nav">
+      <a href="privacy.html">سياسة الخصوصية</a>
+      <a href="terms.html">شروط الخدمة</a>
+      <a href="disclaimer.html">إخلاء المسؤولية</a>
+    </nav>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMART TOOLS - أدوات ذكية للنجاح اليومي</title>
+  <meta name="description" content="منصة عربية تقدم أدوات مجانية للذكاء الاصطناعي، حسابات، محولات، SEO، ودعم الدراسة." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="light">
+  <header class="site-header">
+    <div class="logo">SMART TOOLS</div>
+    <nav class="nav-menu">
+      <a href="index.html">الرئيسية</a>
+      <a href="tools.html">الأدوات</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل</a>
+    </nav>
+    <button id="theme-toggle" aria-label="تبديل الوضع">🌙</button>
+    <button id="lang-toggle" aria-label="Switch Language">EN</button>
+  </header>
+  <section class="hero">
+    <h1>SMART TOOLS</h1>
+    <p class="tagline">أدوات ذكية للنجاح اليومي</p>
+    <a href="tools.html" class="cta-button">اكتشف الأدوات</a>
+  </section>
+  <section class="features">
+    <div class="feature-card">
+      <h2>ذكاء اصطناعي</h2>
+      <p>مولد نصوص، ملخصات، ترجمة، وأكثر.</p>
     </div>
-
-    <!-- 4. فلاتر الصور -->
-    <div id="tool-img-filter" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>🎨 فلاتر المستندات</h2>
-        </div>
-        <div class="tool-container">
-            <div class="ads-container">مساحة إعلان أدسنس</div>
-            <label>ارفع صورة المستند:</label>
-            <input type="file" id="filterInput" accept="image/*">
-            <label>اختر الفلتر:</label>
-            <select id="filterType">
-                <option value="grayscale(100%)">أبيض وأسود (للمستندات الرسمية)</option>
-                <option value="sepia(80%)">قديم (Sepia)</option>
-                <option value="contrast(150%)">زيادة التباين (توضيح الخط)</option>
-            </select>
-            <button class="btn-generate" onclick="applyFilter()">🎨 توليد الصورة المفلترة</button>
-            <div id="filterStatus" class="result-box"></div>
-            <canvas id="filterCanvas" style="display:none;"></canvas>
-        </div>
+    <div class="feature-card">
+      <h2>حسابات ومحولين</h2>
+      <p>قواعد، عملات، وحدات، تواريخ، وما إلى ذلك.</p>
     </div>
-
-    <!-- 5. صانع QR Code -->
-    <div id="tool-qr-gen" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>📥 صانع رموز QR المخصص</h2>
-        </div>
-        <div class="tool-container" style="text-align: center;">
-            <label style="text-align: right;">أدخل النص أو الرابط:</label>
-            <input type="text" id="qrText" placeholder="اكتب أو الصق الرابط هنا...">
-            <div class="flex-row">
-                <div style="flex:1;"><label>لون الرمز:</label><input type="color" id="qrColorDark" value="#000000"></div>
-                <div style="flex:1;"><label>لون الخلفية:</label><input type="color" id="qrColorLight" value="#ffffff"></div>
-            </div>
-            <button class="btn-generate" onclick="generateQR()">🚀 توليد رمز الـ QR الآن</button>
-            <div id="qrcode-wrapper"><div id="qrcode"></div></div>
-            <div class="ads-container">مساحة إعلانية أدسنس</div>
-        </div>
+    <div class="feature-card">
+      <h2>تحسين SEO</h2>
+      <p>تحليل الكلمات المفتاحية، فحص الروابط، تقارير.</p>
     </div>
-
-    <!-- 6. قارئ QR Code -->
-    <div id="tool-qr-read" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>📤 قارئ رموز الـ QR</h2>
-        </div>
-        <div class="tool-container">
-            <label>ارفع صورة تحتوي على باركود:</label>
-            <input type="file" id="qrFileInput" accept="image/*">
-            <button class="btn-generate" onclick="readQRCode()">🔍 استخراج وتوليد قراءة الرمز</button>
-            <canvas id="qrReadCanvas" style="display:none;"></canvas>
-            <div id="qrReaderResult" class="result-box" style="font-size: 1.2rem; padding: 25px; border-color: var(--primary);">النتيجة...</div>
-        </div>
-    </div>
-
-    <!-- 7. كاشف وأنسنة الذكاء الاصطناعي -->
-    <div id="tool-ai-text" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>🤖 كاشف الذكاء الاصطناعي وأنسنة النصوص</h2>
-        </div>
-        <div class="tool-container">
-            <textarea id="aiTextInput" rows="8" placeholder="قم بلصق المقال أو النص هنا..."></textarea>
-            <button class="btn-generate" style="background:#4f46e5;" onclick="detectAI()">🔍 توليد تقرير الذكاء الاصطناعي للنص</button>
-            <button class="btn-generate" style="background:#f59e0b;" onclick="humanizeText()">✍️ توليد صياغة بشرية (أنسنة النص)</button>
-            <div id="aiResultText" class="result-box">النتائج ستظهر هنا.</div>
-            <div class="ads-container">مساحة إعلانية أدسنس</div>
-        </div>
-    </div>
-
-    <!-- 8. تنظيف النصوص -->
-    <div id="tool-text-clean" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>📝 منظف ومحلل النصوص</h2>
-        </div>
-        <div class="tool-container">
-            <textarea id="cleanTextInput" rows="6" placeholder="الصق النص العربي هنا..."></textarea>
-            <button class="btn-generate" onclick="cleanText()">✨ تنظيف وتوليد النص الجديد (إزالة التشكيل)</button>
-            <div id="cleanTextResult" class="result-box"></div>
-        </div>
-    </div>
-
-    <!-- 9. حاسبة المعدل -->
-    <div id="tool-gpa" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>📊 حاسبة المعدل (نظام 4)</h2>
-        </div>
-        <div class="tool-container">
-            <div class="ads-container">إعلان أدسنس</div>
-            <div id="gpaSubjects">
-                <div class="flex-row">
-                    <input type="text" placeholder="اسم المادة (اختياري)">
-                    <input type="number" class="gpa-hours" placeholder="عدد الساعات (مثال: 3)">
-                    <select class="gpa-grade">
-                        <option value="4">A (ممتاز)</option>
-                        <option value="3">B (جيد جداً)</option>
-                        <option value="2">C (جيد)</option>
-                        <option value="1">D (مقبول)</option>
-                        <option value="0">F (راسب)</option>
-                    </select>
-                </div>
-            </div>
-            <button class="btn-action btn-secondary" onclick="addGpaRow()" style="margin-bottom:15px;">+ إضافة مادة أخرى</button>
-            <button class="btn-generate" onclick="calculateGPA()">📈 حساب وتوليد المعدل التراكمي</button>
-            <div id="gpaResult" class="result-box" style="font-size: 1.5rem;"></div>
-        </div>
-    </div>
-
-    <!-- 10. بومودورو -->
-    <div id="tool-pomodoro" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>⏱️ مؤقت بومودورو</h2>
-        </div>
-        <div class="tool-container">
-            <div class="timer-display" id="pomodoroTimer">25:00</div>
-            <button class="btn-generate" onclick="startTimer()">▶ توليد وبدء جلسة التركيز</button>
-        </div>
-    </div>
-
-    <!-- 11. الأرقام السرية -->
-    <div id="tool-pass" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>🔐 مولد كلمات المرور</h2>
-        </div>
-        <div class="tool-container">
-            <label>طول الرمز المطلوب:</label>
-            <input type="number" id="passLength" value="16" min="8" max="32">
-            <button class="btn-generate" onclick="generatePassword()">🔐 توليد كلمة المرور المعقدة الآن</button>
-            <div id="passResult" class="result-box" style="font-size: 1.5rem; letter-spacing: 2px;"></div>
-        </div>
-    </div>
-
-    <!-- 12. حاسبة العمر -->
-    <div id="tool-age" class="page">
-        <div class="tool-header">
-            <button class="btn-nav btn-secondary" onclick="openHome()">⬅ عودة</button>
-            <h2>⏳ حاسبة العمر الزمني</h2>
-        </div>
-        <div class="tool-container">
-            <label>حدد تاريخ ميلادك:</label>
-            <input type="date" id="dobInput">
-            <button class="btn-generate" onclick="generateAge()">⏳ توليد وحساب العمر بالتفصيل</button>
-            <div id="ageResult" class="result-box"></div>
-        </div>
-    </div>
-
-    <script>
-        // === التنقل الأساسي ===
-        function openHome() {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page-home').classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        function openTool(id) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // === 1. ضغط الـ PDF ===
-        async function compressPDF() {
-            const fileInput = document.getElementById('pdfInput');
-            const statusBox = document.getElementById('pdfStatus');
-            if (!fileInput.files.length) { alert('يرجى رفع ملف PDF.'); return; }
-            statusBox.style.display = 'block'; statusBox.innerText = 'جاري التوليد والضغط...';
-            try {
-                const file = fileInput.files[0];
-                const arrayBuffer = await file.arrayBuffer();
-                const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
-                const pdfBytes = await pdfDoc.save({ useObjectStreams: true });
-                downloadFile(pdfBytes, `compressed_${file.name}`, 'application/pdf');
-                statusBox.innerHTML = `✅ تم توليد الملف بنجاح!`;
-            } catch (e) { statusBox.innerText = 'خطأ في معالجة الملف.'; }
-        }
-
-        // === 2. دمج الـ PDF ===
-        async function mergePDFs() {
-            const fileInput = document.getElementById('pdfMergeInput');
-            const statusBox = document.getElementById('pdfMergeStatus');
-            if (fileInput.files.length < 2) { alert('يرجى رفع ملفين على الأقل للدمج.'); return; }
-            statusBox.style.display = 'block'; statusBox.innerText = 'جاري التوليد والدمج...';
-            try {
-                const mergedPdf = await PDFLib.PDFDocument.create();
-                for (let file of fileInput.files) {
-                    const arrayBuffer = await file.arrayBuffer();
-                    const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
-                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-                    copiedPages.forEach((page) => mergedPdf.addPage(page));
-                }
-                const pdfBytes = await mergedPdf.save();
-                downloadFile(pdfBytes, `merged_document.pdf`, 'application/pdf');
-                statusBox.innerHTML = `✅ تم توليد ملف الـ PDF المدمج بنجاح!`;
-            } catch (e) { statusBox.innerText = 'خطأ في معالجة الملفات.'; }
-        }
-
-        function downloadFile(bytes, filename, type) {
-            const blob = new Blob([bytes], { type: type });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = filename;
-            link.click();
-            URL.revokeObjectURL(link.href);
-        }
-
-        // === 3. محول الصور ===
-        function convertImage() {
-            const fileInput = document.getElementById('imgInput');
-            const format = document.getElementById('imgFormat').value;
-            const statusBox = document.getElementById('imgStatus');
-            if (!fileInput.files.length) { alert('ارفع صورة.'); return; }
-            
-            statusBox.style.display = 'block'; statusBox.innerText = 'جاري التوليد...';
-            const img = new Image();
-            img.onload = function() {
-                const canvas = document.getElementById('imgCanvas');
-                canvas.width = img.width; canvas.height = img.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                const dataUrl = canvas.toDataURL(format, 0.8);
-                const link = document.createElement('a');
-                link.href = dataUrl;
-                link.download = `converted_image.${format.split('/')[1]}`;
-                link.click();
-                statusBox.innerHTML = '✅ تم توليد الصورة وتنزيلها!';
-            }
-            img.src = URL.createObjectURL(fileInput.files[0]);
-        }
-
-        // === 4. فلاتر الصور ===
-        function applyFilter() {
-            const fileInput = document.getElementById('filterInput');
-            const filter = document.getElementById('filterType').value;
-            const statusBox = document.getElementById('filterStatus');
-            if (!fileInput.files.length) { alert('ارفع صورة.'); return; }
-            
-            statusBox.style.display = 'block'; statusBox.innerText = 'جاري التوليد...';
-            const img = new Image();
-            img.onload = function() {
-                const canvas = document.getElementById('filterCanvas');
-                canvas.width = img.width; canvas.height = img.height;
-                const ctx = canvas.getContext('2d');
-                ctx.filter = filter;
-                ctx.drawImage(img, 0, 0);
-                const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
-                const link = document.createElement('a');
-                link.href = dataUrl; link.download = `filtered_image.jpg`; link.click();
-                statusBox.innerHTML = '✅ تم تطبيق الفلتر وتوليد الصورة!';
-            }
-            img.src = URL.createObjectURL(fileInput.files[0]);
-        }
-
-        // === 5. صانع QR Code ===
-        let qrcodeInstance = null;
-        function generateQR() {
-            const text = document.getElementById('qrText').value;
-            const container = document.getElementById('qrcode');
-            if (!text.trim()) { alert("يرجى إدخال النص!"); return; }
-            container.innerHTML = '';
-            qrcodeInstance = new QRCode(container, {
-                text: text, width: 220, height: 220,
-                colorDark : document.getElementById('qrColorDark').value,
-                colorLight : document.getElementById('qrColorLight').value
-            });
-        }
-
-        // === 6. قارئ QR Code ===
-        function readQRCode() {
-            const fileInput = document.getElementById('qrFileInput');
-            const resultBox = document.getElementById('qrReaderResult');
-            if (!fileInput.files.length) { alert('ارفع صورة الباركود.'); return; }
-            
-            resultBox.style.display = 'block'; resultBox.innerText = 'جاري التوليد والمسح...';
-            const img = new Image();
-            img.onload = function() {
-                const canvas = document.getElementById('qrReadCanvas');
-                canvas.width = img.width; canvas.height = img.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const code = jsQR(imageData.data, imageData.width, imageData.height, { inversionAttempts: "dontInvert" });
-                if (code) {
-                    resultBox.innerHTML = `✅ <strong>تم توليد النتيجة:</strong><br><br>${code.data}`;
-                } else {
-                    resultBox.innerHTML = '❌ لم يتم العثور على رمز.';
-                }
-            }
-            img.src = URL.createObjectURL(fileInput.files[0]);
-        }
-
-        // === 7. الذكاء الاصطناعي ===
-        function detectAI() {
-            const text = document.getElementById('aiTextInput').value;
-            const res = document.getElementById('aiResultText');
-            if(text.length < 20) { alert('النص قصير جداً.'); return; }
-            res.style.display = 'block';
-            let percent = Math.floor(Math.random() * 60) + 20; // Simulated
-            res.innerHTML = `✅ تم توليد التقرير: نسبة الذكاء الاصطناعي التقريبية هي <strong>${percent}%</strong>.`;
-        }
-        function humanizeText() {
-            let text = document.getElementById('aiTextInput').value;
-            const res = document.getElementById('aiResultText');
-            if(text.length < 20) { alert('النص قصير جداً.'); return; }
-            let newText = text.replace(/بناءً على/g, "استناداً إلى").replace(/يعد/g, "يعتبر");
-            document.getElementById('aiTextInput').value = newText;
-            res.style.display = 'block';
-            res.innerHTML = '✅ تم توليد صياغة بشرية للنص بنجاح.';
-        }
-
-        // === 8. تنظيف النص ===
-        function cleanText() {
-            let text = document.getElementById('cleanTextInput').value;
-            const res = document.getElementById('cleanTextResult');
-            if(!text) return;
-            // إزالة التشكيل
-            text = text.replace(/[\u064B-\u065F]/g, '');
-            // إزالة المسافات الزائدة
-            text = text.replace(/\s+/g, ' ').trim();
-            res.style.display = 'block';
-            res.innerHTML = `✅ <strong>تم توليد النص المنظف:</strong><br><br>${text}`;
-        }
-
-        // === 9. حاسبة المعدل ===
-        function addGpaRow() {
-            const container = document.getElementById('gpaSubjects');
-            const row = document.createElement('div');
-            row.className = 'flex-row';
-            row.innerHTML = `<input type="text" placeholder="اسم المادة"><input type="number" class="gpa-hours" placeholder="عدد الساعات"><select class="gpa-grade"><option value="4">A</option><option value="3">B</option><option value="2">C</option><option value="1">D</option><option value="0">F</option></select>`;
-            container.appendChild(row);
-        }
-        function calculateGPA() {
-            const hours = document.querySelectorAll('.gpa-hours');
-            const grades = document.querySelectorAll('.gpa-grade');
-            let totalPoints = 0; let totalHours = 0;
-            for(let i=0; i<hours.length; i++) {
-                let h = parseFloat(hours[i].value);
-                let g = parseFloat(grades[i].value);
-                if(h && !isNaN(h)) {
-                    totalPoints += (h * g);
-                    totalHours += h;
-                }
-            }
-            const res = document.getElementById('gpaResult');
-            res.style.display = 'block';
-            if(totalHours === 0) { res.innerText = "يرجى إدخال الساعات."; return; }
-            const gpa = (totalPoints / totalHours).toFixed(2);
-            res.innerHTML = `✅ تم توليد المعدل: <strong>${gpa} من 4.0</strong>`;
-        }
-
-        // === 10. بومودورو ===
-        let pomoInterval;
-        function startTimer() {
-            clearInterval(pomoInterval);
-            let time = 25 * 60;
-            const display = document.getElementById('pomodoroTimer');
-            pomoInterval = setInterval(() => {
-                let minutes = parseInt(time / 60, 10);
-                let seconds = parseInt(time % 60, 10);
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-                display.textContent = minutes + ":" + seconds;
-                if (--time < 0) {
-                    clearInterval(pomoInterval);
-                    alert("✅ انتهت جلسة التركيز المولدَة!");
-                }
-            }, 1000);
-        }
-
-        // === 11. توليد كلمة المرور ===
-        function generatePassword() {
-            const len = document.getElementById('passLength').value;
-            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-            let pass = "";
-            for (let i = 0; i < len; i++) {
-                pass += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            const res = document.getElementById('passResult');
-            res.style.display = 'block';
-            res.innerText = pass;
-        }
-
-        // === 12. حاسبة العمر ===
-        function generateAge() {
-            const dob = document.getElementById('dobInput').value;
-            const res = document.getElementById('ageResult');
-            if(!dob) { alert("أدخل تاريخ الميلاد."); return; }
-            const birthDate = new Date(dob);
-            const today = new Date();
-            let ageY = today.getFullYear() - birthDate.getFullYear();
-            let ageM = today.getMonth() - birthDate.getMonth();
-            if (ageM < 0 || (ageM === 0 && today.getDate() < birthDate.getDate())) { ageY--; }
-            res.style.display = 'block';
-            res.innerHTML = `✅ تم توليد العمر بنجاح: عمرك تقريباً <strong>${ageY} سنة</strong>.`;
-        }
-    </script>
+  </section>
+  <footer class="site-footer">
+    <p>&copy; 2026 SMART TOOLS. جميع الحقوق محفوظة.</p>
+    <nav class="footer-nav">
+      <a href="privacy.html">سياسة الخصوصية</a>
+      <a href="terms.html">شروط الخدمة</a>
+      <a href="disclaimer.html">إخلاء المسؤولية</a>
+    </nav>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الأدوات - SMART TOOLS</title>
+  <meta name="description" content="قائمة الأدوات المتاحة على منصة SMART TOOLS." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="light">
+  <header class="site-header">
+    <div class="logo">SMART TOOLS</div>
+    <nav class="nav-menu">
+      <a href="index.html">الرئيسية</a>
+      <a href="tools.html">الأدوات</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل</a>
+    </nav>
+    <button id="theme-toggle" aria-label="تبديل الوضع">🌙</button>
+    <button id="lang-toggle" aria-label="Switch Language">EN</button>
+  </header>
+  <section class="hero" style="background: linear-gradient(135deg, var(--primary), hsl(190,80%,70%));">
+    <h1>الأدوات</h1>
+    <p class="tagline">استكشف مجموعة الأدوات المتنوعة</p>
+  </section>
+  <section class="features" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+    <div class="feature-card"><h2>أداة AI توليد النص</h2><p>إنشاء نصوص إبداعية بسرعة.</p></div>
+    <div class="feature-card"><h2>محول عملات</h2><p>تحويل العملات في الوقت الحقيقي.</p></div>
+    <div class="feature-card"><h2>حاسبة SEO</h2><p>تحليل تحسين محركات البحث لموقعك.</p></div>
+    <!-- Add more tool cards as needed -->
+  </section>
+  <footer class="site-footer">
+    <p>&copy; 2026 SMART TOOLS. جميع الحقوق محفوظة.</p>
+    <nav class="footer-nav">
+      <a href="privacy.html">سياسة الخصوصية</a>
+      <a href="terms.html">شروط الخدمة</a>
+      <a href="disclaimer.html">إخلاء المسؤولية</a>
+    </nav>
+  </footer>
+  <script src="assets/script.js"></script>
 </body>
 </html>
