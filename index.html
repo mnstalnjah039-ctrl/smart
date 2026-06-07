@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>سمارت تولز - Smart Tools</title>
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421017699603693" crossorigin="anonymous"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
@@ -17,6 +19,7 @@
           colors: {
             'brand-green': '#9fff00',
             'bg-base': '#EDEEF5',
+            'brand-dark': '#1a1a1a',
           },
           fontFamily: {
             sans: ['Tajawal', 'Inter', 'sans-serif'], 
@@ -27,77 +30,99 @@
     }
   </script>
 
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   
   <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
 
   <style>
-    body { background-color: #EDEEF5; color: #1a1a1a; overflow-x: hidden; }
+    body { background-color: #EDEEF5; color: #1a1a1a; overflow-x: hidden; scroll-behavior: smooth; }
     .glass-panel {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
     }
     .en-text { font-family: 'Inter', sans-serif; }
     .en-display { font-family: 'Outfit', sans-serif; }
+    
+    /* مظهر مخصص لـ Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #EDEEF5; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
   </style>
 </head>
 <body class="bg-bg-base text-zinc-900 font-sans antialiased selection:bg-brand-green selection:text-black">
   <div id="root"></div>
 
   <script type="text/babel">
-    const { useState, useEffect } = React;
+    const { useState, useEffect, useRef } = React;
     const { motion, AnimatePresence } = window.Motion;
 
-    // --- 1. Navbar (Original Design Maintained) ---
-    const Navbar = () => {
-      const [isMobileOpen, setIsMobileOpen] = useState(false);
+    // --- مكون إعلانات أدسنس ذكي يتم عرضه في المساحات الفارغة ---
+    const AdBanner = () => {
+      useEffect(() => {
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.error("AdSense Error: ", e);
+        }
+      }, []);
+      
       return (
-        <React.Fragment>
-          <nav className="fixed top-0 left-0 w-full z-50 py-6 md:py-10 bg-gradient-to-b from-[#f1f1f1]/80 to-transparent backdrop-blur-[2px]" dir="ltr">
-            <div className="grid grid-cols-12 max-w-7xl mx-auto px-6 md:px-8 items-center">
-              <div className="col-span-8 md:col-span-3 flex items-center gap-2">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C12 2 9 6 9 10C9 11.6569 10.3431 13 12 13C13.6569 13 15 11.6569 15 10C15 6 12 2 12 2Z" fill="#1a1a1a"/>
-                  <path d="M22 12C22 12 18 9 14 9C12.3431 9 11 10.3431 11 12C11 13.6569 12.3431 15 14 15C18 15 22 12 22 12Z" fill="#1a1a1a"/>
-                  <path d="M12 22C12 22 15 18 15 14C15 12.3431 13.6569 11 12 11C10.3431 11 9 12.3431 9 14C9 18 12 22 12 22Z" fill="#1a1a1a"/>
-                  <path d="M2 12C2 12 6 15 10 15C11.6569 15 13 13.6569 13 12C13 10.3431 11.6569 9 10 9C6 9 2 12 2 12Z" fill="#1a1a1a"/>
-                </svg>
-                <span className="font-display font-semibold text-xl tracking-tight">SmartTools</span>
-              </div>
-              <div className="hidden md:flex col-span-6 justify-center items-center gap-8 text-sm lowercase text-[#1a1a1a]/80 font-medium tracking-wide en-text">
-                <a href="#tools" className="hover:text-black transition-colors">tools</a>
-                <a href="#contact" className="hover:text-black transition-colors">contact us</a>
-                <a href="#about" className="hover:text-black transition-colors">about us</a>
-              </div>
-              <div className="col-span-4 md:col-span-3 flex justify-end items-center gap-4">
-                <a href="#tools" className="hidden lg:block text-sm lowercase font-medium hover:text-black transition-colors en-text">find tools</a>
-                <button className="hidden md:flex bg-[#1a1a1a] text-white text-sm font-medium px-5 py-2.5 rounded-full items-center gap-2 hover:bg-black transition-colors en-text">
-                  get started <span>&rarr;</span>
-                </button>
-                <button className="md:hidden flex flex-col gap-1.5 z-50 relative" onClick={() => setIsMobileOpen(!isMobileOpen)}>
-                   <motion.div animate={{ rotate: isMobileOpen ? 45 : 0, y: isMobileOpen ? 8 : 0 }} className="w-6 h-0.5 bg-black"></motion.div>
-                   <motion.div animate={{ opacity: isMobileOpen ? 0 : 1 }} className="w-6 h-0.5 bg-black"></motion.div>
-                   <motion.div animate={{ rotate: isMobileOpen ? -45 : 0, y: isMobileOpen ? -8 : 0 }} className="w-6 h-0.5 bg-black"></motion.div>
-                </button>
-              </div>
-            </div>
-          </nav>
-        </React.Fragment>
+        <div className="w-full my-8 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center min-h-[90px] border border-gray-200 text-gray-400 text-sm">
+          <ins className="adsbygoogle"
+               style={{ display: "block" }}
+               data-ad-client="ca-pub-4421017699603693"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </div>
       );
     };
 
-    // --- 2. Hero Component (Original Prompt Animations & Design) ---
+    // --- 1. Navbar ---
+    const Navbar = () => {
+      const [isMobileOpen, setIsMobileOpen] = useState(false);
+      return (
+        <nav className="fixed top-0 left-0 w-full z-50 py-6 md:py-10 bg-gradient-to-b from-[#f1f1f1]/90 to-transparent backdrop-blur-[4px]" dir="ltr">
+          <div className="grid grid-cols-12 max-w-7xl mx-auto px-6 md:px-8 items-center">
+            <div className="col-span-8 md:col-span-3 flex items-center gap-2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C12 2 9 6 9 10C9 11.6569 10.3431 13 12 13C13.6569 13 15 11.6569 15 10C15 6 12 2 12 2Z" fill="#1a1a1a"/>
+                <path d="M22 12C22 12 18 9 14 9C12.3431 9 11 10.3431 11 12C11 13.6569 12.3431 15 14 15C18 15 22 12 22 12Z" fill="#1a1a1a"/>
+                <path d="M12 22C12 22 15 18 15 14C15 12.3431 13.6569 11 12 11C10.3431 11 9 12.3431 9 14C9 18 12 22 12 22Z" fill="#1a1a1a"/>
+                <path d="M2 12C2 12 6 15 10 15C11.6569 15 13 13.6569 13 12C13 10.3431 11.6569 9 10 9C6 9 2 12 2 12Z" fill="#1a1a1a"/>
+              </svg>
+              <span className="font-display font-bold text-xl tracking-tight">SmartTools</span>
+            </div>
+            <div className="hidden md:flex col-span-6 justify-center items-center gap-8 text-sm lowercase text-[#1a1a1a]/80 font-medium tracking-wide en-text">
+              <a href="#tools" className="hover:text-black hover:-translate-y-0.5 transition-all">tools</a>
+              <a href="#contact" className="hover:text-black hover:-translate-y-0.5 transition-all">contact us</a>
+              <a href="#about" className="hover:text-black hover:-translate-y-0.5 transition-all">about us</a>
+            </div>
+            <div className="col-span-4 md:col-span-3 flex justify-end items-center gap-4">
+              <a href="#tools" className="hidden lg:block text-sm lowercase font-medium hover:text-black transition-colors en-text">find tools</a>
+              <a href="#tools" className="hidden md:flex bg-brand-dark text-white text-sm font-medium px-5 py-2.5 rounded-full items-center gap-2 hover:bg-black transition-colors en-text">
+                get started <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </nav>
+      );
+    };
+
+    // --- 2. Hero Component ---
     const Hero = () => {
       return (
         <section className="relative min-h-[110vh] sm:min-h-[140vh] w-full flex flex-col items-center justify-start overflow-hidden bg-bg-base pt-[25vh] md:pt-[30vh]" dir="ltr">
           <div className="absolute top-1/2 right-4 -translate-y-1/2 z-20 flex flex-col gap-2">
             <div className="bg-white/40 backdrop-blur-md border border-white/20 rounded-full px-2 py-4 flex flex-col items-center gap-3 text-xs font-medium text-[#1a1a1a]/60 en-text">
-              <button className="hover:text-black">ar</button>
+              <button className="hover:text-black font-bold">ar</button>
               <div className="w-4 h-[1px] bg-black/10"></div>
               <button className="text-black">en</button>
             </div>
@@ -119,9 +144,9 @@
                 <span className="text-[#1a1a1a]">Remix: Mentality offers</span><br/>
                 <span className="text-[#8e8e8e]">information</span><br/>
                 <span className="text-[#8e8e8e]">and resources to help you manage</span><br/>
-                <span className="text-[#8e8e8e]">
+                <span className="text-[#8e8e8e] flex items-center flex-wrap gap-2 md:gap-4 mt-2">
                   your 
-                  <span className="w-[36px] md:w-[52px] lg:w-[72px] h-[36px] md:h-[52px] lg:h-[72px] border-[2px] border-[#1a1a1a] rounded-full inline-flex items-center justify-center mx-2 lg:mx-4 translate-y-2 lg:translate-y-4 bg-transparent shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
+                  <span className="w-[36px] md:w-[52px] lg:w-[72px] h-[36px] md:h-[52px] lg:h-[72px] border-[2px] border-[#1a1a1a] rounded-full inline-flex items-center justify-center bg-transparent shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
                     <span className="w-2 md:w-3 h-2 md:h-3 bg-[#1a1a1a] rounded-full"></span>
                   </span>
                   mental wellbeing.
@@ -133,7 +158,7 @@
                 className="mt-8 md:mt-12 bg-white rounded-[6px] border border-black/[0.05] p-1 pl-4 flex items-center shadow-sm w-full max-w-sm"
               >
                 <input type="text" placeholder="Ask me anything..." className="bg-transparent flex-grow outline-none text-sm text-[#1a1a1a] placeholder:text-black/30 en-text"/>
-                <button className="bg-[#1a1a1a] text-white w-9 h-9 rounded-[4px] relative flex items-center justify-center hover:bg-black transition-colors">
+                <button onClick={() => document.getElementById('tools').scrollIntoView()} className="bg-brand-dark text-white w-9 h-9 rounded-[4px] relative flex items-center justify-center hover:bg-black transition-colors">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </button>
               </motion.div>
@@ -143,118 +168,249 @@
       );
     };
 
-    // --- 3. Tools Components ---
-    const ToolPDF = () => {
-      const [status, setStatus] = useState('idle');
-      return (
-        <div className="space-y-4 text-right">
-          <h3 className="font-bold text-xl">ضغط ملفات PDF (متوافق حكومياً)</h3>
-          <p className="text-sm text-gray-500">للمنصات الحكومية كجدارات وأبشر.</p>
-          <div className="border-2 border-dashed border-gray-300 p-8 rounded-xl text-center bg-white hover:bg-gray-50 cursor-pointer">
-            <span className="text-2xl">📄</span><br/> اسحب أو اضغط لرفع الملف
-          </div>
-          <select className="w-full p-3 rounded-lg border border-gray-200">
-            <option>أقصى حجم: 2 ميجابايت (موصى به للمنصات الحكومية)</option>
-            <option>أقصى حجم: 4 ميجابايت (جودة أعلى)</option>
-          </select>
-          <button onClick={() => { setStatus('loading'); setTimeout(() => setStatus('done'), 2000); }} className="w-full bg-[#1a1a1a] text-white py-3 rounded-lg">
-            {status === 'idle' ? 'بدء الضغط' : status === 'loading' ? 'جاري المعالجة...' : 'تم الضغط والتنزيل بنجاح!'}
-          </button>
-        </div>
-      );
-    };
+    // --- 3. Interactive Tools Components ---
 
-    const ToolQR = () => {
-      const [mode, setMode] = useState('toQR'); // toQR or fromQR
-      const [url, setUrl] = useState('');
+    // 3.1: GPA Calculator (حاسبة المعدل الجامعي - نظام الدرجات والساعات)
+    const ToolGPA = () => {
+      const [courses, setCourses] = useState([{ id: 1, name: '', hours: 3, grade: 'A+' }]);
+      const [gpa, setGpa] = useState(null);
+
+      const gradePoints = { 'A+': 4.0, 'A': 3.75, 'B+': 3.5, 'B': 3.0, 'C+': 2.5, 'C': 2.0, 'D+': 1.5, 'D': 1.0, 'F': 0.0 };
+
+      const addCourse = () => setCourses([...courses, { id: Date.now(), name: '', hours: 3, grade: 'A+' }]);
+      const removeCourse = (id) => setCourses(courses.filter(c => c.id !== id));
       
+      const updateCourse = (id, field, value) => {
+        setCourses(courses.map(c => c.id === id ? { ...c, [field]: value } : c));
+      };
+
+      const calculate = () => {
+        let totalPoints = 0;
+        let totalHours = 0;
+        courses.forEach(c => {
+          const hrs = parseFloat(c.hours) || 0;
+          totalHours += hrs;
+          totalPoints += hrs * gradePoints[c.grade];
+        });
+        setGpa(totalHours > 0 ? (totalPoints / totalHours).toFixed(2) : '0.00');
+      };
+
       return (
-        <div className="space-y-4 text-right">
-          <div className="flex bg-gray-100 rounded-lg p-1">
-            <button onClick={()=>setMode('toQR')} className={`flex-1 py-2 rounded-md text-sm font-bold ${mode==='toQR'?'bg-white shadow':''}`}>رابط إلى QR</button>
-            <button onClick={()=>setMode('fromQR')} className={`flex-1 py-2 rounded-md text-sm font-bold ${mode==='fromQR'?'bg-white shadow':''}`}>QR إلى رابط</button>
+        <div className="space-y-6 text-right">
+          <div>
+            <h3 className="font-bold text-2xl text-brand-dark mb-1">حاسبة المعدل الجامعي</h3>
+            <p className="text-gray-500 text-sm">أدخل ساعات ومستوى كل مادة لحساب المعدل التراكمي الفصلي من 4.0.</p>
           </div>
           
-          {mode === 'toQR' ? (
-            <div className="space-y-4">
-              <input type="text" value={url} onChange={(e)=>setUrl(e.target.value)} placeholder="https://domain.com..." className="w-full p-3 rounded-lg border border-gray-200 text-left" dir="ltr" />
-              <div className="flex justify-center p-4 bg-white rounded-xl border border-gray-100">
-                {url ? <img src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`} alt="QR" /> : <div className="h-[200px] flex items-center text-gray-400">أدخل الرابط أولاً</div>}
-              </div>
+          <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-3">
+            <div className="grid grid-cols-12 gap-2 text-sm font-bold text-gray-600 mb-2 px-1">
+              <div className="col-span-5">اسم المادة (اختياري)</div>
+              <div className="col-span-3">الساعات</div>
+              <div className="col-span-3">الدرجة</div>
             </div>
-          ) : (
-            <div className="space-y-4">
-               <div className="border-2 border-dashed border-gray-300 p-8 rounded-xl text-center bg-white">
-                <span className="text-2xl">📷</span><br/> ارفع صورة QR Code لقرائتها
+            
+            {courses.map((course, idx) => (
+              <div key={course.id} className="grid grid-cols-12 gap-2 items-center">
+                <div className="col-span-5">
+                  <input type="text" placeholder={`المادة ${idx + 1}`} className="w-full p-2.5 rounded-lg border border-gray-200 text-sm focus:border-brand-dark outline-none" onChange={(e) => updateCourse(course.id, 'name', e.target.value)} />
+                </div>
+                <div className="col-span-3">
+                  <input type="number" min="1" max="6" value={course.hours} onChange={(e) => updateCourse(course.id, 'hours', e.target.value)} className="w-full p-2.5 rounded-lg border border-gray-200 text-sm text-center focus:border-brand-dark outline-none" />
+                </div>
+                <div className="col-span-3">
+                  <select value={course.grade} onChange={(e) => updateCourse(course.id, 'grade', e.target.value)} className="w-full p-2.5 rounded-lg border border-gray-200 text-sm focus:border-brand-dark outline-none en-text font-bold text-center">
+                    {Object.keys(gradePoints).map(g => <option key={g} value={g}>{g}</option>)}
+                  </select>
+                </div>
+                <div className="col-span-1 flex justify-center">
+                  <button onClick={() => removeCourse(course.id)} className="text-red-400 hover:text-red-600 p-2 text-lg">&times;</button>
+                </div>
               </div>
-              <button className="w-full bg-gray-200 text-gray-700 py-3 rounded-lg cursor-not-allowed">استخراج الرابط</button>
-            </div>
+            ))}
+            
+            <button onClick={addCourse} className="text-sm font-bold text-blue-600 hover:text-blue-800 mt-2 flex items-center gap-1">+ إضافة مادة أخرى</button>
+          </div>
+
+          <button onClick={calculate} className="w-full bg-brand-dark text-white py-3.5 rounded-xl font-bold hover:bg-black transition-colors shadow-lg">حساب المعدل الفصلي</button>
+          
+          {gpa && (
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="p-6 bg-brand-dark text-white rounded-xl text-center shadow-xl">
+              <div className="text-sm text-gray-300 mb-1">معدلك الفصلي هو</div>
+              <div className="text-4xl font-bold text-brand-green en-text">{gpa} <span className="text-lg text-gray-400">/ 4.0</span></div>
+            </motion.div>
           )}
         </div>
       );
     };
 
-    const ToolBMI = () => {
-      const [h, setH] = useState(''); const [w, setW] = useState(''); const [res, setRes] = useState(null);
+    // 3.2: PDF Tool (تفاعلية برفع ملف وهمي)
+    const ToolPDF = () => {
+      const [file, setFile] = useState(null);
+      const [status, setStatus] = useState('idle'); // idle, loading, done
+      const [progress, setProgress] = useState(0);
+
+      const handleFile = (e) => {
+        if(e.target.files[0]) {
+          setFile(e.target.files[0]);
+          setStatus('ready');
+        }
+      };
+
+      const processFile = () => {
+        setStatus('loading');
+        let p = 0;
+        const int = setInterval(() => {
+          p += 15;
+          setProgress(p);
+          if(p >= 100) {
+            clearInterval(int);
+            setStatus('done');
+          }
+        }, 300);
+      };
+
       return (
-        <div className="space-y-4 text-right">
-          <h3 className="font-bold text-xl">حاسبة كتلة الجسم (BMI)</h3>
-          <div className="flex gap-4">
-            <input type="number" placeholder="الطول (سم)" onChange={e=>setH(e.target.value)} className="w-1/2 p-3 rounded-lg border border-gray-200"/>
-            <input type="number" placeholder="الوزن (كجم)" onChange={e=>setW(e.target.value)} className="w-1/2 p-3 rounded-lg border border-gray-200"/>
+        <div className="space-y-6 text-right">
+          <div>
+            <h3 className="font-bold text-2xl text-brand-dark mb-1">ضغط ملفات PDF (حكومي)</h3>
+            <p className="text-gray-500 text-sm">أداة متوافقة مع اشتراطات المنصات الحكومية (مثل جدارات وأبشر).</p>
           </div>
-          <button onClick={() => {
-            if(h && w) {
-              const bmi = (w / Math.pow(h/100, 2)).toFixed(1);
-              setRes(`${bmi} - ${bmi < 18.5 ? 'نقص وزن' : bmi < 25 ? 'وزن طبيعي' : 'زيادة وزن'}`);
-            }
-          }} className="w-full bg-[#1a1a1a] text-white py-3 rounded-lg">احسب</button>
-          {res && <div className="p-4 bg-green-50 text-green-800 rounded-lg text-center font-bold text-xl">{res}</div>}
+          
+          <label className={`block border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors ${file ? 'border-brand-green bg-green-50' : 'border-gray-300 hover:bg-gray-50 bg-white'}`}>
+            <input type="file" accept=".pdf" className="hidden" onChange={handleFile} />
+            {file ? (
+              <div className="text-green-800 font-bold flex flex-col items-center">
+                <span className="text-4xl mb-2">📄</span>
+                تم اختيار الملف: {file.name}
+              </div>
+            ) : (
+              <div className="text-gray-500 flex flex-col items-center">
+                <span className="text-4xl mb-2">📤</span>
+                اضغط هنا لاختيار ملف PDF
+              </div>
+            )}
+          </label>
+
+          {file && status !== 'done' && (
+            <select className="w-full p-3.5 rounded-xl border border-gray-200 outline-none font-medium text-sm">
+              <option>أقصى حجم: 2 ميجابايت (المنصات الحكومية)</option>
+              <option>أقصى حجم: 4 ميجابايت (جودة متوسطة)</option>
+            </select>
+          )}
+
+          {status === 'loading' && (
+            <div className="w-full bg-gray-200 rounded-full h-3 mb-4 overflow-hidden">
+              <div className="bg-brand-dark h-3 rounded-full transition-all duration-300" style={{ width: `${progress}%` }}></div>
+            </div>
+          )}
+
+          {status === 'done' ? (
+            <button onClick={() => { setFile(null); setStatus('idle'); setProgress(0); }} className="w-full bg-brand-green text-brand-dark py-3.5 rounded-xl font-bold shadow-lg hover:brightness-105 transition">
+              ⬇️ تحميل الملف المضغوط
+            </button>
+          ) : (
+            <button onClick={processFile} disabled={!file || status === 'loading'} className={`w-full text-white py-3.5 rounded-xl font-bold shadow-lg transition-colors ${file && status !== 'loading' ? 'bg-brand-dark hover:bg-black' : 'bg-gray-300 cursor-not-allowed'}`}>
+              {status === 'loading' ? 'جاري الضغط والمعالجة...' : 'بدء الضغط الآن'}
+            </button>
+          )}
         </div>
       );
     };
 
-    const ToolAge = () => {
-      const [dob, setDob] = useState(''); const [age, setAge] = useState(null);
+    // 3.3: QR Tool
+    const ToolQR = () => {
+      const [url, setUrl] = useState('');
       return (
-        <div className="space-y-4 text-right">
-          <h3 className="font-bold text-xl">حاسبة العمر</h3>
-          <input type="date" onChange={e=>setDob(e.target.value)} className="w-full p-3 rounded-lg border border-gray-200 text-right" dir="ltr"/>
-          <button onClick={() => {
-            if(dob) setAge(Math.abs(new Date(Date.now() - new Date(dob).getTime()).getUTCFullYear() - 1970));
-          }} className="w-full bg-[#1a1a1a] text-white py-3 rounded-lg">احسب عمري</button>
-          {age !== null && <div className="p-4 bg-blue-50 text-blue-800 rounded-lg text-center font-bold text-xl">عمرك: {age} سنة</div>}
+        <div className="space-y-6 text-right">
+          <div>
+            <h3 className="font-bold text-2xl text-brand-dark mb-1">صانع الباركود (QR Code)</h3>
+            <p className="text-gray-500 text-sm">أدخل أي رابط ليتم تحويله فوراً إلى صورة QR عالية الجودة.</p>
+          </div>
+          <input type="text" value={url} onChange={(e)=>setUrl(e.target.value)} placeholder="https://example.com" className="w-full p-4 rounded-xl border border-gray-200 text-left focus:border-brand-dark outline-none en-text" dir="ltr" />
+          <div className="flex justify-center p-6 bg-gray-50 rounded-2xl border border-gray-200 min-h-[250px] items-center shadow-inner">
+             {url ? (
+               <img src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`} alt="QR Code" className="rounded-lg shadow-md" />
+             ) : (
+               <div className="text-gray-400 font-medium">الباركود سيظهر هنا</div>
+             )}
+          </div>
+          {url && <a href={`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(url)}`} target="_blank" className="block w-full text-center bg-brand-dark text-white py-3.5 rounded-xl font-bold hover:bg-black transition-colors">فتح الصورة للتحميل</a>}
         </div>
       );
     };
 
-    const ToolPassword = () => {
-      const [pass, setPass] = useState('');
+    // 3.4: Student Summarizer Tool
+    const ToolStudent = () => {
+      const [text, setText] = useState('');
+      const [summary, setSummary] = useState('');
+      const [loading, setLoading] = useState(false);
+
+      const handleSummarize = () => {
+        if(!text) return;
+        setLoading(true);
+        // Fake AI Summarization delay
+        setTimeout(() => {
+          setSummary("هذا ملخص ذكي للنص المدخل: يتحدث النص عن مجموعة من النقاط الرئيسية التي تم اختصارها لتوفير وقتك. ركز النص على الأفكار الجوهرية دون إطالة. (هذا ملخص تم إنشاؤه للتوضيح).");
+          setLoading(false);
+        }, 1500);
+      };
+
       return (
-        <div className="space-y-4 text-right">
-          <h3 className="font-bold text-xl">مولد كلمات المرور</h3>
-          <button onClick={() => {
-            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-            setPass(Array.from({length:16}).map(()=>chars[Math.floor(Math.random()*chars.length)]).join(''));
-          }} className="w-full bg-[#1a1a1a] text-white py-3 rounded-lg">توليد كلمة سر معقدة</button>
-          {pass && <div className="p-4 bg-gray-100 rounded-lg text-center font-mono text-xl tracking-widest border border-gray-300 en-text">{pass}</div>}
+        <div className="space-y-6 text-right">
+          <div>
+            <h3 className="font-bold text-2xl text-brand-dark mb-1">المساعد الدراسي (تلخيص النصوص)</h3>
+            <p className="text-gray-500 text-sm">ألصق نصوص المحاضرات الطويلة وسنقوم بتلخيصها في ثوانٍ.</p>
+          </div>
+          <textarea rows="5" value={text} onChange={(e)=>setText(e.target.value)} placeholder="ألصق النص المراد تلخيصه هنا..." className="w-full p-4 rounded-xl border border-gray-200 focus:border-brand-dark outline-none resize-none"></textarea>
+          
+          <button onClick={handleSummarize} disabled={!text || loading} className={`w-full text-white py-3.5 rounded-xl font-bold transition-colors ${text ? 'bg-brand-dark hover:bg-black' : 'bg-gray-300'}`}>
+            {loading ? 'جاري التحليل الذكي...' : 'لخّص النص'}
+          </button>
+
+          {summary && (
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-5 bg-brand-green/20 border border-brand-green/40 rounded-xl">
+              <h4 className="font-bold text-brand-dark mb-2">الملخص:</h4>
+              <p className="text-sm text-gray-800 leading-relaxed">{summary}</p>
+            </motion.div>
+          )}
         </div>
       );
     };
 
+    // 3.5: Temporary Email
     const ToolTempEmail = () => {
       const [email, setEmail] = useState('');
+      const [loading, setLoading] = useState(false);
+
+      const generate = () => {
+        setLoading(true);
+        setTimeout(() => {
+          const randomStr = Math.random().toString(36).substring(2, 10);
+          setEmail(`${randomStr}@smart-temp.net`);
+          setLoading(false);
+        }, 800);
+      };
+
       return (
-        <div className="space-y-4 text-right">
-          <h3 className="font-bold text-xl">بريد إلكتروني مؤقت</h3>
-          <p className="text-sm text-gray-500">استخدم هذا البريد للتسجيل في المواقع دون تلقي رسائل مزعجة.</p>
+        <div className="space-y-6 text-right">
+          <div>
+            <h3 className="font-bold text-2xl text-brand-dark mb-1">بريد إلكتروني مؤقت (مهمل)</h3>
+            <p className="text-gray-500 text-sm">استخدمه للتسجيل في المواقع وتفعيل الحسابات دون تلوث بريدك الشخصي بالسبام.</p>
+          </div>
+          
           {!email ? (
-            <button onClick={() => setEmail(`user${Math.floor(Math.random()*90000)}@smartdomain.temp`)} className="w-full bg-[#1a1a1a] text-white py-3 rounded-lg">توليد بريد عشوائي</button>
+            <button onClick={generate} className="w-full bg-brand-dark text-white py-4 rounded-xl font-bold text-lg hover:bg-black transition flex justify-center items-center gap-2">
+              {loading ? 'جاري الإنشاء...' : '📩 إنشاء بريد عشوائي الآن'}
+            </button>
           ) : (
             <div className="space-y-4">
-              <div className="p-3 bg-gray-100 rounded-lg text-center font-mono text-lg border border-gray-300 en-text">{email}</div>
-              <div className="border border-gray-200 rounded-lg p-6 text-center text-gray-400 bg-gray-50">
-                صندوق الوارد فارغ. بانتظار الرسائل... ⏳
+              <div className="p-4 bg-gray-100 rounded-xl text-center font-bold text-xl border border-gray-300 en-text text-blue-600 flex justify-between items-center px-4" dir="ltr">
+                <span>{email}</span>
+                <button onClick={() => navigator.clipboard.writeText(email)} className="text-sm bg-white border border-gray-300 px-3 py-1 rounded shadow-sm hover:bg-gray-50 text-black">Copy</button>
+              </div>
+              <div className="border border-gray-200 rounded-xl p-8 text-center bg-white shadow-inner flex flex-col items-center">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-dark mb-4"></div>
+                <p className="text-gray-500 font-medium">صندوق الوارد نشط. بانتظار وصول رسائل التفعيل...</p>
               </div>
             </div>
           )}
@@ -262,81 +418,57 @@
       );
     };
 
-    const ToolGPA = () => {
-      return (
-        <div className="space-y-4 text-right">
-          <h3 className="font-bold text-xl">حاسبة المعدل التراكمي (GPA)</h3>
-          <div className="grid grid-cols-2 gap-4">
-             <input type="number" placeholder="المعدل السابق" className="p-3 rounded-lg border border-gray-200"/>
-             <input type="number" placeholder="الساعات المنجزة" className="p-3 rounded-lg border border-gray-200"/>
-          </div>
-          <p className="text-sm text-gray-500 mt-2">المواد الحالية:</p>
-          <div className="flex gap-2">
-             <input type="text" placeholder="ساعات المادة" className="w-1/2 p-3 rounded-lg border border-gray-200"/>
-             <select className="w-1/2 p-3 rounded-lg border border-gray-200">
-               <option>A+</option><option>A</option><option>B+</option><option>B</option><option>C</option>
-             </select>
-          </div>
-          <button className="w-full bg-[#1a1a1a] text-white py-3 rounded-lg">حساب المعدل الجديد</button>
-        </div>
-      );
-    };
-
-    const ToolStudent = () => {
-      return (
-        <div className="space-y-4 text-right">
-          <h3 className="font-bold text-xl">أدوات الطلاب (تلخيص نصوص)</h3>
-          <textarea rows="4" placeholder="ألصق النص الطويل هنا لتلخيصه عبر الذكاء الاصطناعي..." className="w-full p-3 rounded-lg border border-gray-200"></textarea>
-          <button className="w-full bg-[#1a1a1a] text-white py-3 rounded-lg">تلخيص النص</button>
-        </div>
-      );
-    };
-
-    // --- 4. Main Tools Grid ---
+    // --- 4. Main Tools Grid Layout ---
     const ToolsSection = () => {
       const [activeTool, setActiveTool] = useState(null);
       const toolsData = [
-        { id: 'pdf', title: 'ضغط PDF', icon: '📄', comp: <ToolPDF/> },
-        { id: 'qr', title: 'مولد/قارئ QR', icon: '🔗', comp: <ToolQR/> },
-        { id: 'bmi', title: 'كتلة الجسم', icon: '⚖️', comp: <ToolBMI/> },
-        { id: 'age', title: 'حاسبة العمر', icon: '⏳', comp: <ToolAge/> },
-        { id: 'pass', title: 'كلمات سر', icon: '🔐', comp: <ToolPassword/> },
-        { id: 'mail', title: 'بريد مؤقت', icon: '📧', comp: <ToolTempEmail/> },
-        { id: 'gpa', title: 'حساب المعدل', icon: '🎓', comp: <ToolGPA/> },
-        { id: 'student', title: 'تلخيص الطلاب', icon: '🎒', comp: <ToolStudent/> }
+        { id: 'gpa', title: 'المعدل الجامعي', icon: '🎓', comp: <ToolGPA/> },
+        { id: 'pdf', title: 'ضغط PDF حكومي', icon: '📄', comp: <ToolPDF/> },
+        { id: 'student', title: 'تلخيص الطلاب', icon: '🎒', comp: <ToolStudent/> },
+        { id: 'qr', title: 'صانع الباركود', icon: '🔗', comp: <ToolQR/> },
+        { id: 'mail', title: 'بريد مؤقت', icon: '📧', comp: <ToolTempEmail/> }
       ];
 
       return (
-        <section id="tools" className="max-w-7xl mx-auto px-6 py-20 relative z-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">أدوات سمارت تولز الذكية</h2>
-            <p className="text-gray-500">اختر الأداة التي تحتاجها لإنجاز مهامك بسرعة وكفاءة.</p>
+        <section id="tools" className="max-w-7xl mx-auto px-6 py-24 relative z-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-brand-dark">أدوات سمارت تولز الذكية</h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">وفر وقتك وجهدك. اختر الأداة التي تحتاجها لإنجاز مهامك الأكاديمية والعملية بدقة وسرعة عالية.</p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16">
             {toolsData.map(t => (
               <button 
                 key={t.id} 
-                onClick={() => {setActiveTool(null); setTimeout(()=>setActiveTool(t), 50);}}
-                className={`glass-panel p-6 rounded-2xl flex flex-col items-center gap-3 transition-all ${activeTool?.id === t.id ? 'ring-2 ring-[#1a1a1a] shadow-lg scale-105 bg-white' : 'hover:scale-105'}`}
+                onClick={() => { setActiveTool(null); setTimeout(()=>setActiveTool(t), 50); document.getElementById('tool-display').scrollIntoView({behavior: 'smooth', block: 'center'}); }}
+                className={`glass-panel p-6 rounded-2xl flex flex-col items-center justify-center gap-4 transition-all duration-300 border-2 ${activeTool?.id === t.id ? 'border-brand-dark bg-white shadow-xl scale-105' : 'border-transparent hover:border-gray-300 hover:bg-white/80'}`}
               >
-                <span className="text-3xl">{t.icon}</span>
-                <span className="font-semibold text-sm md:text-base">{t.title}</span>
+                <span className="text-4xl">{t.icon}</span>
+                <span className="font-bold text-sm md:text-base text-gray-800">{t.title}</span>
               </button>
             ))}
           </div>
 
-          <AnimatePresence mode="wait">
-            {activeTool && (
-              <motion.div 
-                key={activeTool.id}
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-                className="max-w-2xl mx-auto bg-white p-8 rounded-3xl shadow-xl border border-gray-100"
-              >
-                {activeTool.comp}
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <AdBanner /> {/* إعلان جوجل بين القائمة والأداة */}
+
+          <div id="tool-display" className="min-h-[400px]">
+            <AnimatePresence mode="wait">
+              {activeTool ? (
+                <motion.div 
+                  key={activeTool.id}
+                  initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
+                  className="max-w-2xl mx-auto bg-white p-8 md:p-10 rounded-[32px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-gray-100"
+                >
+                  {activeTool.comp}
+                </motion.div>
+              ) : (
+                <div className="text-center p-12 text-gray-400 font-medium border-2 border-dashed border-gray-300 rounded-[32px] max-w-2xl mx-auto bg-white/50">
+                  <span className="text-4xl block mb-4">👆</span>
+                  الرجاء اختيار أداة من القائمة بالأعلى للبدء
+                </div>
+              )}
+            </AnimatePresence>
+          </div>
         </section>
       );
     };
@@ -352,74 +484,83 @@
 
       return (
         <section id="contact" className="max-w-4xl mx-auto px-6 py-20 relative z-20">
-          <div className="glass-panel p-8 md:p-12 rounded-3xl shadow-lg border border-white/60">
-            <h2 className="text-3xl font-bold mb-2 text-center">تواصل معنا</h2>
-            <p className="text-gray-500 text-center mb-8">أرسل لنا استفساراتك أو اقتراحاتك لتطوير أدوات جديدة.</p>
+          <div className="bg-brand-dark p-8 md:p-12 rounded-[32px] shadow-2xl text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
             
-            {status === 'sent' ? (
-              <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }} className="text-center p-10 bg-brand-green/20 rounded-xl text-green-900 font-bold text-xl">
-                تم إرسال رسالتك بنجاح! شكراً لتواصلك معنا. 🎉
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">الاسم الكريم</label>
-                    <input required type="text" className="w-full p-4 rounded-xl border border-gray-200 bg-white/80 focus:ring-2 focus:ring-[#1a1a1a] outline-none" placeholder="محمد أحمد" />
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold mb-3 text-center">هل لديك أفكار لأدوات جديدة؟</h2>
+              <p className="text-gray-400 text-center mb-10">تواصل معنا لنقوم ببرمجتها وإضافتها للموقع لخدمة الجميع.</p>
+              
+              {status === 'sent' ? (
+                <motion.div initial={{ scale:0.9, opacity:0 }} animate={{ scale:1, opacity:1 }} className="text-center p-10 bg-white/10 rounded-2xl border border-white/20">
+                  <span className="text-4xl block mb-4">✅</span>
+                  <h3 className="font-bold text-xl mb-2">تم استلام رسالتك!</h3>
+                  <p className="text-gray-300 text-sm">شكراً لتواصلك، سنقوم بالرد عليك عبر البريد الإلكتروني قريباً.</p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium mb-2 text-gray-300">الاسم الكريم</label>
+                      <input required type="text" className="w-full p-4 rounded-xl border border-gray-600 bg-black/50 text-white focus:border-brand-green outline-none transition-colors" placeholder="محمد أحمد" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2 text-gray-300">البريد الإلكتروني</label>
+                      <input required type="email" className="w-full p-4 rounded-xl border border-gray-600 bg-black/50 text-white focus:border-brand-green outline-none text-left en-text" dir="ltr" placeholder="you@example.com" />
+                    </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">البريد الإلكتروني</label>
-                    <input required type="email" className="w-full p-4 rounded-xl border border-gray-200 bg-white/80 focus:ring-2 focus:ring-[#1a1a1a] outline-none text-left" dir="ltr" placeholder="example@domain.com" />
+                    <label className="block text-sm font-medium mb-2 text-gray-300">رسالتك</label>
+                    <textarea required rows="4" className="w-full p-4 rounded-xl border border-gray-600 bg-black/50 text-white focus:border-brand-green outline-none resize-none transition-colors" placeholder="اكتب اقتراحك هنا..."></textarea>
                   </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">رسالتك</label>
-                  <textarea required rows="4" className="w-full p-4 rounded-xl border border-gray-200 bg-white/80 focus:ring-2 focus:ring-[#1a1a1a] outline-none" placeholder="اكتب رسالتك هنا..."></textarea>
-                </div>
-                <button type="submit" disabled={status==='sending'} className="w-full bg-[#1a1a1a] text-white py-4 rounded-xl font-bold text-lg hover:bg-black transition-colors">
-                  {status === 'sending' ? 'جاري الإرسال...' : 'إرسال الرسالة'}
-                </button>
-              </form>
-            )}
+                  <button type="submit" disabled={status==='sending'} className="w-full bg-brand-green text-brand-dark py-4 rounded-xl font-bold text-lg hover:brightness-105 transition-all shadow-[0_0_20px_rgba(159,255,0,0.3)]">
+                    {status === 'sending' ? 'جاري الإرسال ⏳...' : 'إرسال الرسالة'}
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </section>
       );
     };
 
-    // --- 6. SEO Footer ---
+    // --- 6. SEO & Google Adsense Footer ---
     const Footer = () => (
-      <footer id="about" className="bg-white border-t border-gray-200 mt-20 py-12 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
+      <footer id="about" className="bg-white border-t border-gray-200 mt-10 py-16 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+          <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <span className="font-bold text-xl en-display">SmartTools</span>
+              <span className="font-bold text-2xl en-display text-brand-dark">SmartTools</span>
             </div>
-            <p className="text-gray-500 text-sm">منصتك الشاملة لجميع الأدوات الرقمية التي تحتاجها للعمل، الدراسة، والصحة. واجهات سريعة وتصميم تفاعلي يخدمك في كل وقت.</p>
+            <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
+              منصة سمارت تولز (Smart Tools) هي منصتك المجانية الشاملة التي توفر مجموعة متكاملة من الأدوات الرقمية لخدمة الطلاب، الموظفين، ورواد الأعمال في إنجاز مهامهم اليومية بسرعة واحترافية.
+            </p>
           </div>
           <div>
-            <h4 className="font-bold text-[#1a1a1a] mb-4">الصفحات الأساسية (SEO)</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-brand-green">من نحن (About Us)</a></li>
-              <li><a href="#" className="hover:text-brand-green">سياسة الخصوصية (Privacy Policy)</a></li>
-              <li><a href="#" className="hover:text-brand-green">شروط الاستخدام (Terms of Service)</a></li>
+            <h4 className="font-bold text-brand-dark mb-5">روابط هامة (Legal)</h4>
+            <ul className="space-y-3 text-sm text-gray-600 font-medium">
+              <li><a href="#" className="hover:text-brand-dark transition-colors">عن الموقع (About Us)</a></li>
+              <li><a href="#" className="hover:text-brand-dark transition-colors">سياسة الخصوصية (Privacy Policy)</a></li>
+              <li><a href="#" className="hover:text-brand-dark transition-colors">شروط الاستخدام (Terms)</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold text-[#1a1a1a] mb-4">الدعم</h4>
-            <ul className="space-y-2 text-sm text-gray-600 en-text text-left" dir="ltr">
-              <li>support@smarttools.com</li>
-              <li className="mt-4 text-xs text-gray-400">© 2026 SmartTools. All rights reserved.</li>
+            <h4 className="font-bold text-brand-dark mb-5">التواصل والدعم</h4>
+            <ul className="space-y-3 text-sm text-gray-600 en-text text-left" dir="ltr">
+              <li className="font-medium text-black">support@smarttools.com</li>
+              <li className="mt-8 text-xs text-gray-400 font-medium">© 2026 SmartTools. All rights reserved.</li>
             </ul>
           </div>
         </div>
       </footer>
     );
 
-    // --- Main App ---
+    // --- Main App Setup ---
     const App = () => (
       <div className="min-h-screen">
         <Navbar />
         <Hero />
+        <AdBanner /> {/* إعلان أسفل الواجهة الرئيسية */}
         <ToolsSection />
         <ContactSection />
         <Footer />
