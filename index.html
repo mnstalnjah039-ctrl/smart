@@ -1,979 +1,416 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SmartTool — Interactive PDF & File Tools</title>
-<meta name="description" content="SmartTool — Free online tools: PDF compressor, image converter, and more. Fast, simple, and free."/>
-<meta name="keywords" content="PDF compressor, PDF tools, image tools, online tools, SmartTool"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://smarttool.example.com/"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura AI | Premium AI Tools Platform</title>
+    <meta name="description" content="Access professional-grade AI tools for writing, SEO, productivity, and social media. The ultimate AI-powered utility suite.">
+    
+    <!-- Fonts & SEO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#a855f7',
+                        dark: '#020617',
+                        card: 'rgba(15, 23, 42, 0.6)',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
 
-<!-- Open Graph / SEO -->
-<meta property="og:title" content="SmartTool — Interactive Online Tools"/>
-<meta property="og:description" content="PDF compression, image conversion, and more — free and instant."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://smarttool.example.com/"/>
+    <style>
+        [x-cloak] { display: none !important; }
+        
+        .glass {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421017699603693" crossorigin="anonymous"></script>
+        .text-gradient {
+            background: linear-gradient(to right, #818cf8, #c084fc, #ff80b5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+        }
 
-<style>
-  :root {
-    --bg: #F7F6F2;
-    --surface: #FFFFFF;
-    --accent: #2D5A1B;
-    --accent-light: #EAF2E3;
-    --accent-mid: #4A8B2A;
-    --text: #1A1A14;
-    --muted: #6B7060;
-    --border: #DDD9CF;
-    --danger: #C0392B;
-    --radius: 14px;
-    --radius-sm: 8px;
-    --font: 'Syne', sans-serif;
-    --font-ar: 'Noto Kufi Arabic', sans-serif;
-    --shadow: 0 2px 20px rgba(0,0,0,0.07);
-    --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--font);
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  body.ar {
-    font-family: var(--font-ar);
-    direction: rtl;
-  }
+        #neural-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: #020617;
+        }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(247,246,242,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 clamp(1rem,4vw,3rem);
-    height: 64px;
-    display: flex; align-items: center; justify-content: space-between;
-    transition: background 0.3s;
-  }
-  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo { width: 36px; height: 36px; background: var(--accent); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
-  .nav-logo svg { width: 20px; height: 20px; fill: #fff; }
-  .nav-name { font-size: 1.15rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-right { display: flex; align-items: center; gap: 1rem; }
-  .lang-toggle {
-    display: flex; background: var(--border); border-radius: 20px; padding: 3px; gap: 2px;
-  }
-  .lang-btn {
-    padding: 4px 12px; border-radius: 16px; font-size: 0.75rem; font-weight: 600;
-    cursor: pointer; border: none; background: transparent; color: var(--muted); transition: all 0.2s;
-  }
-  .lang-btn.active { background: var(--surface); color: var(--accent); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
-  .nav-cta {
-    background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm);
-    padding: 8px 18px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.2s;
-    font-family: inherit;
-  }
-  .nav-cta:hover { background: var(--accent-mid); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
-  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-  @media (max-width: 768px) {
-    .nav-links, .nav-cta { display: none; }
-    .hamburger { display: flex; }
-  }
-  .mobile-menu {
-    display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
-    background: rgba(247,246,242,0.97); backdrop-filter: blur(12px);
-    z-index: 99; padding: 2rem; flex-direction: column; gap: 1.5rem;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a { font-size: 1.4rem; font-weight: 600; color: var(--text); text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
-  .mobile-menu .lang-toggle { margin-top: 1rem; width: fit-content; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    padding: clamp(5rem,10vh,8rem) clamp(1rem,4vw,3rem) 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background: radial-gradient(ellipse 80% 60% at 70% 40%, #d8f0c5 0%, transparent 60%),
-                radial-gradient(ellipse 60% 40% at 20% 80%, #e8f5de 0%, transparent 50%);
-    opacity: 0.6;
-  }
-  .hero-content { position: relative; z-index: 1; text-align: center; max-width: 820px; }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--accent-light); border: 1px solid #b8dfa0; border-radius: 20px;
-    padding: 6px 16px; font-size: 0.78rem; font-weight: 600; color: var(--accent);
-    margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase;
-    animation: fadeUp 0.6s ease both;
-  }
-  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
-  .hero-title {
-    font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800; letter-spacing: -0.04em;
-    line-height: 1.05; color: var(--text); margin-bottom: 1.25rem;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-  .hero-title em { font-style: normal; color: var(--accent); }
-  .hero-sub {
-    font-size: clamp(1rem, 2.2vw, 1.2rem); color: var(--muted); line-height: 1.7;
-    max-width: 560px; margin: 0 auto 2.5rem;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-  .btn-primary {
-    background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm);
-    padding: 14px 28px; font-size: 1rem; font-weight: 600; cursor: pointer;
-    transition: all 0.2s; font-family: inherit; text-decoration: none; display: inline-block;
-  }
-  .btn-primary:hover { background: var(--accent-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,90,27,0.25); }
-  .btn-outline {
-    background: transparent; color: var(--text); border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm); padding: 13px 28px; font-size: 1rem; font-weight: 600;
-    cursor: pointer; transition: all 0.2s; font-family: inherit; text-decoration: none; display: inline-block;
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-  .hero-scroll { margin-top: 3rem; animation: fadeUp 0.6s 0.4s ease both; }
-  .hero-scroll span { font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 6px; justify-content: center; }
-  .scroll-arrow { width: 18px; height: 18px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); display: inline-block; animation: bounce 1.5s infinite; }
-
-  /* AD SLOT */
-  .ad-slot {
-    background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius);
-    padding: 1rem; text-align: center; margin: 1.5rem 0; min-height: 90px;
-    display: flex; align-items: center; justify-content: center; overflow: hidden;
-  }
-  .ad-slot ins { display: block; width: 100%; }
-
-  /* SECTION LAYOUT */
-  section { padding: 5rem clamp(1rem,4vw,3rem); }
-  .section-inner { max-width: 1200px; margin: 0 auto; }
-  .section-label {
-    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 0.75rem;
-  }
-  .section-title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em;
-    color: var(--text); margin-bottom: 1rem; line-height: 1.15;
-  }
-  .section-sub { font-size: 1.05rem; color: var(--muted); max-width: 540px; line-height: 1.7; margin-bottom: 3rem; }
-
-  /* TOOLS GRID */
-  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
-  .tool-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 1.75rem; cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden;
-  }
-  .tool-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: var(--accent); transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
-  }
-  .tool-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: #c5ddb6; }
-  .tool-card:hover::before { transform: scaleX(1); }
-  .tool-icon {
-    width: 52px; height: 52px; background: var(--accent-light); border-radius: 12px;
-    display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;
-    font-size: 1.5rem;
-  }
-  .tool-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
-  .tool-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.25rem; }
-  .tool-tag {
-    display: inline-block; background: var(--accent-light); color: var(--accent);
-    border-radius: 20px; padding: 3px 10px; font-size: 0.72rem; font-weight: 600;
-  }
-  #tools { background: var(--bg); }
-
-  /* PDF COMPRESSOR SECTION */
-  #pdf-tool { background: var(--surface); }
-  .pdf-tool-box {
-    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 2rem; max-width: 680px;
-  }
-  .drop-zone {
-    border: 2px dashed var(--border); border-radius: var(--radius-sm); padding: 3rem 2rem;
-    text-align: center; cursor: pointer; transition: all 0.2s; background: var(--surface);
-    margin-bottom: 1.5rem;
-  }
-  .drop-zone:hover, .drop-zone.drag-over { border-color: var(--accent); background: var(--accent-light); }
-  .drop-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-  .drop-text { font-size: 0.95rem; color: var(--muted); }
-  .drop-text strong { color: var(--text); }
-  #pdf-file-input { display: none; }
-  .file-info { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border); margin-bottom: 1.5rem; }
-  .file-info .file-icon { font-size: 2rem; }
-  .file-info .file-meta strong { display: block; font-size: 0.95rem; font-weight: 600; }
-  .file-info .file-meta span { font-size: 0.8rem; color: var(--muted); }
-  .quality-options { margin-bottom: 1.5rem; }
-  .quality-options h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text); }
-  .quality-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; }
-  .quality-opt {
-    padding: 0.75rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-    text-align: center; cursor: pointer; transition: all 0.2s; background: var(--surface);
-  }
-  .quality-opt:hover { border-color: var(--accent); }
-  .quality-opt.active { border-color: var(--accent); background: var(--accent-light); }
-  .quality-opt .q-label { font-size: 0.8rem; font-weight: 700; color: var(--text); }
-  .quality-opt .q-desc { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
-  .quality-opt .q-size { font-size: 0.72rem; color: var(--accent); margin-top: 4px; font-weight: 600; }
-  .max-size-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; display: flex; align-items: center; gap: 6px; }
-  .progress-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem; display: none; }
-  .progress-fill { height: 100%; background: var(--accent); width: 0; transition: width 0.3s; border-radius: 3px; }
-  .result-box { display: none; background: var(--accent-light); border: 1px solid #b8dfa0; border-radius: var(--radius-sm); padding: 1.25rem; margin-top: 1rem; }
-  .result-box .result-stats { display: flex; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-  .result-box .stat { text-align: center; }
-  .result-box .stat .val { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
-  .result-box .stat .lbl { font-size: 0.75rem; color: var(--muted); }
-  .error-box { background: #fdf0ef; border: 1px solid #f5c6c3; border-radius: var(--radius-sm); padding: 1rem; margin-top: 1rem; color: var(--danger); font-size: 0.88rem; display: none; }
-
-  /* CONTACT */
-  #contact { background: var(--bg); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-field label { font-size: 0.82rem; font-weight: 600; color: var(--text); }
-  .form-field input, .form-field textarea, .form-field select {
-    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-    padding: 10px 14px; font-size: 0.92rem; background: var(--surface);
-    color: var(--text); font-family: inherit; transition: border-color 0.2s;
-    outline: none;
-  }
-  .form-field input:focus, .form-field textarea:focus { border-color: var(--accent); }
-  .form-field textarea { resize: vertical; min-height: 130px; }
-  .form-status { font-size: 0.85rem; padding: 0.75rem 1rem; border-radius: var(--radius-sm); display: none; }
-  .form-status.success { background: var(--accent-light); color: var(--accent); border: 1px solid #b8dfa0; display: block; }
-  .form-status.error { background: #fdf0ef; color: var(--danger); border: 1px solid #f5c6c3; display: block; }
-  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
-  .info-item { display: flex; gap: 1rem; align-items: flex-start; }
-  .info-icon { width: 44px; height: 44px; background: var(--accent-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-  .info-text h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
-  .info-text p { font-size: 0.85rem; color: var(--muted); }
-
-  /* FEATURES */
-  #features { background: var(--surface); }
-  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-  .feature-item { display: flex; flex-direction: column; gap: 0.75rem; }
-  .feature-icon { font-size: 1.75rem; }
-  .feature-item h3 { font-size: 1rem; font-weight: 700; color: var(--text); }
-  .feature-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
-
-  /* ABOUT */
-  #about { background: var(--accent); color: #fff; }
-  #about .section-label { color: rgba(255,255,255,0.6); }
-  #about .section-title { color: #fff; }
-  #about .section-sub { color: rgba(255,255,255,0.75); max-width: 700px; }
-  .about-stats { display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 2rem; }
-  .about-stat .val { font-size: 2.5rem; font-weight: 800; color: #fff; }
-  .about-stat .lbl { font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-top: 2px; }
-
-  /* PRIVACY / TERMS */
-  #privacy, #terms { background: var(--bg); }
-  .legal-content { max-width: 760px; }
-  .legal-content h3 { font-size: 1.1rem; font-weight: 700; margin: 2rem 0 0.5rem; color: var(--text); }
-  .legal-content p { font-size: 0.92rem; color: var(--muted); line-height: 1.8; margin-bottom: 0.75rem; }
-
-  /* FOOTER */
-  footer {
-    background: var(--text); color: rgba(255,255,255,0.6); padding: 3rem clamp(1rem,4vw,3rem);
-    font-size: 0.85rem;
-  }
-  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
-  .footer-brand { font-size: 1rem; font-weight: 700; color: #fff; }
-  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
-  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: #fff; }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes bounce { 0%,100% { transform: translateY(0) rotate(45deg); } 50% { transform: translateY(5px) rotate(45deg); } }
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* RTL ADJUSTMENTS */
-  body.ar .tool-card::before { transform-origin: right; }
-  body.ar .hero-content { direction: rtl; }
-  body.ar nav { direction: rtl; }
-
-  /* Page section visibility */
-  .page-section { display: none; }
-  .page-section.active { display: block; }
-  #home-sections { display: block; }
-
-  /* Tabs / Navigation between pages */
-</style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    </style>
 </head>
-<body>
+<body class="bg-dark text-slate-200 font-sans custom-scrollbar overflow-x-hidden" x-data="auraApp()">
 
-<!-- NAV -->
-<nav id="main-nav">
-  <a class="nav-brand" href="#" onclick="showPage('home')">
-    <div class="nav-logo">
-      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-    </div>
-    <span class="nav-name">SmartTool</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#" onclick="showPage('home'); scrollToSection('tools')"><span class="en-text">Tools</span><span class="ar-text" style="display:none">الأدوات</span></a></li>
-    <li><a href="#" onclick="showPage('home'); scrollToSection('features')"><span class="en-text">Features</span><span class="ar-text" style="display:none">المميزات</span></a></li>
-    <li><a href="#" onclick="showPage('about-page')"><span class="en-text">About</span><span class="ar-text" style="display:none">عن الموقع</span></a></li>
-    <li><a href="#" onclick="showPage('home'); scrollToSection('contact')"><span class="en-text">Contact</span><span class="ar-text" style="display:none">تواصل</span></a></li>
-    <li><a href="#" onclick="showPage('privacy-page')"><span class="en-text">Privacy</span><span class="ar-text" style="display:none">الخصوصية</span></a></li>
-  </ul>
-  <div class="nav-right">
-    <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('ar')">ع</button>
-    </div>
-    <button class="nav-cta" onclick="showPage('home'); scrollToSection('contact')">
-      <span class="en-text">Contact Us</span><span class="ar-text" style="display:none">تواصل معنا</span>
-    </button>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span id="hb1"></span><span id="hb2"></span><span id="hb3"></span>
-    </button>
-  </div>
-</nav>
+    <!-- Animated Neural Background -->
+    <canvas id="neural-canvas"></canvas>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#" onclick="closeMenu();showPage('home');scrollToSection('tools')"><span class="en-text">🔧 Tools</span><span class="ar-text" style="display:none">🔧 الأدوات</span></a>
-  <a href="#" onclick="closeMenu();showPage('home');scrollToSection('features')"><span class="en-text">✨ Features</span><span class="ar-text" style="display:none">✨ المميزات</span></a>
-  <a href="#" onclick="closeMenu();showPage('about-page')"><span class="en-text">ℹ️ About</span><span class="ar-text" style="display:none">ℹ️ عن الموقع</span></a>
-  <a href="#" onclick="closeMenu();showPage('home');scrollToSection('contact')"><span class="en-text">✉️ Contact</span><span class="ar-text" style="display:none">✉️ تواصل</span></a>
-  <a href="#" onclick="closeMenu();showPage('privacy-page')"><span class="en-text">🔒 Privacy Policy</span><span class="ar-text" style="display:none">🔒 سياسة الخصوصية</span></a>
-  <a href="#" onclick="closeMenu();showPage('terms-page')"><span class="en-text">📄 Terms of Use</span><span class="ar-text" style="display:none">📄 شروط الاستخدام</span></a>
-  <div class="lang-toggle">
-    <button class="lang-btn active" id="ml-en" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" id="ml-ar" onclick="setLang('ar')">ع</button>
-  </div>
-</div>
-
-<!-- ===================== HOME SECTIONS ===================== -->
-<div id="home-sections">
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow"><span class="en-text">Free Online Tools</span><span class="ar-text" style="display:none">أدوات مجانية عبر الإنترنت</span></div>
-      <h1 class="hero-title">
-        <span class="en-text">Smart Tools for<br/><em>Smarter Work</em></span>
-        <span class="ar-text" style="display:none">أدوات ذكية<br/>لعمل <em>أذكى</em></span>
-      </h1>
-      <p class="hero-sub">
-        <span class="en-text">Compress PDFs, convert images, and more — all for free. No signup required. Fast and secure.</span>
-        <span class="ar-text" style="display:none">ضغط ملفات PDF وتحويل الصور والمزيد — كل ذلك مجانًا. لا حاجة للتسجيل. سريع وآمن.</span>
-      </p>
-      <div class="hero-btns">
-        <a href="#" class="btn-primary" onclick="scrollToSection('pdf-tool')">
-          <span class="en-text">Compress PDF Now</span><span class="ar-text" style="display:none">اضغط PDF الآن</span>
-        </a>
-        <a href="#" class="btn-outline" onclick="scrollToSection('tools')">
-          <span class="en-text">All Tools</span><span class="ar-text" style="display:none">جميع الأدوات</span>
-        </a>
-      </div>
-      <div class="hero-scroll"><span><i class="scroll-arrow"></i></span></div>
-    </div>
-  </section>
-
-  <!-- AD SLOT TOP -->
-  <div style="padding: 0 clamp(1rem,4vw,3rem); max-width: 1200px; margin: 0 auto;">
-    <div class="ad-slot">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </div>
-
-  <!-- TOOLS SECTION -->
-  <section id="tools">
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Our Tools</span><span class="ar-text" style="display:none">أدواتنا</span></p>
-      <h2 class="section-title reveal">
-        <span class="en-text">Everything you need</span>
-        <span class="ar-text" style="display:none">كل ما تحتاجه</span>
-      </h2>
-      <p class="section-sub reveal">
-        <span class="en-text">A growing collection of free tools to help with everyday digital tasks.</span>
-        <span class="ar-text" style="display:none">مجموعة متنامية من الأدوات المجانية لمساعدتك في مهامك الرقمية اليومية.</span>
-      </p>
-      <div class="tools-grid">
-        <div class="tool-card reveal" onclick="scrollToSection('pdf-tool')">
-          <div class="tool-icon">📄</div>
-          <h3><span class="en-text">PDF Compressor</span><span class="ar-text" style="display:none">ضاغط PDF</span></h3>
-          <p><span class="en-text">Reduce PDF file size from 2MB up to 4MB max. Three quality levels to choose from.</span><span class="ar-text" style="display:none">تقليل حجم ملفات PDF من 2 ميغابايت حتى 4 ميغابايت كحد أقصى. ثلاثة مستويات جودة للاختيار.</span></p>
-          <span class="tool-tag"><span class="en-text">Most Popular</span><span class="ar-text" style="display:none">الأكثر شيوعاً</span></span>
-        </div>
-        <div class="tool-card reveal" onclick="alert(lang==='en'?'Coming soon!':'قريباً!')">
-          <div class="tool-icon">🖼️</div>
-          <h3><span class="en-text">Image Converter</span><span class="ar-text" style="display:none">محوّل الصور</span></h3>
-          <p><span class="en-text">Convert between JPG, PNG, WebP and more. Resize and optimize images in seconds.</span><span class="ar-text" style="display:none">التحويل بين JPG وPNG وWebP والمزيد. تغيير الحجم وتحسين الصور في ثوانٍ.</span></p>
-          <span class="tool-tag"><span class="en-text">Coming Soon</span><span class="ar-text" style="display:none">قريباً</span></span>
-        </div>
-        <div class="tool-card reveal" onclick="alert(lang==='en'?'Coming soon!':'قريباً!')">
-          <div class="tool-icon">🔗</div>
-          <h3><span class="en-text">PDF Merger</span><span class="ar-text" style="display:none">دمج PDF</span></h3>
-          <p><span class="en-text">Merge multiple PDF files into one document. Drag, drop, and combine instantly.</span><span class="ar-text" style="display:none">دمج ملفات PDF متعددة في مستند واحد. اسحب وأفلت وادمج فورًا.</span></p>
-          <span class="tool-tag"><span class="en-text">Coming Soon</span><span class="ar-text" style="display:none">قريباً</span></span>
-        </div>
-        <div class="tool-card reveal" onclick="alert(lang==='en'?'Coming soon!':'قريباً!')">
-          <div class="tool-icon">✂️</div>
-          <h3><span class="en-text">PDF Splitter</span><span class="ar-text" style="display:none">تقسيم PDF</span></h3>
-          <p><span class="en-text">Extract pages or split your PDF into multiple files by page range.</span><span class="ar-text" style="display:none">استخراج صفحات أو تقسيم PDF إلى ملفات متعددة حسب نطاق الصفحات.</span></p>
-          <span class="tool-tag"><span class="en-text">Coming Soon</span><span class="ar-text" style="display:none">قريباً</span></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AD SLOT MID -->
-  <div style="padding: 0 clamp(1rem,4vw,3rem); max-width: 1200px; margin: 0 auto;">
-    <div class="ad-slot">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </div>
-
-  <!-- PDF COMPRESSOR TOOL -->
-  <section id="pdf-tool">
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Free Tool</span><span class="ar-text" style="display:none">أداة مجانية</span></p>
-      <h2 class="section-title reveal">
-        <span class="en-text">PDF Compressor</span>
-        <span class="ar-text" style="display:none">ضاغط ملفات PDF</span>
-      </h2>
-      <p class="section-sub reveal">
-        <span class="en-text">Compress your PDF while maintaining quality. Output stays between 2MB and 4MB max.</span>
-        <span class="ar-text" style="display:none">اضغط ملف PDF مع الحفاظ على الجودة. يبقى حجم الملف بين 2 ميغابايت و4 ميغابايت كحد أقصى.</span>
-      </p>
-      <div class="pdf-tool-box reveal">
-        <!-- Drop Zone -->
-        <div class="drop-zone" id="drop-zone" onclick="document.getElementById('pdf-file-input').click()"
-             ondragover="event.preventDefault();this.classList.add('drag-over')"
-             ondragleave="this.classList.remove('drag-over')"
-             ondrop="handleDrop(event)">
-          <div class="drop-icon">📂</div>
-          <p class="drop-text">
-            <strong><span class="en-text">Click to upload</span><span class="ar-text" style="display:none">انقر للرفع</span></strong>
-            <span class="en-text"> or drag &amp; drop your PDF here</span>
-            <span class="ar-text" style="display:none"> أو اسحب وأفلت ملف PDF هنا</span>
-          </p>
-          <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem">
-            <span class="en-text">PDF only · Max 50MB</span>
-            <span class="ar-text" style="display:none">PDF فقط · أقصى 50 ميغابايت</span>
-          </p>
-        </div>
-        <input type="file" id="pdf-file-input" accept="application/pdf" onchange="loadFile(this.files[0])"/>
-
-        <!-- File Info (hidden until file loaded) -->
-        <div class="file-info" id="file-info" style="display:none">
-          <div class="file-icon">📄</div>
-          <div class="file-meta">
-            <strong id="file-name">—</strong>
-            <span id="file-size">—</span>
-          </div>
-          <button style="margin-left:auto;background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--muted)" onclick="resetTool()">✕</button>
-        </div>
-
-        <!-- Quality Options -->
-        <div class="quality-options" id="quality-section" style="display:none">
-          <h4><span class="en-text">Compression Level</span><span class="ar-text" style="display:none">مستوى الضغط</span></h4>
-          <div class="quality-grid">
-            <div class="quality-opt active" id="q-low" onclick="selectQuality('low')">
-              <div class="q-label"><span class="en-text">Light</span><span class="ar-text" style="display:none">خفيف</span></div>
-              <div class="q-desc"><span class="en-text">Best quality</span><span class="ar-text" style="display:none">أفضل جودة</span></div>
-              <div class="q-size"><span class="en-text">≤ 4MB</span><span class="ar-text" style="display:none">≤ 4 ميغابايت</span></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2 cursor-pointer" @click="view = 'home'">
+                    <div class="w-8 h-8 bg-gradient-to-tr from-primary to-secondary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white font-heading">Aura<span class="text-primary">AI</span></span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#" class="hover:text-primary transition-colors">Tools</a>
+                    <a href="#" class="hover:text-primary transition-colors">Categories</a>
+                    <a href="#" class="hover:text-primary transition-colors">Pricing</a>
+                    <button class="bg-primary/10 text-primary px-4 py-2 rounded-full border border-primary/20 hover:bg-primary hover:text-white transition-all">Get Started</button>
+                </div>
             </div>
-            <div class="quality-opt" id="q-medium" onclick="selectQuality('medium')">
-              <div class="q-label"><span class="en-text">Medium</span><span class="ar-text" style="display:none">متوسط</span></div>
-              <div class="q-desc"><span class="en-text">Balanced</span><span class="ar-text" style="display:none">متوازن</span></div>
-              <div class="q-size"><span class="en-text">≤ 3MB</span><span class="ar-text" style="display:none">≤ 3 ميغابايت</span></div>
-            </div>
-            <div class="quality-opt" id="q-high" onclick="selectQuality('high')">
-              <div class="q-label"><span class="en-text">Strong</span><span class="ar-text" style="display:none">قوي</span></div>
-              <div class="q-desc"><span class="en-text">Smallest size</span><span class="ar-text" style="display:none">أصغر حجم</span></div>
-              <div class="q-size"><span class="en-text">≤ 2MB</span><span class="ar-text" style="display:none">≤ 2 ميغابايت</span></div>
-            </div>
-          </div>
-          <p class="max-size-note">ℹ️ <span class="en-text">Maximum output size is 4MB regardless of compression level.</span><span class="ar-text" style="display:none">الحد الأقصى لحجم الملف الناتج هو 4 ميغابايت بغض النظر عن مستوى الضغط.</span></p>
         </div>
+    </nav>
 
-        <!-- Compress Button -->
-        <button class="btn-primary" id="compress-btn" onclick="compressPDF()" style="display:none;width:100%">
-          <span class="en-text">Compress PDF</span><span class="ar-text" style="display:none">اضغط الملف</span>
-        </button>
+    <!-- UI State: Home Page -->
+    <div x-show="view === 'home'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
+        
+        <!-- Hero Section -->
+        <header class="pt-32 pb-16 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-6 animate-pulse">
+                    <span>NEXT-GEN AI UTILITIES NOW LIVE</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 font-heading leading-tight">
+                    Supercharge Your Workflow <br> with <span class="text-gradient">Artificial Intelligence</span>
+                </h1>
+                <p class="text-slate-400 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+                    The premium suite of AI tools for content creators, developers, and businesses. Professional, fast, and remarkably accurate.
+                </p>
+                
+                <!-- Global Search -->
+                <div class="relative max-w-xl mx-auto mb-12">
+                    <input type="text" x-model="search" placeholder="Search 50+ AI tools (e.g. 'Humanizer', 'SEO')..." 
+                           class="w-full bg-slate-900/50 border border-slate-700 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all glass">
+                    <div class="absolute right-4 top-4 text-slate-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-        <!-- Progress -->
-        <div class="progress-bar" id="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-        <p id="progress-text" style="font-size:0.8rem;color:var(--muted);display:none;text-align:center;margin-top:0.5rem"></p>
+        <!-- Categories -->
+        <section class="max-w-7xl mx-auto px-4 pb-12">
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <template x-for="cat in categories">
+                    <button @click="activeCategory = cat" 
+                            :class="activeCategory === cat ? 'bg-primary text-white' : 'glass text-slate-400 hover:text-white'"
+                            class="px-5 py-2 rounded-xl transition-all text-sm font-semibold border border-slate-700"
+                            x-text="cat"></button>
+                </template>
+            </div>
 
-        <!-- Result -->
-        <div class="result-box" id="result-box">
-          <div class="result-stats">
-            <div class="stat"><div class="val" id="orig-size-v">—</div><div class="lbl"><span class="en-text">Original</span><span class="ar-text" style="display:none">الأصلي</span></div></div>
-            <div class="stat"><div class="val" id="comp-size-v">—</div><div class="lbl"><span class="en-text">Compressed</span><span class="ar-text" style="display:none">المضغوط</span></div></div>
-            <div class="stat"><div class="val" id="saved-pct-v">—</div><div class="lbl"><span class="en-text">Saved</span><span class="ar-text" style="display:none">تم توفيره</span></div></div>
-          </div>
-          <button class="btn-primary" id="download-btn" onclick="downloadFile()" style="width:100%">
-            <span class="en-text">⬇ Download Compressed PDF</span><span class="ar-text" style="display:none">⬇ تحميل PDF المضغوط</span>
-          </button>
-        </div>
-        <div class="error-box" id="error-box"></div>
-      </div>
+            <!-- AdSense Placeholder Top -->
+            <div class="max-w-4xl mx-auto mb-16 h-24 glass border-dashed border-slate-700 rounded-xl flex items-center justify-center text-slate-600 italic">
+                Advertisement Placement (AdSense Optimized)
+            </div>
+
+            <!-- Tool Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <template x-for="tool in filteredTools" :key="tool.id">
+                    <div @click="openTool(tool)" class="tool-card glass p-6 rounded-2xl cursor-pointer group transition-all duration-300">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 rounded-xl bg-slate-800 group-hover:bg-primary/20 transition-colors" :class="tool.color">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" x-html="tool.icon"></svg>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 bg-slate-800/50 px-2 py-1 rounded" x-text="tool.category"></span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors" x-text="tool.name"></h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4" x-text="tool.desc"></p>
+                        <div class="flex items-center text-primary text-xs font-bold group-hover:gap-2 transition-all">
+                            LAUNCH TOOL <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
     </div>
-  </section>
 
-  <!-- FEATURES -->
-  <section id="features" style="background:var(--surface)">
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Why SmartTool</span><span class="ar-text" style="display:none">لماذا SmartTool</span></p>
-      <h2 class="section-title reveal">
-        <span class="en-text">Simple, fast &amp; secure</span>
-        <span class="ar-text" style="display:none">بسيط وسريع وآمن</span>
-      </h2>
-      <div class="features-grid">
-        <div class="feature-item reveal">
-          <div class="feature-icon">⚡</div>
-          <h3><span class="en-text">Lightning Fast</span><span class="ar-text" style="display:none">سريع للغاية</span></h3>
-          <p><span class="en-text">All processing happens in your browser — no uploads to servers, instant results.</span><span class="ar-text" style="display:none">تتم جميع العمليات في متصفحك — لا رفع للخوادم، نتائج فورية.</span></p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon">🔒</div>
-          <h3><span class="en-text">100% Private</span><span class="ar-text" style="display:none">خصوصية تامة</span></h3>
-          <p><span class="en-text">Your files never leave your device. We don't store, read, or transmit your data.</span><span class="ar-text" style="display:none">ملفاتك لا تغادر جهازك أبدًا. نحن لا نخزن أو نقرأ أو نرسل بياناتك.</span></p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon">💸</div>
-          <h3><span class="en-text">Always Free</span><span class="ar-text" style="display:none">مجاني دائمًا</span></h3>
-          <p><span class="en-text">No subscriptions, no hidden fees. Every tool on SmartTool is completely free.</span><span class="ar-text" style="display:none">لا اشتراكات ولا رسوم خفية. كل أداة على SmartTool مجانية تمامًا.</span></p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon">🌍</div>
-          <h3><span class="en-text">Works Everywhere</span><span class="ar-text" style="display:none">يعمل في كل مكان</span></h3>
-          <p><span class="en-text">Available in English and Arabic. Works on any device — desktop, tablet, or mobile.</span><span class="ar-text" style="display:none">متاح باللغتين العربية والإنجليزية. يعمل على أي جهاز.</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AD SLOT BOTTOM -->
-  <div style="padding: 1rem clamp(1rem,4vw,3rem); max-width: 1200px; margin: 0 auto;">
-    <div class="ad-slot">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </div>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Get in Touch</span><span class="ar-text" style="display:none">تواصل معنا</span></p>
-      <h2 class="section-title reveal">
-        <span class="en-text">We'd love to hear from you</span>
-        <span class="ar-text" style="display:none">يسعدنا سماعك</span>
-      </h2>
-      <div class="contact-grid">
-        <div>
-          <form class="contact-form" onsubmit="submitContact(event)">
-            <div class="form-field">
-              <label><span class="en-text">Your Name</span><span class="ar-text" style="display:none">اسمك</span></label>
-              <input type="text" id="contact-name" placeholder="John Smith" required/>
-            </div>
-            <div class="form-field">
-              <label><span class="en-text">Email Address</span><span class="ar-text" style="display:none">البريد الإلكتروني</span></label>
-              <input type="email" id="contact-email" placeholder="you@example.com" required/>
-            </div>
-            <div class="form-field">
-              <label><span class="en-text">Subject</span><span class="ar-text" style="display:none">الموضوع</span></label>
-              <select id="contact-subject">
-                <option value="general"><span class="en-text">General Inquiry</span></option>
-                <option value="bug">Bug Report</option>
-                <option value="feature">Feature Request</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label><span class="en-text">Message</span><span class="ar-text" style="display:none">رسالتك</span></label>
-              <textarea id="contact-message" placeholder="Write your message here..." required></textarea>
-            </div>
-            <button type="submit" class="btn-primary">
-              <span class="en-text">Send Message</span><span class="ar-text" style="display:none">إرسال الرسالة</span>
+    <!-- UI State: Tool Workspace -->
+    <div x-show="view === 'tool'" x-cloak x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" class="pt-24 pb-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <button @click="view = 'home'" class="flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                Back to Dashboard
             </button>
-            <div class="form-status" id="form-status"></div>
-          </form>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Main Tool Area -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="glass p-8 rounded-3xl relative overflow-hidden">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="p-4 rounded-2xl bg-primary/10 text-primary">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" x-html="activeTool?.icon"></svg>
+                            </div>
+                            <div>
+                                <h2 class="text-3xl font-bold text-white" x-text="activeTool?.name"></h2>
+                                <p class="text-slate-400" x-text="activeTool?.desc"></p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium text-slate-400 uppercase tracking-wider">Input Content</label>
+                            <textarea x-model="inputData" :placeholder="activeTool?.placeholder" 
+                                      class="w-full h-64 bg-slate-900/50 border border-slate-700 rounded-2xl p-6 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"></textarea>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-500" x-text="inputData.length + ' Characters'"></span>
+                                <button @click="processTool()" :disabled="loading" 
+                                        class="bg-primary hover:bg-indigo-500 disabled:opacity-50 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-primary/30 flex items-center gap-2">
+                                    <template x-if="loading">
+                                        <svg class="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                                    </template>
+                                    <span x-text="loading ? 'Processing...' : 'Generate Result'"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Result Area -->
+                        <div x-show="outputData" class="mt-8 pt-8 border-t border-slate-800" x-transition>
+                            <label class="block text-sm font-medium text-slate-400 uppercase tracking-wider mb-4">AI Result</label>
+                            <div class="bg-slate-900/80 border border-primary/30 rounded-2xl p-6 text-slate-200 relative">
+                                <p class="whitespace-pre-wrap leading-relaxed" x-text="outputData"></p>
+                                <button @click="copyToClipboard()" class="absolute top-4 right-4 p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Content (SEO & Ads) -->
+                <div class="space-y-6">
+                    <div class="glass p-6 rounded-2xl">
+                        <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            Why Use Aura AI?
+                        </h4>
+                        <ul class="text-sm text-slate-400 space-y-3">
+                            <li class="flex items-start gap-2 italic">"The quality of the Humanizer tool is better than any paid tool I've used." - Sarah J.</li>
+                            <li class="flex items-start gap-2">✓ Advanced Neural Processing</li>
+                            <li class="flex items-start gap-2">✓ Ad-Free Premium Interface</li>
+                            <li class="flex items-start gap-2">✓ Export to PDF/Markdown</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="h-[400px] glass rounded-2xl flex items-center justify-center text-slate-600 border-dashed border-slate-700">
+                        Vertical Ad Slot
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO Long-form content below tool -->
+            <article class="mt-20 prose prose-invert max-w-none">
+                <h2 class="text-3xl font-bold text-white mb-6">Deep Dive: Understanding <span x-text="activeTool?.name"></span></h2>
+                <div class="grid md:grid-cols-2 gap-12 text-slate-400 leading-relaxed">
+                    <div>
+                        <p class="mb-4">Our AI Tool uses state-of-the-art transformer models to analyze your input. Unlike basic generators, Aura AI understands context, nuance, and intent, ensuring that the results are not just grammatically correct, but also effective for your specific goals.</p>
+                        <p>Whether you're a student trying to summarize notes, or a marketer optimizing meta tags, our platform scales with your needs. We utilize high-density keyword optimization to ensure that your outputs are already SEO-friendly from the first click.</p>
+                    </div>
+                    <div class="bg-slate-900/30 p-6 rounded-2xl border border-slate-800">
+                        <h4 class="text-white font-bold mb-4">Best Practices</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-sm">
+                            <li>Provide clear, detailed inputs for better context.</li>
+                            <li>Use the 'Optimize' toggle for higher creative variability.</li>
+                            <li>Always verify critical data points generated by AI.</li>
+                            <li>Combine multiple Aura tools for a complete content workflow.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
         </div>
-        <div class="contact-info">
-          <div class="info-item">
-            <div class="info-icon">✉️</div>
-            <div class="info-text">
-              <h4><span class="en-text">Email</span><span class="ar-text" style="display:none">البريد الإلكتروني</span></h4>
-              <p>support@smarttool.io</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass border-t border-slate-800 mt-20 py-12 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="w-6 h-6 bg-primary rounded flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <span class="text-lg font-bold text-white">Aura AI Suite</span>
+                </div>
+                <p class="text-slate-400 text-sm max-w-xs mb-6">Empowering the next generation of digital creators with professional AI utilities.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-slate-500 hover:text-white transition-colors">Twitter</a>
+                    <a href="#" class="text-slate-500 hover:text-white transition-colors">LinkedIn</a>
+                    <a href="#" class="text-slate-500 hover:text-white transition-colors">GitHub</a>
+                </div>
             </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">⏱️</div>
-            <div class="info-text">
-              <h4><span class="en-text">Response Time</span><span class="ar-text" style="display:none">وقت الرد</span></h4>
-              <p><span class="en-text">We reply within 24 hours</span><span class="ar-text" style="display:none">نرد خلال 24 ساعة</span></p>
+            <div>
+                <h4 class="text-white font-bold mb-4">Platform</h4>
+                <ul class="text-slate-400 text-sm space-y-2">
+                    <li><a href="#" class="hover:text-primary transition-colors">All Tools</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">API Access</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Pricing</a></li>
+                </ul>
             </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">🌐</div>
-            <div class="info-text">
-              <h4><span class="en-text">Languages</span><span class="ar-text" style="display:none">اللغات</span></h4>
-              <p><span class="en-text">English & Arabic support</span><span class="ar-text" style="display:none">دعم عربي وإنجليزي</span></p>
+            <div>
+                <h4 class="text-white font-bold mb-4">Legal</h4>
+                <ul class="text-slate-400 text-sm space-y-2">
+                    <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Cookie Policy</a></li>
+                </ul>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="max-w-7xl mx-auto border-t border-slate-800 mt-12 pt-8 text-center text-slate-500 text-xs">
+            © 2024 Aura AI Platform. Optimized for Performance and SEO.
+        </div>
+    </footer>
 
-</div><!-- end home-sections -->
+    <script>
+        function auraApp() {
+            return {
+                view: 'home',
+                search: '',
+                activeCategory: 'All Tools',
+                loading: false,
+                activeTool: null,
+                inputData: '',
+                outputData: '',
+                categories: ['All Tools', 'Writing', 'SEO', 'Productivity', 'Social Media', 'Business'],
+                tools: [
+                    { id: 1, name: 'AI Humanizer', category: 'Writing', desc: 'Transform AI-generated text into natural, human-like content.', icon: '<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />', placeholder: 'Paste your AI-generated text here...', color: 'text-indigo-400' },
+                    { id: 2, name: 'SEO Optimizer', category: 'SEO', desc: 'Analyze and improve your content for higher Google rankings.', icon: '<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />', placeholder: 'Enter your article or webpage content...', color: 'text-emerald-400' },
+                    { id: 3, name: 'Quiz Generator', category: 'Productivity', desc: 'Instantly create educational quizzes from any study text.', icon: '<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />', placeholder: 'Paste your study notes or article...', color: 'text-orange-400' },
+                    { id: 4, name: 'Caption Pro', category: 'Social Media', desc: 'Generate high-engagement captions for IG, TikTok, and YouTube.', icon: '<path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />', placeholder: 'Describe your post or video content...', color: 'text-pink-400' },
+                    { id: 5, name: 'Business Name AI', category: 'Business', desc: 'Generate creative, brandable names for your next startup.', icon: '<path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />', placeholder: 'Describe your business idea or industry keywords...', color: 'text-cyan-400' },
+                    { id: 6, name: 'Grammar Guard', category: 'Writing', desc: 'Beyond spellcheck—advanced AI contextual grammar repair.', icon: '<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />', placeholder: 'Enter text to check for errors...', color: 'text-blue-400' },
+                ],
 
-<!-- ===================== ABOUT PAGE ===================== -->
-<div id="about-page" class="page-section" style="padding-top:64px">
-  <section id="about">
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Our Story</span><span class="ar-text" style="display:none">قصتنا</span></p>
-      <h2 class="section-title">
-        <span class="en-text">Built for everyone,<br/>completely free</span>
-        <span class="ar-text" style="display:none">مبني للجميع،<br/>مجاني تمامًا</span>
-      </h2>
-      <p class="section-sub">
-        <span class="en-text">SmartTool was created to give everyone access to powerful file tools without barriers. No accounts, no subscriptions, no complexity — just tools that work.</span>
-        <span class="ar-text" style="display:none">تم إنشاء SmartTool لمنح الجميع الوصول إلى أدوات ملفات قوية دون عوائق. لا حسابات، لا اشتراكات، لا تعقيد — فقط أدوات تعمل.</span>
-      </p>
-      <div class="about-stats">
-        <div class="about-stat"><div class="val">10+</div><div class="lbl"><span class="en-text">Free Tools</span><span class="ar-text" style="display:none">أداة مجانية</span></div></div>
-        <div class="about-stat"><div class="val">100%</div><div class="lbl"><span class="en-text">Browser-based</span><span class="ar-text" style="display:none">في المتصفح</span></div></div>
-        <div class="about-stat"><div class="val">2</div><div class="lbl"><span class="en-text">Languages</span><span class="ar-text" style="display:none">لغتان</span></div></div>
-        <div class="about-stat"><div class="val">0</div><div class="lbl"><span class="en-text">Data stored</span><span class="ar-text" style="display:none">بيانات محفوظة</span></div></div>
-      </div>
-    </div>
-  </section>
-  <section style="background:var(--bg)">
-    <div class="section-inner features-grid">
-      <div class="feature-item">
-        <div class="feature-icon">🎯</div>
-        <h3><span class="en-text">Our Mission</span><span class="ar-text" style="display:none">مهمتنا</span></h3>
-        <p><span class="en-text">To provide free, high-quality digital tools accessible to everyone regardless of technical background.</span><span class="ar-text" style="display:none">توفير أدوات رقمية مجانية وعالية الجودة متاحة للجميع بغض النظر عن خلفيتهم التقنية.</span></p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🛡️</div>
-        <h3><span class="en-text">Privacy First</span><span class="ar-text" style="display:none">الخصوصية أولًا</span></h3>
-        <p><span class="en-text">All tools process files locally in your browser. Nothing is ever sent to our servers.</span><span class="ar-text" style="display:none">تعالج جميع الأدوات الملفات محليًا في متصفحك. لا شيء يُرسل إلى خوادمنا.</span></p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🚀</div>
-        <h3><span class="en-text">Always Improving</span><span class="ar-text" style="display:none">تطوير مستمر</span></h3>
-        <p><span class="en-text">We regularly add new tools based on user feedback. Have a suggestion? Let us know!</span><span class="ar-text" style="display:none">نضيف أدوات جديدة بانتظام بناءً على ملاحظات المستخدمين. لديك اقتراح؟ أخبرنا!</span></p>
-      </div>
-    </div>
-  </section>
-</div>
+                get filteredTools() {
+                    return this.tools.filter(t => {
+                        const matchesSearch = t.name.toLowerCase().includes(this.search.toLowerCase());
+                        const matchesCat = this.activeCategory === 'All Tools' || t.category === this.activeCategory;
+                        return matchesSearch && matchesCat;
+                    });
+                },
 
-<!-- ===================== PRIVACY PAGE ===================== -->
-<div id="privacy-page" class="page-section" style="padding-top:64px">
-  <section>
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Legal</span><span class="ar-text" style="display:none">قانوني</span></p>
-      <h2 class="section-title">
-        <span class="en-text">Privacy Policy</span>
-        <span class="ar-text" style="display:none">سياسة الخصوصية</span>
-      </h2>
-      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem">
-        <span class="en-text">Last updated: June 2025</span>
-        <span class="ar-text" style="display:none">آخر تحديث: يونيو 2025</span>
-      </p>
-      <div class="legal-content">
-        <h3><span class="en-text">1. Information We Collect</span><span class="ar-text" style="display:none">1. المعلومات التي نجمعها</span></h3>
-        <p><span class="en-text">SmartTool does not collect personal information unless voluntarily provided via the contact form. Files processed by our tools never leave your browser and are not transmitted to any server.</span><span class="ar-text" style="display:none">لا يجمع SmartTool معلومات شخصية إلا إذا قُدِّمت طوعًا عبر نموذج الاتصال. الملفات التي تعالجها أدواتنا لا تغادر متصفحك ولا تُرسل إلى أي خادم.</span></p>
+                openTool(tool) {
+                    this.activeTool = tool;
+                    this.view = 'tool';
+                    this.inputData = '';
+                    this.outputData = '';
+                    window.scrollTo(0, 0);
+                },
 
-        <h3><span class="en-text">2. Google AdSense</span><span class="ar-text" style="display:none">2. Google AdSense</span></h3>
-        <p><span class="en-text">We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your prior visits. You can opt out of personalized advertising at <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</span><span class="ar-text" style="display:none">نستخدم Google AdSense لعرض الإعلانات. قد تستخدم Google ملفات تعريف الارتباط لعرض إعلانات بناءً على زياراتك السابقة.</span></p>
+                async processTool() {
+                    if (!this.inputData) return;
+                    this.loading = true;
+                    
+                    // Simulate AI Delay
+                    await new Promise(res => setTimeout(res, 2000));
+                    
+                    this.outputData = `[PROCESSED BY AURA AI]\n\nThis is a high-quality simulated result for your ${this.activeTool.name} request. In a production environment, this would connect to an LLM like GPT-4 or Claude 3 to return contextual and highly relevant data.\n\nInput Length: ${this.inputData.length} characters processed successfully.`;
+                    
+                    this.loading = false;
+                    
+                    // Animate result reveal
+                    gsap.from(".result-box", { opacity: 0, y: 20, duration: 0.5 });
+                },
 
-        <h3><span class="en-text">3. Cookies</span><span class="ar-text" style="display:none">3. ملفات تعريف الارتباط</span></h3>
-        <p><span class="en-text">We use minimal cookies to remember your language preference. Third-party cookies may be set by Google AdSense for advertising purposes.</span><span class="ar-text" style="display:none">نستخدم ملفات تعريف ارتباط بسيطة لتذكر تفضيلات اللغة. قد تُضبط ملفات تعريف ارتباط تابعة لجهات خارجية بواسطة Google AdSense.</span></p>
+                copyToClipboard() {
+                    navigator.clipboard.writeText(this.outputData);
+                    alert('Copied to clipboard!');
+                }
+            }
+        }
 
-        <h3><span class="en-text">4. Data Security</span><span class="ar-text" style="display:none">4. أمان البيانات</span></h3>
-        <p><span class="en-text">Since all file processing occurs client-side in your browser, your files are never exposed to our servers. Contact form submissions are transmitted securely via HTTPS.</span><span class="ar-text" style="display:none">نظرًا لأن معالجة الملفات تتم من جانب العميل في متصفحك، فلن تتعرض ملفاتك لخوادمنا. تُرسل نماذج الاتصال بأمان عبر HTTPS.</span></p>
+        // Neural Network Background Logic
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
 
-        <h3><span class="en-text">5. Contact</span><span class="ar-text" style="display:none">5. التواصل</span></h3>
-        <p><span class="en-text">For privacy questions, email us at privacy@smarttool.io</span><span class="ar-text" style="display:none">لأسئلة الخصوصية، راسلنا على privacy@smarttool.io</span></p>
-      </div>
-    </div>
-  </section>
-</div>
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 80; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2
+                });
+            }
+        }
 
-<!-- ===================== TERMS PAGE ===================== -->
-<div id="terms-page" class="page-section" style="padding-top:64px">
-  <section>
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Legal</span><span class="ar-text" style="display:none">قانوني</span></p>
-      <h2 class="section-title">
-        <span class="en-text">Terms of Use</span>
-        <span class="ar-text" style="display:none">شروط الاستخدام</span>
-      </h2>
-      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem">
-        <span class="en-text">Last updated: June 2025</span>
-        <span class="ar-text" style="display:none">آخر تحديث: يونيو 2025</span>
-      </p>
-      <div class="legal-content">
-        <h3><span class="en-text">1. Acceptance of Terms</span><span class="ar-text" style="display:none">1. قبول الشروط</span></h3>
-        <p><span class="en-text">By using SmartTool, you agree to these terms. If you do not agree, please do not use the site.</span><span class="ar-text" style="display:none">باستخدامك لـ SmartTool، فإنك توافق على هذه الشروط. إذا كنت لا توافق، يرجى عدم استخدام الموقع.</span></p>
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(99, 102, 241, 0.5)';
+            ctx.strokeStyle = 'rgba(99, 102, 241, 0.05)';
 
-        <h3><span class="en-text">2. Permitted Use</span><span class="ar-text" style="display:none">2. الاستخدام المسموح به</span></h3>
-        <p><span class="en-text">SmartTool is provided for personal and professional use. You may not use the service for any illegal purpose or in violation of any regulations.</span><span class="ar-text" style="display:none">يُقدَّم SmartTool للاستخدام الشخصي والمهني. لا يجوز لك استخدام الخدمة لأي غرض غير قانوني.</span></p>
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-        <h3><span class="en-text">3. Disclaimer</span><span class="ar-text" style="display:none">3. إخلاء المسؤولية</span></h3>
-        <p><span class="en-text">SmartTool is provided "as is" without warranties. We are not liable for any damages arising from your use of the service. Always keep backups of important files.</span><span class="ar-text" style="display:none">يُقدَّم SmartTool "كما هو" دون ضمانات. لسنا مسؤولين عن أي أضرار ناتجة عن استخدامك للخدمة. احتفظ دائمًا بنسخ احتياطية من الملفات المهمة.</span></p>
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
 
-        <h3><span class="en-text">4. Intellectual Property</span><span class="ar-text" style="display:none">4. الملكية الفكرية</span></h3>
-        <p><span class="en-text">All content and code on SmartTool is owned by SmartTool. You may not reproduce or redistribute it without permission.</span><span class="ar-text" style="display:none">جميع المحتوى والكود على SmartTool مملوك لـ SmartTool. لا يجوز لك إعادة إنتاجه أو توزيعه دون إذن.</span></p>
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(animate);
+        }
 
-        <h3><span class="en-text">5. Changes</span><span class="ar-text" style="display:none">5. التغييرات</span></h3>
-        <p><span class="en-text">We may update these terms at any time. Continued use of the site constitutes acceptance of any changes.</span><span class="ar-text" style="display:none">قد نحدّث هذه الشروط في أي وقت. الاستمرار في استخدام الموقع يُعدّ قبولًا لأي تغييرات.</span></p>
-      </div>
-    </div>
-  </section>
-</div>
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        animate();
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">SmartTool</div>
-      <p style="margin-top:0.4rem;font-size:0.78rem">
-        <span class="en-text">© 2025 SmartTool. All rights reserved.</span>
-        <span class="ar-text" style="display:none">© 2025 SmartTool. جميع الحقوق محفوظة.</span>
-      </p>
-    </div>
-    <ul class="footer-links">
-      <li><a href="#" onclick="showPage('home')"><span class="en-text">Home</span><span class="ar-text" style="display:none">الرئيسية</span></a></li>
-      <li><a href="#" onclick="showPage('about-page')"><span class="en-text">About</span><span class="ar-text" style="display:none">عن الموقع</span></a></li>
-      <li><a href="#" onclick="showPage('privacy-page')"><span class="en-text">Privacy</span><span class="ar-text" style="display:none">الخصوصية</span></a></li>
-      <li><a href="#" onclick="showPage('terms-page')"><span class="en-text">Terms</span><span class="ar-text" style="display:none">الشروط</span></a></li>
-    </ul>
-  </div>
-</footer>
-
-<script>
-// ===== LANGUAGE =====
-let lang = 'en';
-function setLang(l) {
-  lang = l;
-  document.body.classList.toggle('ar', l === 'ar');
-  document.documentElement.lang = l;
-  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
-  document.querySelectorAll('.en-text').forEach(el => el.style.display = l === 'en' ? '' : 'none');
-  document.querySelectorAll('.ar-text').forEach(el => el.style.display = l === 'ar' ? '' : 'none');
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelectorAll('.lang-btn').forEach(btn => { if (btn.textContent.trim() === (l === 'en' ? 'EN' : 'ع')) btn.classList.add('active'); });
-  localStorage.setItem('st-lang', l);
-}
-
-// ===== MOBILE MENU =====
-let menuOpen = false;
-function toggleMenu() {
-  menuOpen = !menuOpen;
-  document.getElementById('mobile-menu').classList.toggle('open', menuOpen);
-  const [s1,s2,s3] = [document.getElementById('hb1'),document.getElementById('hb2'),document.getElementById('hb3')];
-  if (menuOpen) { s1.style.transform='rotate(45deg) translate(5px,5px)'; s2.style.opacity='0'; s3.style.transform='rotate(-45deg) translate(5px,-5px)'; }
-  else { s1.style.transform=''; s2.style.opacity=''; s3.style.transform=''; }
-}
-function closeMenu() { menuOpen = false; document.getElementById('mobile-menu').classList.remove('open'); }
-
-// ===== PAGE NAVIGATION =====
-function showPage(pageId) {
-  document.getElementById('home-sections').style.display = pageId === 'home' ? 'block' : 'none';
-  document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
-  if (pageId !== 'home') { const p = document.getElementById(pageId); if (p) p.classList.add('active'); }
-  window.scrollTo(0,0); closeMenu();
-}
-function scrollToSection(id) {
-  setTimeout(() => { const el = document.getElementById(id); if (el) el.scrollIntoView({behavior:'smooth',block:'start'}); }, 100);
-}
-
-// ===== REVEAL ON SCROLL =====
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ===== PDF COMPRESSOR =====
-let selectedFile = null;
-let compressedBlob = null;
-let selectedQuality = 'low';
-
-function handleDrop(e) {
-  e.preventDefault();
-  document.getElementById('drop-zone').classList.remove('drag-over');
-  const f = e.dataTransfer.files[0];
-  if (f && f.type === 'application/pdf') loadFile(f);
-  else showError(lang === 'en' ? 'Please upload a valid PDF file.' : 'يرجى رفع ملف PDF صالح.');
-}
-
-function loadFile(f) {
-  if (!f) return;
-  if (f.type !== 'application/pdf') { showError(lang==='en'?'Only PDF files are supported.':'يُدعم ملفات PDF فقط.'); return; }
-  if (f.size > 50 * 1024 * 1024) { showError(lang==='en'?'File is too large. Maximum is 50MB.':'الملف كبير جدًا. الحد الأقصى 50 ميغابايت.'); return; }
-  selectedFile = f;
-  document.getElementById('file-name').textContent = f.name;
-  document.getElementById('file-size').textContent = formatSize(f.size);
-  document.getElementById('file-info').style.display = 'flex';
-  document.getElementById('drop-zone').style.display = 'none';
-  document.getElementById('quality-section').style.display = 'block';
-  document.getElementById('compress-btn').style.display = 'block';
-  document.getElementById('result-box').style.display = 'none';
-  document.getElementById('error-box').style.display = 'none';
-  compressedBlob = null;
-}
-
-function formatSize(bytes) {
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
-  return (bytes/(1024*1024)).toFixed(2) + ' MB';
-}
-
-function selectQuality(q) {
-  selectedQuality = q;
-  ['low','medium','high'].forEach(id => {
-    document.getElementById('q-'+id).classList.toggle('active', id === q);
-  });
-}
-
-function showError(msg) {
-  const el = document.getElementById('error-box');
-  el.textContent = msg; el.style.display = 'block';
-}
-
-async function compressPDF() {
-  if (!selectedFile) return;
-  const pb = document.getElementById('progress-bar');
-  const pf = document.getElementById('progress-fill');
-  const pt = document.getElementById('progress-text');
-  const btn = document.getElementById('compress-btn');
-  document.getElementById('error-box').style.display = 'none';
-  document.getElementById('result-box').style.display = 'none';
-  pb.style.display = 'block'; pt.style.display = 'block'; btn.disabled = true;
-
-  const steps = lang==='en' ? ['Reading file...','Analyzing structure...','Compressing...','Optimizing...','Finalizing...'] : ['قراءة الملف...','تحليل البنية...','جارٍ الضغط...','التحسين...','الإنهاء...'];
-  let progress = 0;
-  for (let i = 0; i < steps.length; i++) {
-    pt.textContent = steps[i];
-    progress = (i+1) / steps.length * 85;
-    pf.style.width = progress + '%';
-    await new Promise(r => setTimeout(r, 350 + Math.random()*200));
-  }
-
-  // Read file
-  const reader = new FileReader();
-  reader.onload = async function(e) {
-    const originalBytes = new Uint8Array(e.target.result);
-    const originalSize = originalBytes.byteLength;
-    const maxSizes = { low: 4*1024*1024, medium: 3*1024*1024, high: 2*1024*1024 };
-    const targetMax = maxSizes[selectedQuality];
-
-    // Attempt real in-browser compression via removing stream whitespace & re-serializing
-    let resultBytes = originalBytes;
-    if (originalSize > targetMax) {
-      // Simple PDF optimization: remove comments and reduce cross-ref whitespace
-      resultBytes = optimizePDF(originalBytes, selectedQuality);
-    }
-    const finalSize = Math.min(resultBytes.byteLength, originalSize);
-
-    pf.style.width = '100%';
-    pt.textContent = lang==='en'?'Done!':'تم!';
-    await new Promise(r => setTimeout(r, 400));
-    pb.style.display = 'none'; pt.style.display = 'none'; btn.disabled = false;
-
-    compressedBlob = new Blob([resultBytes], {type:'application/pdf'});
-    const saved = Math.max(0, originalSize - finalSize);
-    const pct = originalSize > 0 ? Math.round(saved/originalSize*100) : 0;
-    document.getElementById('orig-size-v').textContent = formatSize(originalSize);
-    document.getElementById('comp-size-v').textContent = formatSize(finalSize);
-    document.getElementById('saved-pct-v').textContent = pct + '%';
-    document.getElementById('result-box').style.display = 'block';
-  };
-  reader.readAsArrayBuffer(selectedFile);
-}
-
-function optimizePDF(bytes, quality) {
-  // Simple stream compression: strip PDF comments and whitespace-heavy areas
-  // This is a best-effort browser-side approach
-  let str = '';
-  for (let i = 0; i < bytes.length; i++) str += String.fromCharCode(bytes[i]);
-
-  // Remove PDF comments (lines starting with %)
-  str = str.replace(/%[^\n\r]*/g, '');
-  // Collapse multiple spaces in non-binary sections
-  str = str.replace(/\s{3,}/g, '  ');
-
-  const result = new Uint8Array(str.length);
-  for (let i = 0; i < str.length; i++) result[i] = str.charCodeAt(i) & 0xFF;
-  return result;
-}
-
-function downloadFile() {
-  if (!compressedBlob) return;
-  const url = URL.createObjectURL(compressedBlob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = (selectedFile ? selectedFile.name.replace('.pdf','') : 'compressed') + '_compressed.pdf';
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-function resetTool() {
-  selectedFile = null; compressedBlob = null;
-  document.getElementById('drop-zone').style.display = 'block';
-  document.getElementById('file-info').style.display = 'none';
-  document.getElementById('quality-section').style.display = 'none';
-  document.getElementById('compress-btn').style.display = 'none';
-  document.getElementById('result-box').style.display = 'none';
-  document.getElementById('error-box').style.display = 'none';
-  document.getElementById('progress-bar').style.display = 'none';
-  document.getElementById('pdf-file-input').value = '';
-}
-
-// ===== CONTACT FORM =====
-function submitContact(e) {
-  e.preventDefault();
-  const name = document.getElementById('contact-name').value;
-  const email = document.getElementById('contact-email').value;
-  const msg = document.getElementById('contact-message').value;
-  if (!name || !email || !msg) return;
-
-  const status = document.getElementById('form-status');
-  status.className = 'form-status success';
-  status.textContent = lang === 'en'
-    ? `Thank you, ${name}! Your message has been received. We'll reply to ${email} within 24 hours.`
-    : `شكرًا ${name}! تم استلام رسالتك. سنرد على ${email} خلال 24 ساعة.`;
-  e.target.reset();
-}
-
-// ===== INIT =====
-const savedLang = localStorage.getItem('st-lang');
-if (savedLang) setLang(savedLang);
-else setLang('en');
-
-// Inject link for Google AdSense verification
-const metaAds = document.createElement('meta');
-metaAds.name = 'google-adsense-account';
-metaAds.content = 'ca-pub-4421017699603693';
-document.head.appendChild(metaAds);
-</script>
+        // GSAP Hero Animations
+        gsap.from("h1", { duration: 1.2, y: 50, opacity: 0, ease: "power4.out", delay: 0.2 });
+        gsap.from("header p", { duration: 1, y: 30, opacity: 0, ease: "power3.out", delay: 0.4 });
+    </script>
 </body>
 </html>
