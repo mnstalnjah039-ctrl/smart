@@ -1,647 +1,117 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO & META TAGS -->
-    <title>Aura AI | The Ultimate Premium AI Tools Platform</title>
-    <meta name="description" content="Access 70+ professional AI tools for writing, SEO, productivity, and business. The world's most advanced AI utility suite.">
-    <meta name="keywords" content="AI tools, AI humanizer, grammar checker, SEO generator, productivity AI, writing assistant">
-    <link rel="canonical" href="https://aura-ai-platform.com">
-    
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- LIBRARIES -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: { 50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd', 400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9', 800: '#5b21b6', 900: '#4c1d95', 950: '#2e1065' },
-                        dark: '#030712',
-                        accent: '#00f2ff'
-                    },
-                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Plus Jakarta Sans', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        [x-cloak] { display: none !important; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glass-dark { background: rgba(3, 7, 18, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .text-gradient { background: linear-gradient(135deg, #fff 0%, #8b5cf6 50%, #00f2ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .btn-premium { background: linear-gradient(45deg, #6d28d9, #8b5cf6); transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(109, 40, 217, 0.3); }
-        .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(109, 40, 217, 0.5); }
-        #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-        .tool-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .tool-card:hover { transform: scale(1.02) translateY(-5px); border-color: #8b5cf6; }
-        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #030712; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 10px; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
-    </style>
-</head>
-<body class="bg-dark text-slate-300 font-sans selection:bg-primary-500/30 selection:text-white overflow-x-hidden custom-scrollbar" x-data="auraApp()">
-
-    <!-- 3D BACKGROUND -->
-    <div id="canvas-container"></div>
-
-    <!-- HEADER / NAVIGATION -->
-    <nav class="fixed top-0 w-full z-[100] glass-dark border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer group" @click="setView('home')">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-accent flex items-center justify-center group-hover:rotate-12 transition-transform shadow-lg shadow-primary-500/20">
-                    <i data-lucide="zap" class="text-white fill-current"></i>
-                </div>
-                <span class="text-2xl font-extrabold tracking-tighter text-white font-heading">AURA<span class="text-primary-500">AI</span></span>
-            </div>
-
-            <div class="hidden lg:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider">
-                <a @click="setView('home')" class="hover:text-primary-400 cursor-pointer transition-colors">Home</a>
-                <div class="relative group">
-                    <a @click="setView('tools')" class="hover:text-primary-400 cursor-pointer transition-colors flex items-center gap-1">Tools <i data-lucide="chevron-down" class="w-4 h-4"></i></a>
-                    <div class="absolute top-full left-0 w-64 glass-dark p-4 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all mt-2 border border-white/10">
-                        <template x-for="cat in categories">
-                            <a @click="setCategory(cat.name); setView('tools')" class="block py-2 px-3 hover:bg-white/5 rounded-lg transition-colors text-xs" x-text="cat.name"></a>
-                        </template>
-                    </div>
-                </div>
-                <a @click="setView('blog')" class="hover:text-primary-400 cursor-pointer transition-colors">Insights</a>
-                <a @click="setView('about')" class="hover:text-primary-400 cursor-pointer transition-colors">Our Vision</a>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <div class="relative hidden sm:block">
-                    <input type="text" x-model="searchQuery" placeholder="Search AI tools..." class="bg-white/5 border border-white/10 rounded-full py-2 px-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/50 w-44 focus:w-64 transition-all">
-                    <i data-lucide="search" class="w-4 h-4 absolute left-4 top-2.5 text-slate-500"></i>
-                </div>
-                <button class="btn-premium px-6 py-2.5 rounded-full text-sm font-bold text-white whitespace-nowrap">Try Free</button>
-                <button class="lg:hidden text-white" @click="mobileMenu = !mobileMenu"><i data-lucide="menu"></i></button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- MOBILE MENU -->
-    <div x-show="mobileMenu" x-cloak class="fixed inset-0 z-[110] glass-dark flex flex-col p-8 lg:hidden" x-transition>
-        <div class="flex justify-between items-center mb-12">
-            <span class="text-2xl font-bold">Menu</span>
-            <button @click="mobileMenu = false"><i data-lucide="x"></i></button>
-        </div>
-        <div class="flex flex-col gap-6 text-xl font-bold">
-            <a @click="setView('home'); mobileMenu = false">Home</a>
-            <a @click="setView('tools'); mobileMenu = false">AI Tools</a>
-            <a @click="setView('blog'); mobileMenu = false">Blog</a>
-            <a @click="setView('about'); mobileMenu = false">About</a>
-        </div>
-    </div>
-
-    <!-- MAIN CONTENT AREA -->
-    <main class="pt-20">
-        
-        <!-- HOME VIEW -->
-        <section x-show="view === 'home'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-10">
-            <!-- HERO -->
-            <div class="relative py-24 px-4">
-                <div class="max-w-5xl mx-auto text-center space-y-8">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border-primary-500/30 text-primary-400 text-xs font-bold uppercase tracking-widest animate-pulse">
-                        <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
-                        </span>
-                        Next-Gen AI v4.0 is Live
-                    </div>
-                    <h1 class="text-6xl md:text-8xl font-black font-heading leading-none">
-                        Unleash the Power of <br> <span class="text-gradient">Intelligence</span>
-                    </h1>
-                    <p class="text-xl text-slate-400 max-w-3xl mx-auto font-medium">
-                        Access 70+ premium AI-powered tools designed to automate your writing, 
-                        SEO, study, and business operations with surgical precision.
-                    </p>
-                    <div class="flex flex-wrap justify-center gap-4 pt-4">
-                        <button @click="setView('tools')" class="btn-premium px-10 py-5 rounded-2xl text-lg font-bold text-white flex items-center gap-3">
-                            Explore Tools <i data-lucide="arrow-right"></i>
-                        </button>
-                        <button class="glass px-10 py-5 rounded-2xl text-lg font-bold text-white hover:bg-white/10 transition-all border-white/20">
-                            Watch Video
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AD SLOT TOP -->
-            <div class="max-w-7xl mx-auto px-4 mb-20">
-                <div class="h-28 glass rounded-3xl flex items-center justify-center text-slate-600 font-bold border-dashed border-white/10 italic">
-                    [Premium Ad Placement - Google AdSense Optimized]
-                </div>
-            </div>
-
-            <!-- FEATURED CATEGORIES -->
-            <div class="max-w-7xl mx-auto px-4 pb-32">
-                <div class="flex justify-between items-end mb-12">
-                    <div>
-                        <h2 class="text-4xl font-bold text-white mb-2">Popular Categories</h2>
-                        <p class="text-slate-400">Handpicked collections for modern professionals</p>
-                    </div>
-                    <button @click="setView('tools')" class="text-primary-400 font-bold flex items-center gap-2 hover:gap-4 transition-all">View All <i data-lucide="chevron-right" class="w-5 h-5"></i></button>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <template x-for="cat in categories.slice(0,4)">
-                        <div @click="setCategory(cat.name); setView('tools')" class="glass p-8 rounded-3xl group cursor-pointer hover:bg-primary-500/10 transition-all border-white/5 hover:border-primary-500/50">
-                            <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary-400 mb-6 group-hover:bg-primary-500 group-hover:text-white transition-all shadow-xl">
-                                <i :data-lucide="cat.icon" class="w-7 h-7"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2" x-text="cat.name"></h3>
-                            <p class="text-slate-500 text-sm" x-text="cat.count + ' Tools'"></p>
-                        </div>
-                    </template>
-                </div>
-            </div>
-
-            <!-- WHY US -->
-            <div class="bg-white/2 border-y border-white/5 py-32 px-4 relative overflow-hidden">
-                <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-                    <div class="space-y-8">
-                        <h2 class="text-5xl font-black text-white font-heading">Engineered for the <span class="text-primary-500">Future</span> of Content.</h2>
-                        <div class="space-y-6">
-                            <div class="flex gap-6">
-                                <div class="w-12 h-12 flex-shrink-0 rounded-full bg-primary-500/20 flex items-center justify-center text-primary-400"><i data-lucide="shield-check"></i></div>
-                                <div><h4 class="text-xl font-bold text-white">Trustworthy Outputs</h4><p class="text-slate-400">Our algorithms are fine-tuned to produce factual, human-sounding content every single time.</p></div>
-                            </div>
-                            <div class="flex gap-6">
-                                <div class="w-12 h-12 flex-shrink-0 rounded-full bg-accent/20 flex items-center justify-center text-accent"><i data-lucide="zap"></i></div>
-                                <div><h4 class="text-xl font-bold text-white">Real-Time Processing</h4><p class="text-slate-400">No waiting. Get complex results in milliseconds using our high-frequency server architecture.</p></div>
-                            </div>
-                            <div class="flex gap-6">
-                                <div class="w-12 h-12 flex-shrink-0 rounded-full bg-primary-500/20 flex items-center justify-center text-primary-400"><i data-lucide="code"></i></div>
-                                <div><h4 class="text-xl font-bold text-white">Developer Friendly</h4><p class="text-slate-400">Full API support for businesses looking to integrate our intelligence into their apps.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <div class="aspect-square rounded-3xl bg-gradient-to-br from-primary-600/20 to-accent/20 border border-white/10 flex items-center justify-center overflow-hidden">
-                           <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-overlay">
-                           <div class="absolute inset-0 flex items-center justify-center">
-                               <div class="glass p-8 rounded-2xl animate-float">
-                                   <div class="flex items-center gap-4 mb-4">
-                                       <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400"><i data-lucide="check" class="w-5 h-5"></i></div>
-                                       <div class="h-2 w-32 bg-white/10 rounded-full"></div>
-                                   </div>
-                                   <div class="h-2 w-48 bg-white/10 rounded-full mb-2"></div>
-                                   <div class="h-2 w-40 bg-white/10 rounded-full"></div>
-                               </div>
-                           </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TOOLS BROWSER VIEW -->
-        <section x-show="view === 'tools'" x-cloak class="max-w-7xl mx-auto px-4 py-16">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-black text-white mb-4">Professional AI Workspace</h2>
-                <p class="text-slate-400 text-lg">Search and filter through our massive library of 70+ premium tools</p>
-            </div>
-
-            <div class="flex flex-col lg:flex-row gap-12">
-                <!-- Sidebar -->
-                <div class="lg:w-72 space-y-10">
-                    <div>
-                        <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Categories</h4>
-                        <div class="flex flex-col gap-2">
-                            <button @click="activeCategory = 'All'" :class="activeCategory === 'All' ? 'bg-primary-500 text-white' : 'hover:bg-white/5'" class="text-left px-5 py-3 rounded-xl font-bold transition-all">All Tools</button>
-                            <template x-for="cat in categories">
-                                <button @click="activeCategory = cat.name" :class="activeCategory === cat.name ? 'bg-primary-500 text-white' : 'hover:bg-white/5'" class="text-left px-5 py-3 rounded-xl font-bold transition-all flex items-center justify-between">
-                                    <span x-text="cat.name"></span>
-                                    <span class="text-[10px] opacity-50" x-text="cat.count"></span>
-                                </button>
-                            </template>
-                        </div>
-                    </div>
-
-                    <div class="glass p-6 rounded-2xl border-primary-500/20">
-                        <p class="text-xs text-primary-400 font-bold mb-2 uppercase">Pro Tip</p>
-                        <p class="text-sm text-slate-400">Save tools to your favorites for faster access later.</p>
-                    </div>
-
-                    <!-- Sidebar Ad -->
-                    <div class="h-[400px] glass rounded-3xl flex items-center justify-center text-slate-600 font-bold border-dashed border-white/10 italic text-center p-4">
-                        [Vertical Ad Space]
-                    </div>
-                </div>
-
-                <!-- Grid -->
-                <div class="flex-1">
-                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                        <template x-for="tool in filteredTools" :key="tool.id">
-                            <div @click="openTool(tool)" class="tool-card glass p-8 rounded-3xl border-white/5 cursor-pointer relative group overflow-hidden">
-                                <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <i data-lucide="heart" class="w-5 h-5 text-slate-500 hover:text-red-500"></i>
-                                </div>
-                                <div class="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center text-primary-400 mb-6 group-hover:bg-primary-500 group-hover:text-white transition-all">
-                                    <i :data-lucide="tool.icon"></i>
-                                </div>
-                                <h3 class="text-lg font-bold text-white mb-2" x-text="tool.name"></h3>
-                                <p class="text-slate-500 text-sm line-clamp-2" x-text="tool.desc"></p>
-                                <div class="mt-6 flex items-center gap-2 text-primary-500 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all">
-                                    Open Tool <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TOOL DETAIL VIEW -->
-        <section x-show="view === 'tool-detail'" x-cloak class="max-w-7xl mx-auto px-4 py-16">
-            <button @click="setView('tools')" class="flex items-center gap-2 text-slate-400 hover:text-white mb-12 transition-colors font-bold">
-                <i data-lucide="arrow-left" class="w-5 h-5"></i> Back to All Tools
-            </button>
-
-            <div class="grid lg:grid-cols-3 gap-12">
-                <div class="lg:col-span-2 space-y-8">
-                    <div class="glass p-10 rounded-[2.5rem] border-white/10 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-8">
-                            <span class="px-4 py-1 rounded-full bg-primary-500/10 text-primary-400 text-[10px] font-black uppercase tracking-widest" x-text="activeTool?.category"></span>
-                        </div>
-                        
-                        <div class="flex items-center gap-6 mb-10">
-                            <div class="w-20 h-20 rounded-3xl bg-primary-500 flex items-center justify-center text-white shadow-2xl shadow-primary-500/40">
-                                <i :data-lucide="activeTool?.icon" class="w-10 h-10"></i>
-                            </div>
-                            <div>
-                                <h2 class="text-4xl font-black text-white mb-2" x-text="activeTool?.name"></h2>
-                                <p class="text-slate-400 text-lg" x-text="activeTool?.desc"></p>
-                            </div>
-                        </div>
-
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Input Content</label>
-                                <textarea x-model="inputContent" :placeholder="activeTool?.placeholder" class="w-full h-64 bg-dark/50 border border-white/10 rounded-2xl p-6 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50 resize-none transition-all placeholder:text-slate-700"></textarea>
-                            </div>
-
-                            <div class="flex flex-wrap items-center justify-between gap-4">
-                                <div class="flex gap-2">
-                                    <button @click="inputContent = ''" class="px-5 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 font-bold transition-all">Clear</button>
-                                    <button class="px-5 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 font-bold transition-all flex items-center gap-2"><i data-lucide="upload" class="w-4 h-4"></i> Upload</button>
-                                </div>
-                                <button @click="runTool()" :disabled="loading" class="btn-premium px-10 py-4 rounded-xl text-lg font-bold text-white flex items-center gap-3 disabled:opacity-50">
-                                    <template x-if="loading">
-                                        <div class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                                    </template>
-                                    <span x-text="loading ? 'Processing...' : 'Generate Result'"></span>
-                                    <i data-lucide="sparkles" class="w-5 h-5"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Result Area -->
-                        <div x-show="outputContent" x-transition class="mt-12 pt-12 border-t border-white/5">
-                            <div class="flex items-center justify-between mb-6">
-                                <h4 class="text-white font-bold text-xl flex items-center gap-2"><i data-lucide="cpu" class="text-primary-500"></i> AI Generated Result</h4>
-                                <div class="flex gap-2">
-                                    <button @click="copyOutput()" class="p-3 rounded-xl bg-white/5 hover:bg-primary-500 hover:text-white transition-all"><i data-lucide="copy" class="w-5 h-5"></i></button>
-                                    <button @click="downloadOutput()" class="p-3 rounded-xl bg-white/5 hover:bg-primary-500 hover:text-white transition-all"><i data-lucide="download" class="w-5 h-5"></i></button>
-                                </div>
-                            </div>
-                            <div class="p-8 rounded-3xl bg-primary-500/5 border border-primary-500/20 text-slate-200 leading-relaxed font-medium">
-                                <p x-text="outputContent" class="whitespace-pre-wrap"></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SEO CONTENT BELOW TOOL -->
-                    <div class="space-y-12 py-12">
-                        <section>
-                            <h3 class="text-3xl font-bold text-white mb-6">Mastering the <span x-text="activeTool?.name"></span></h3>
-                            <div class="grid md:grid-cols-2 gap-8 text-slate-400">
-                                <p>Our proprietary AI model utilizes the latest transformer architectures to ensure that the output of our <span x-text="activeTool?.name"></span> is not only accurate but contextually relevant. Whether you're working on academic research, business documentation, or creative content, our platform scales to your requirements.</p>
-                                <p>By leveraging high-performance compute nodes, Aura AI delivers results in real-time. This specific tool has been trained on over 500 million tokens of high-quality data to ensure the highest standards of professional output.</p>
-                            </div>
-                        </section>
-
-                        <div class="h-px bg-white/5"></div>
-
-                        <section>
-                            <h3 class="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h3>
-                            <div class="space-y-4">
-                                <template x-for="i in [1,2,3]">
-                                    <div class="glass p-6 rounded-2xl">
-                                        <h5 class="text-white font-bold mb-2">How accurate is the <span x-text="activeTool?.name"></span>?</h5>
-                                        <p class="text-sm text-slate-500">Our tool maintains a 99.8% accuracy rate compared to human-edited content. We recommend a final review for high-stakes professional documents.</p>
-                                    </div>
-                                </template>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-
-                <!-- Sidebar -->
-                <div class="space-y-8">
-                    <div class="glass p-8 rounded-3xl border-white/5">
-                        <h4 class="text-white font-bold mb-6">Popular Tools</h4>
-                        <div class="space-y-4">
-                            <template x-for="t in tools.slice(0,5)">
-                                <div @click="openTool(t)" class="flex items-center gap-4 group cursor-pointer">
-                                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-primary-400 group-hover:bg-primary-500 group-hover:text-white transition-all"><i :data-lucide="t.icon" class="w-5 h-5"></i></div>
-                                    <span class="text-sm font-bold text-slate-400 group-hover:text-white transition-colors" x-text="t.name"></span>
-                                </div>
-                            </template>
-                        </div>
-                    </div>
-
-                    <div class="h-[600px] glass rounded-3xl flex items-center justify-center text-slate-600 font-bold border-dashed border-white/10 italic text-center p-4">
-                        [Vertical Sidebar Ad - High CPM Slot]
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- BLOG / INSIGHTS VIEW -->
-        <section x-show="view === 'blog'" x-cloak class="max-w-7xl mx-auto px-4 py-16">
-            <div class="text-center mb-20">
-                <h2 class="text-6xl font-black text-white mb-6">AI Insights & Trends</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Stay ahead of the curve with our professional deep dives into the world of artificial intelligence and digital productivity.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <template x-for="post in blogPosts">
-                    <div class="glass rounded-[2rem] overflow-hidden group border-white/5 hover:border-primary-500/30 transition-all">
-                        <div class="h-56 overflow-hidden bg-slate-900">
-                            <img :src="post.img" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
-                        </div>
-                        <div class="p-8">
-                            <div class="flex items-center gap-4 mb-4">
-                                <span class="text-[10px] font-black text-primary-400 uppercase tracking-widest" x-text="post.cat"></span>
-                                <span class="text-[10px] text-slate-600 font-bold" x-text="post.date"></span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-4 group-hover:text-primary-400 transition-colors" x-text="post.title"></h3>
-                            <button class="flex items-center gap-2 text-sm font-bold text-slate-400 group-hover:text-white transition-colors">Read Article <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </section>
-
-        <!-- ABOUT / VISION VIEW -->
-        <section x-show="view === 'about'" x-cloak class="max-w-5xl mx-auto px-4 py-24 text-center">
-            <h2 class="text-6xl font-black text-white mb-10">We believe in human <span class="text-primary-500">Augmentation</span>, not replacement.</h2>
-            <div class="space-y-8 text-xl text-slate-400 leading-relaxed">
-                <p>Aura AI was founded in 2024 with a singular mission: to democratize access to high-end artificial intelligence utilities. We saw a world where advanced technology was locked behind expensive subscriptions and complex interfaces.</p>
-                <p>Our platform brings together the world's most powerful LLMs and custom neural architectures into one cohesive, beautiful, and accessible dashboard.</p>
-                <div class="grid grid-cols-3 gap-8 py-16">
-                    <div><h4 class="text-4xl font-black text-white">50M+</h4><p class="text-sm uppercase tracking-widest text-primary-500 font-bold">Requests</p></div>
-                    <div><h4 class="text-4xl font-black text-white">120+</h4><p class="text-sm uppercase tracking-widest text-primary-500 font-bold">Countries</p></div>
-                    <div><h4 class="text-4xl font-black text-white">99.9%</h4><p class="text-sm uppercase tracking-widest text-primary-500 font-bold">Uptime</p></div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="bg-dark/80 border-t border-white/5 pt-20 pb-10 px-4 mt-32">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-20">
-                <div class="col-span-2">
-                    <div class="flex items-center gap-3 mb-8">
-                        <div class="w-8 h-8 rounded-lg bg-primary-600 flex items-center justify-center text-white"><i data-lucide="zap" class="w-4 h-4 fill-current"></i></div>
-                        <span class="text-xl font-bold text-white tracking-tighter">AURA AI</span>
-                    </div>
-                    <p class="text-slate-500 max-w-sm mb-8 leading-relaxed">The premium suite of AI tools for creators, developers, and businesses. Professional, fast, and remarkably accurate.</p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary-500 transition-colors text-white"><i data-lucide="twitter" class="w-4 h-4"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary-500 transition-colors text-white"><i data-lucide="github" class="w-4 h-4"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary-500 transition-colors text-white"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h5 class="text-white font-bold mb-6">Tools</h5>
-                    <ul class="space-y-4 text-sm text-slate-500">
-                        <li><a @click="setCategory('Writing'); setView('tools')" class="hover:text-primary-400 cursor-pointer">Writing Tools</a></li>
-                        <li><a @click="setCategory('SEO'); setView('tools')" class="hover:text-primary-400 cursor-pointer">SEO Suite</a></li>
-                        <li><a @click="setCategory('Productivity'); setView('tools')" class="hover:text-primary-400 cursor-pointer">Productivity</a></li>
-                        <li><a @click="setCategory('Business'); setView('tools')" class="hover:text-primary-400 cursor-pointer">Business AI</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-white font-bold mb-6">Platform</h5>
-                    <ul class="space-y-4 text-sm text-slate-500">
-                        <li><a @click="setView('about')" class="hover:text-primary-400 cursor-pointer">About Us</a></li>
-                        <li><a @click="setView('blog')" class="hover:text-primary-400 cursor-pointer">Insights</a></li>
-                        <li><a @click="setView('home')" class="hover:text-primary-400 cursor-pointer">Pricing</a></li>
-                        <li><a @click="setView('home')" class="hover:text-primary-400 cursor-pointer">API</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-white font-bold mb-6">Legal</h5>
-                    <ul class="space-y-4 text-sm text-slate-500">
-                        <li><a href="#" class="hover:text-primary-400">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-primary-400">Terms of Use</a></li>
-                        <li><a href="#" class="hover:text-primary-400">Cookie Settings</a></li>
-                        <li><a href="#" class="hover:text-primary-400">Sitemap</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- NEWSLETTER -->
-            <div class="glass p-10 rounded-[2.5rem] border-white/5 flex flex-col lg:flex-row items-center justify-between gap-8 mb-20">
-                <div>
-                    <h4 class="text-2xl font-bold text-white mb-2">Join the AI Revolution</h4>
-                    <p class="text-slate-500">Get weekly updates on new tools and AI strategies.</p>
-                </div>
-                <div class="flex w-full lg:w-auto gap-2">
-                    <input type="email" placeholder="Email address" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50 flex-1 lg:w-80">
-                    <button class="btn-premium px-8 py-4 rounded-2xl font-bold text-white">Subscribe</button>
-                </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-10 border-t border-white/5 text-xs font-bold text-slate-600 uppercase tracking-widest">
-                <p>&copy; 2024 AURA AI PLATFORM. BUILT FOR THE NEXT GENERATION.</p>
-                <div class="flex gap-8">
-                    <span>Performance: 99.9%</span>
-                    <span>Status: Healthy</span>
-                    <span>v4.2.0</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- NOTIFICATIONS -->
-    <div x-show="notif" x-cloak x-transition class="fixed bottom-10 right-10 z-[200] glass border-green-500/50 p-6 rounded-2xl shadow-2xl flex items-center gap-4">
-        <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400"><i data-lucide="check"></i></div>
-        <div>
-            <h6 class="text-white font-bold">Success!</h6>
-            <p class="text-xs text-slate-400" x-text="notifMsg"></p>
-        </div>
-    </div>
-
-    <script>
-        function auraApp() {
-            return {
-                view: 'home',
-                mobileMenu: false,
-                searchQuery: '',
-                activeCategory: 'All',
-                activeTool: null,
-                inputContent: '',
-                outputContent: '',
-                loading: false,
-                notif: false,
-                notifMsg: '',
-
-                categories: [
-                    { name: 'Writing', icon: 'pen-tool', count: 15 },
-                    { name: 'SEO', icon: 'search', count: 8 },
-                    { name: 'Study', icon: 'graduation-cap', count: 7 },
-                    { name: 'Social', icon: 'share-2', count: 6 },
-                    { name: 'Productivity', icon: 'check-circle', count: 6 },
-                    { name: 'Business', icon: 'briefcase', count: 6 },
-                    { name: 'Dev', icon: 'code', count: 7 },
-                    { name: 'Utils', icon: 'box', count: 8 }
-                ],
-
-                tools: [
-                    { id: 1, name: 'AI Humanizer', cat: 'Writing', icon: 'user', desc: 'Transform AI content into 100% human-sounding text that bypasses detectors.', placeholder: 'Paste your AI-generated text here to humanize it...' },
-                    { id: 2, name: 'SEO Title Master', cat: 'SEO', icon: 'heading', desc: 'Generate high-CTR, SEO-optimized headlines that rank on page one.', placeholder: 'Describe your article or provide keywords...' },
-                    { id: 3, name: 'Smart Quiz Gen', cat: 'Study', icon: 'help-circle', desc: 'Instantly turn any study notes or articles into interactive quizzes.', placeholder: 'Paste your study material...' },
-                    { id: 4, name: 'TikTok Caption Pro', cat: 'Social', icon: 'music', desc: 'Viral captions and hashtag strategies for maximum TikTok engagement.', placeholder: 'Describe your video content...' },
-                    { id: 5, name: 'Resume Architect', cat: 'Productivity', icon: 'file-text', desc: 'ATS-optimized resume descriptions based on your job history.', placeholder: 'List your skills and work history...' },
-                    { id: 6, name: 'JSON Formatter', cat: 'Dev', icon: 'database', desc: 'Clean, validate, and minify your JSON data instantly.', placeholder: 'Paste raw JSON here...' },
-                    { id: 7, name: 'Article Rewriter', cat: 'Writing', icon: 'refresh-cw', desc: 'Rephrase articles while maintaining context and SEO value.', placeholder: 'Paste content to rewrite...' },
-                    { id: 8, name: 'Keyword Explorer', cat: 'SEO', icon: 'key', desc: 'Discover high-volume, low-competition keywords for your niche.', placeholder: 'Enter a seed keyword...' }
-                    // Additional tools would be mapped here in production
-                ],
-
-                blogPosts: [
-                    { title: "The Rise of Agentic AI in 2026", cat: "Trends", date: "Oct 12, 2024", img: "https://images.unsplash.com/photo-1620712943543-bcc4628c9757?auto=format&fit=crop&q=80&w=400" },
-                    { title: "How to Bypass Every AI Detector", cat: "Guides", date: "Oct 10, 2024", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=400" },
-                    { title: "Prompt Engineering is Dead. Long Live...", cat: "Opinion", date: "Oct 08, 2024", img: "https://images.unsplash.com/photo-1675271591211-126ad94e495d?auto=format&fit=crop&q=80&w=400" }
-                ],
-
-                get filteredTools() {
-                    return this.tools.filter(t => {
-                        const matchesSearch = t.name.toLowerCase().includes(this.searchQuery.toLowerCase());
-                        const matchesCat = this.activeCategory === 'All' || t.cat === this.activeCategory;
-                        return matchesSearch && matchesCat;
-                    });
-                },
-
-                setView(v) {
-                    this.view = v;
-                    window.scrollTo({top: 0, behavior: 'smooth'});
-                    setTimeout(() => lucide.createIcons(), 50);
-                },
-
-                setCategory(c) {
-                    this.activeCategory = c;
-                },
-
-                openTool(t) {
-                    this.activeTool = t;
-                    this.inputContent = '';
-                    this.outputContent = '';
-                    this.setView('tool-detail');
-                },
-
-                async runTool() {
-                    if (!this.inputContent) return;
-                    this.loading = true;
-                    
-                    // Simulated 2-second AI processing delay
-                    await new Promise(res => setTimeout(res, 2000));
-                    
-                    this.outputContent = `[Aura AI v4.2 Analysis Complete]\n\nBased on your input, I have optimized the content for high conversion and human readability. \n\n"The primary objective was to maintain the core message while enhancing the linguistic variety. We've introduced complex sentence structures and varied vocabulary to bypass traditional AI detection algorithms while increasing user engagement metrics."\n\nWord Count: 142 | Readability: Professional | Sentiment: Positive`;
-                    
-                    this.loading = false;
-                    this.showNotif('Content Generated Successfully!');
-                },
-
-                showNotif(msg) {
-                    this.notifMsg = msg;
-                    this.notif = true;
-                    setTimeout(() => this.notif = false, 3000);
-                },
-
-                copyOutput() {
-                    navigator.clipboard.writeText(this.outputContent);
-                    this.showNotif('Copied to Clipboard!');
-                },
-
-                downloadOutput() {
-                    const blob = new Blob([this.outputContent], { type: 'text/plain' });
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `${this.activeTool.name}-result.txt`;
-                    a.click();
-                    this.showNotif('Downloading File...');
-                }
-            }
-        }
-
-        // THREE.JS NEURAL BACKGROUND
-        function initThree() {
-            const container = document.getElementById('canvas-container');
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-
-            const geometry = new THREE.BufferGeometry();
-            const vertices = [];
-            for (let i = 0; i < 1500; i++) {
-                vertices.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
-            }
-            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-            
-            const material = new THREE.PointsMaterial({ color: 0x8b5cf6, size: 2, transparent: true, opacity: 0.5 });
-            const points = new THREE.Points(geometry, material);
-            scene.add(points);
-
-            camera.position.z = 1000;
-
-            function animate() {
-                requestAnimationFrame(animate);
-                points.rotation.x += 0.0005;
-                points.rotation.y += 0.0005;
-                renderer.render(scene, camera);
-            }
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-
-            animate();
-        }
-
-        // INIT SCRIPTS
-        document.addEventListener('DOMContentLoaded', () => {
-            initThree();
-            lucide.createIcons();
-            
-            // GSAP Page Load
-            gsap.from("nav", { y: -100, opacity: 0, duration: 1, ease: "power4.out" });
-            gsap.from("h1", { y: 100, opacity: 0, duration: 1.2, delay: 0.2, ease: "power4.out" });
-        });
-    </script>
-</body>
-</html>
+{
+  "siteUrl": "https://smarttools.com",
+  "ar": {
+    "siteName": "أدوات ذكية",
+    "tagline": "أدوات إلكترونية ذكية لنجاحك اليومي",
+    "description": "منصة أدوات ذكية هي وجهتك الأولى للحصول على أدوات الذكاء الاصطناعي المجانية، وأدوات الإنتاجية، والحاسبات، ومحولات الوحدات، وأدوات السيو والدراسة المصممة خصيصاً للمستخدم العربي بأسلوب عصري وسريع.",
+    "dir": "rtl",
+    "lang": "ar",
+    "otherLang": "en",
+    "otherLangName": "English",
+    "otherLangPath": "/en/",
+    "nav": {
+      "home": "الرئيسية",
+      "tools": "جميع الأدوات",
+      "blog": "المدونة",
+      "about": "من نحن",
+      "contact": "اتصل بنا",
+      "categories": "التصنيفات"
+    },
+    "searchPlaceholder": "ابحث عن أداة ذكية...",
+    "featuredToolsTitle": "الأدوات المميزة",
+    "featuredToolsSubtitle": "مجموعة مختارة من أقوى الأدوات المعتمدة على الذكاء الاصطناعي والإنتاجية لتسهيل مهامك اليومية.",
+    "popularToolsTitle": "الأدوات الأكثر شعبية",
+    "popularToolsSubtitle": "الأدوات التي يعتمد عليها آلاف المستخدمين يومياً لإنجاز أعمالهم ودراستهم بسرعة.",
+    "categoriesTitle": "تصنيفات الأدوات",
+    "categoriesSubtitle": "تصفح مجموعتنا الواسعة من الأدوات المنظمة في تصنيفات سهلة الاستخدام.",
+    "benefitsTitle": "فوائد استخدام منصة أدوات ذكية",
+    "whyChooseTitle": "لماذا تختار أدوات ذكية؟",
+    "latestToolsTitle": "أحدث الأدوات المضافة",
+    "faqTitle": "الأسئلة الشائعة",
+    "newsletterTitle": "اشترك في نشرتنا البريدية",
+    "newsletterSubtitle": "احصل على آخر التحديثات والأدوات الجديدة مباشرة في بريدك الإلكتروني مجاناً.",
+    "newsletterPlaceholder": "أدخل بريدك الإلكتروني هنا...",
+    "subscribeButton": "اشترك الآن",
+    "testimonialsTitle": "آراء ورسائل المستخدمين",
+    "ctaTitle": "هل أنت جاهز لزيادة إنتاجيتك؟",
+    "ctaSubtitle": "ابدأ الآن في استخدام أكثر من 80 أداة مجانية واحترافية بدون تسجيل وبسرعة فائقة.",
+    "ctaButton": "اكتشف جميع الأدوات",
+    "copyright": "جميع الحقوق محفوظة © 2026 منصة أدوات ذكية. تصميم وتطوير احترافي.",
+    "links": {
+      "legal": "الصفحات القانونية",
+      "privacy": "سياسة الخصوصية",
+      "terms": "شروط الخدمة",
+      "disclaimer": "إخلاء المسؤولية",
+      "editorial": "السياسة التحريرية",
+      "cookie": "سياسة ملفات الارتباط",
+      "sitemap": "خريطة الموقع",
+      "contactUs": "تواصل معنا"
+    },
+    "moreInfo": "اقرأ المزيد",
+    "howToUse": "كيفية الاستخدام",
+    "features": "المميزات الرئيسية",
+    "benefits": "الفوائد والقيمة",
+    "relatedTools": "أدوات ذات صلة",
+    "author": "الكاتب",
+    "updatedAt": "آخر تحديث",
+    "readTime": "وقت القراءة",
+    "minutes": "دقائق"
+  },
+  "en": {
+    "siteName": "SMART TOOLS",
+    "tagline": "Smart Online Tools for Everyday Success",
+    "description": "Smart Tools is your ultimate destination for free AI tools, productivity utilities, calculators, converters, SEO tools, and study aids designed for high performance and sleek UX.",
+    "dir": "ltr",
+    "lang": "en",
+    "otherLang": "ar",
+    "otherLangName": "العربية",
+    "otherLangPath": "/ar/",
+    "nav": {
+      "home": "Home",
+      "tools": "All Tools",
+      "blog": "Blog",
+      "about": "About Us",
+      "contact": "Contact Us",
+      "categories": "Categories"
+    },
+    "searchPlaceholder": "Search for a smart tool...",
+    "featuredToolsTitle": "Featured Tools",
+    "featuredToolsSubtitle": "A handpicked selection of our most powerful AI and productivity tools to simplify your workflow.",
+    "popularToolsTitle": "Most Popular Tools",
+    "popularToolsSubtitle": "The tools relied upon by thousands of users daily to complete work and study projects quickly.",
+    "categoriesTitle": "Tool Categories",
+    "categoriesSubtitle": "Browse our extensive selection of tools organized in easy-to-navigate categories.",
+    "benefitsTitle": "Benefits of Smart Tools",
+    "whyChooseTitle": "Why Choose Smart Tools?",
+    "latestToolsTitle": "Latest Added Tools",
+    "faqTitle": "Frequently Asked Questions",
+    "newsletterTitle": "Subscribe to Our Newsletter",
+    "newsletterSubtitle": "Get the latest updates, tool announcements, and tips sent straight to your inbox.",
+    "newsletterPlaceholder": "Enter your email address...",
+    "subscribeButton": "Subscribe Now",
+    "testimonialsTitle": "User Testimonials",
+    "ctaTitle": "Ready to Boost Your Productivity?",
+    "ctaSubtitle": "Start using 80+ free, professional tools with no signup required and lightning-fast speeds.",
+    "ctaButton": "Explore All Tools",
+    "copyright": "All rights reserved © 2026 Smart Tools Platform. Professional Design & Dev.",
+    "links": {
+      "legal": "Legal Pages",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "disclaimer": "Disclaimer",
+      "editorial": "Editorial Policy",
+      "cookie": "Cookie Policy",
+      "sitemap": "Sitemap",
+      "contactUs": "Contact Us"
+    },
+    "moreInfo": "Read More",
+    "howToUse": "How to Use",
+    "features": "Key Features",
+    "benefits": "Benefits & Value",
+    "relatedTools": "Related Tools",
+    "author": "Author",
+    "updatedAt": "Last Updated",
+    "readTime": "Read Time",
+    "minutes": "min"
+  }
+}
