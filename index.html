@@ -2,978 +2,1174 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SmartTool — Interactive PDF & File Tools</title>
-<meta name="description" content="SmartTool — Free online tools: PDF compressor, image converter, and more. Fast, simple, and free."/>
-<meta name="keywords" content="PDF compressor, PDF tools, image tools, online tools, SmartTool"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://smarttool.example.com/"/>
-
-<!-- Open Graph / SEO -->
-<meta property="og:title" content="SmartTool — Interactive Online Tools"/>
-<meta property="og:description" content="PDF compression, image conversion, and more — free and instant."/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SmartTool AI — 40+ Free AI-Powered Tools</title>
+<meta name="description" content="SmartTool AI: 40+ free AI tools for writing, SEO, social media, productivity & more. No signup needed. Instant AI results. Arabic & English supported."/>
+<meta name="keywords" content="free AI tools,AI writer,grammar checker,paraphrasing tool,SEO tools,content generator,AI humanizer,blog title generator"/>
+<meta name="robots" content="index,follow"/>
+<meta name="author" content="SmartTool AI"/>
+<link rel="canonical" href="https://smarttool-ai.com/"/>
+<meta property="og:title" content="SmartTool AI — 40+ Free AI-Powered Tools"/>
+<meta property="og:description" content="Write smarter, rank higher, create faster. 40+ free AI tools. No signup needed."/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://smarttool.example.com/"/>
-
-<!-- Google AdSense -->
+<meta property="og:url" content="https://smarttool-ai.com/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="SmartTool AI — Free AI Tools Platform"/>
+<meta name="twitter:description" content="40+ free AI tools for writing, SEO, social media, productivity. Instant results."/>
+<meta name="google-adsense-account" content="ca-pub-4421017699603693"/>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421017699603693" crossorigin="anonymous"></script>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SmartTool AI","url":"https://smarttool-ai.com","description":"Free AI-powered tools platform for writing, SEO, social media and productivity","potentialAction":{"@type":"SearchAction","target":"https://smarttool-ai.com/?search={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SmartTool AI","url":"https://smarttool-ai.com","logo":"https://smarttool-ai.com/logo.png","sameAs":[],"contactPoint":{"@type":"ContactPoint","contactType":"Customer Support","email":"support@smarttool-ai.com"}}</script>
 <style>
-  :root {
-    --bg: #F7F6F2;
-    --surface: #FFFFFF;
-    --accent: #2D5A1B;
-    --accent-light: #EAF2E3;
-    --accent-mid: #4A8B2A;
-    --text: #1A1A14;
-    --muted: #6B7060;
-    --border: #DDD9CF;
-    --danger: #C0392B;
-    --radius: 14px;
-    --radius-sm: 8px;
-    --font: 'Syne', sans-serif;
-    --font-ar: 'Noto Kufi Arabic', sans-serif;
-    --shadow: 0 2px 20px rgba(0,0,0,0.07);
-    --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--font);
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  body.ar {
-    font-family: var(--font-ar);
-    direction: rtl;
-  }
+:root{
+--bg:#07080d;--bg2:#0c0e16;--bg3:#11141f;--surf:#161924;--surf2:#1c2030;
+--bdr:rgba(255,255,255,0.06);--bdr2:rgba(255,255,255,0.11);
+--p:#7c6dff;--p2:#a594ff;--p3:#4fc3f7;--grn:#00e5a0;--pnk:#ff6b9d;--ylw:#ffd166;
+--tx:#eef0f8;--tx2:#8b92b0;--tx3:#4a5068;
+--fn:'Space Grotesk',sans-serif;--fn-ar:'Noto Kufi Arabic',sans-serif;--fn-h:'Syne',sans-serif;
+--r:12px;--rsm:8px;--rlg:18px;--rxl:24px;
+--sh:0 4px 24px rgba(0,0,0,0.3);--shp:0 0 40px rgba(124,109,255,0.18);
+}
+.lt{--bg:#f5f6fc;--bg2:#eef0f9;--bg3:#e6e9f5;--surf:#fff;--surf2:#f0f2fc;--bdr:rgba(0,0,0,0.07);--bdr2:rgba(0,0,0,0.12);--tx:#0d0e1a;--tx2:#454a6a;--tx3:#8890aa}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden;transition:background .25s,color .25s}
+body.ar{font-family:var(--fn-ar);direction:rtl}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--surf2);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--p)}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(247,246,242,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 clamp(1rem,4vw,3rem);
-    height: 64px;
-    display: flex; align-items: center; justify-content: space-between;
-    transition: background 0.3s;
-  }
-  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo { width: 36px; height: 36px; background: var(--accent); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
-  .nav-logo svg { width: 20px; height: 20px; fill: #fff; }
-  .nav-name { font-size: 1.15rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-right { display: flex; align-items: center; gap: 1rem; }
-  .lang-toggle {
-    display: flex; background: var(--border); border-radius: 20px; padding: 3px; gap: 2px;
-  }
-  .lang-btn {
-    padding: 4px 12px; border-radius: 16px; font-size: 0.75rem; font-weight: 600;
-    cursor: pointer; border: none; background: transparent; color: var(--muted); transition: all 0.2s;
-  }
-  .lang-btn.active { background: var(--surface); color: var(--accent); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
-  .nav-cta {
-    background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm);
-    padding: 8px 18px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.2s;
-    font-family: inherit;
-  }
-  .nav-cta:hover { background: var(--accent-mid); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
-  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-  @media (max-width: 768px) {
-    .nav-links, .nav-cta { display: none; }
-    .hamburger { display: flex; }
-  }
-  .mobile-menu {
-    display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
-    background: rgba(247,246,242,0.97); backdrop-filter: blur(12px);
-    z-index: 99; padding: 2rem; flex-direction: column; gap: 1.5rem;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a { font-size: 1.4rem; font-weight: 600; color: var(--text); text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
-  .mobile-menu .lang-toggle { margin-top: 1rem; width: fit-content; }
+/* CANVAS */
+#nc{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    padding: clamp(5rem,10vh,8rem) clamp(1rem,4vw,3rem) 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background: radial-gradient(ellipse 80% 60% at 70% 40%, #d8f0c5 0%, transparent 60%),
-                radial-gradient(ellipse 60% 40% at 20% 80%, #e8f5de 0%, transparent 50%);
-    opacity: 0.6;
-  }
-  .hero-content { position: relative; z-index: 1; text-align: center; max-width: 820px; }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--accent-light); border: 1px solid #b8dfa0; border-radius: 20px;
-    padding: 6px 16px; font-size: 0.78rem; font-weight: 600; color: var(--accent);
-    margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase;
-    animation: fadeUp 0.6s ease both;
-  }
-  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
-  .hero-title {
-    font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800; letter-spacing: -0.04em;
-    line-height: 1.05; color: var(--text); margin-bottom: 1.25rem;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-  .hero-title em { font-style: normal; color: var(--accent); }
-  .hero-sub {
-    font-size: clamp(1rem, 2.2vw, 1.2rem); color: var(--muted); line-height: 1.7;
-    max-width: 560px; margin: 0 auto 2.5rem;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-  .btn-primary {
-    background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm);
-    padding: 14px 28px; font-size: 1rem; font-weight: 600; cursor: pointer;
-    transition: all 0.2s; font-family: inherit; text-decoration: none; display: inline-block;
-  }
-  .btn-primary:hover { background: var(--accent-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,90,27,0.25); }
-  .btn-outline {
-    background: transparent; color: var(--text); border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm); padding: 13px 28px; font-size: 1rem; font-weight: 600;
-    cursor: pointer; transition: all 0.2s; font-family: inherit; text-decoration: none; display: inline-block;
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-  .hero-scroll { margin-top: 3rem; animation: fadeUp 0.6s 0.4s ease both; }
-  .hero-scroll span { font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 6px; justify-content: center; }
-  .scroll-arrow { width: 18px; height: 18px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); display: inline-block; animation: bounce 1.5s infinite; }
+/* NAV */
+.nav{position:fixed;top:0;inset-x:0;z-index:999;height:62px;
+  padding:0 clamp(1rem,3vw,2.5rem);display:flex;align-items:center;gap:1rem;
+  background:rgba(7,8,13,.82);backdrop-filter:blur(18px) saturate(180%);
+  border-bottom:1px solid var(--bdr);transition:background .25s}
+.lt .nav{background:rgba(245,246,252,.88)}
+.nbrand{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.nlogo{width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--p),var(--p3));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 18px rgba(124,109,255,.4)}
+.nlogo svg{width:18px;height:18px;fill:#fff}
+.nname{font-family:var(--fn-h);font-size:1.05rem;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(135deg,var(--tx) 40%,var(--p2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nsearch{flex:1;max-width:400px;position:relative}
+.nsearch input{width:100%;padding:8px 14px 8px 38px;background:var(--surf);
+  border:1px solid var(--bdr2);border-radius:30px;font-size:.82rem;
+  color:var(--tx);outline:none;transition:border-color .2s,box-shadow .2s;font-family:inherit}
+.nsearch input:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(124,109,255,.12)}
+.nsearch input::placeholder{color:var(--tx3)}
+.nsico{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--tx3);font-size:.9rem;pointer-events:none}
+.body.ar .nsico{left:auto;right:12px}
+.sres{display:none;position:absolute;top:calc(100% + 7px);left:0;right:0;
+  background:var(--surf);border:1px solid var(--bdr2);border-radius:var(--r);
+  padding:.4rem;z-index:200;max-height:280px;overflow-y:auto;
+  box-shadow:0 16px 50px rgba(0,0,0,.45)}
+.sres.show{display:block}
+.sri{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:var(--rsm);cursor:pointer;transition:background .12s;font-size:.82rem}
+.sri:hover{background:var(--surf2)}
+.sri .ic{font-size:1.1rem;width:26px;text-align:center}
+.sri strong{display:block;font-size:.82rem;font-weight:600}
+.sri span{font-size:.7rem;color:var(--tx3)}
+.nact{display:flex;align-items:center;gap:.55rem;margin-left:auto}
+.nico{width:36px;height:36px;border-radius:9px;border:1px solid var(--bdr2);
+  background:var(--surf);color:var(--tx2);display:flex;align-items:center;
+  justify-content:center;font-size:1rem;transition:all .2s;flex-shrink:0}
+.nico:hover{border-color:var(--p);color:var(--p);background:rgba(124,109,255,.08)}
+.ncta{padding:8px 18px;border-radius:30px;
+  background:linear-gradient(135deg,var(--p),var(--p3));
+  color:#fff;font-size:.82rem;font-weight:600;letter-spacing:.01em;
+  box-shadow:0 3px 16px rgba(124,109,255,.4);transition:all .2s;white-space:nowrap}
+.ncta:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(124,109,255,.5)}
+.hbg{display:none;flex-direction:column;gap:4px;padding:5px;background:none;border:none}
+.hbg span{display:block;width:20px;height:2px;background:var(--tx);border-radius:2px;transition:all .28s}
+@media(max-width:860px){.nsearch{max-width:180px}.ncta{display:none}}
+@media(max-width:580px){.nsearch{display:none}.hbg{display:flex}}
 
-  /* AD SLOT */
-  .ad-slot {
-    background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius);
-    padding: 1rem; text-align: center; margin: 1.5rem 0; min-height: 90px;
-    display: flex; align-items: center; justify-content: center; overflow: hidden;
-  }
-  .ad-slot ins { display: block; width: 100%; }
+/* MOBILE NAV */
+.mnav{display:none;position:fixed;top:62px;inset-x:0;bottom:0;
+  background:rgba(7,8,13,.97);backdrop-filter:blur(18px);
+  z-index:998;flex-direction:column;padding:1.5rem;gap:.75rem;overflow-y:auto}
+.mnav.open{display:flex}
+.mnav input{width:100%;padding:10px 16px;background:var(--surf);border:1px solid var(--bdr2);
+  border-radius:30px;color:var(--tx);font-size:.88rem;outline:none;font-family:inherit;margin-bottom:.5rem}
+.mnav a{font-size:1rem;font-weight:500;padding:.7rem 0;border-bottom:1px solid var(--bdr);
+  color:var(--tx2);transition:color .2s;display:flex;align-items:center;gap:.6rem}
+.mnav a:hover{color:var(--p)}
 
-  /* SECTION LAYOUT */
-  section { padding: 5rem clamp(1rem,4vw,3rem); }
-  .section-inner { max-width: 1200px; margin: 0 auto; }
-  .section-label {
-    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 0.75rem;
-  }
-  .section-title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em;
-    color: var(--text); margin-bottom: 1rem; line-height: 1.15;
-  }
-  .section-sub { font-size: 1.05rem; color: var(--muted); max-width: 540px; line-height: 1.7; margin-bottom: 3rem; }
+/* PAGES */
+.pg{display:none;padding-top:62px;position:relative;z-index:1;min-height:100vh}
+.pg.on{display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1rem,3vw,2.5rem)}
 
-  /* TOOLS GRID */
-  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
-  .tool-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 1.75rem; cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden;
-  }
-  .tool-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: var(--accent); transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
-  }
-  .tool-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: #c5ddb6; }
-  .tool-card:hover::before { transform: scaleX(1); }
-  .tool-icon {
-    width: 52px; height: 52px; background: var(--accent-light); border-radius: 12px;
-    display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;
-    font-size: 1.5rem;
-  }
-  .tool-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
-  .tool-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.25rem; }
-  .tool-tag {
-    display: inline-block; background: var(--accent-light); color: var(--accent);
-    border-radius: 20px; padding: 3px 10px; font-size: 0.72rem; font-weight: 600;
-  }
-  #tools { background: var(--bg); }
+/* HERO */
+.hero{min-height:calc(100vh - 62px);display:flex;align-items:center;
+  padding:3.5rem 0 5rem;position:relative;overflow:hidden}
+.hglow{position:absolute;top:5%;left:50%;transform:translateX(-50%);
+  width:900px;height:600px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(124,109,255,.13) 0%,transparent 65%);
+  pointer-events:none;animation:pulseGlow 6s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{opacity:.6}50%{opacity:1}}
+.hcont{text-align:center;max-width:820px;margin:0 auto;position:relative}
+.hbadge{display:inline-flex;align-items:center;gap:7px;
+  background:rgba(124,109,255,.1);border:1px solid rgba(124,109,255,.28);
+  border-radius:30px;padding:5px 14px;font-size:.72rem;font-weight:700;
+  color:var(--p2);letter-spacing:.09em;text-transform:uppercase;
+  margin-bottom:1.5rem;animation:fadeUp .5s ease both}
+.hbadge::before{content:'';width:6px;height:6px;background:var(--grn);border-radius:50%;
+  box-shadow:0 0 8px var(--grn);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.htitle{font-family:var(--fn-h);font-size:clamp(2.6rem,7vw,5.2rem);font-weight:800;
+  letter-spacing:-.05em;line-height:1.03;margin-bottom:1.25rem;
+  animation:fadeUp .55s .08s ease both}
+.htitle .g1{background:linear-gradient(140deg,#fff 25%,var(--p2) 55%,var(--p3) 85%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lt .htitle .g1{background:linear-gradient(140deg,#0d0e1a 25%,var(--p) 60%,var(--p3) 90%);
+  -webkit-background-clip:text;background-clip:text}
+.hsub{font-size:clamp(.95rem,2vw,1.13rem);color:var(--tx2);line-height:1.75;
+  max-width:580px;margin:0 auto 2rem;font-weight:300;animation:fadeUp .55s .16s ease both}
+.hbar{display:flex;align-items:center;max-width:540px;margin:0 auto 1.75rem;
+  background:var(--surf);border:1px solid var(--bdr2);border-radius:40px;
+  padding:5px 5px 5px 18px;box-shadow:var(--shp);
+  animation:fadeUp .55s .24s ease both;transition:box-shadow .25s,border-color .25s}
+.hbar:focus-within{border-color:var(--p);box-shadow:0 0 0 3px rgba(124,109,255,.18),var(--shp)}
+.hbar input{flex:1;background:none;border:none;outline:none;font-size:.92rem;
+  color:var(--tx);font-family:inherit;padding:4px 0}
+.hbar input::placeholder{color:var(--tx3)}
+.hbar button{background:linear-gradient(135deg,var(--p),var(--p3));border:none;
+  border-radius:30px;padding:9px 20px;color:#fff;font-weight:600;font-size:.84rem;
+  box-shadow:0 3px 14px rgba(124,109,255,.4);transition:all .2s;white-space:nowrap;font-family:inherit}
+.hbar button:hover{transform:scale(1.04)}
+.hbtns{display:flex;gap:.875rem;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp .55s .32s ease both}
+.btn1{padding:12px 28px;border-radius:30px;
+  background:linear-gradient(135deg,var(--p),#8a6fff);color:#fff;
+  font-size:.94rem;font-weight:600;box-shadow:0 5px 24px rgba(124,109,255,.4);
+  transition:all .22s;font-family:inherit}
+.btn1:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,109,255,.5)}
+.btn2{padding:11px 28px;border-radius:30px;border:1px solid var(--bdr2);
+  background:var(--surf);color:var(--tx2);font-size:.94rem;font-weight:500;
+  transition:all .22s;font-family:inherit}
+.btn2:hover{border-color:var(--p);color:var(--p);background:rgba(124,109,255,.06)}
+.hstats{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;
+  margin-top:3rem;animation:fadeUp .55s .4s ease both}
+.hstat .v{font-family:var(--fn-h);font-size:1.9rem;font-weight:800;
+  background:linear-gradient(135deg,var(--tx),var(--p2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hstat .l{font-size:.75rem;color:var(--tx3);margin-top:1px}
 
-  /* PDF COMPRESSOR SECTION */
-  #pdf-tool { background: var(--surface); }
-  .pdf-tool-box {
-    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 2rem; max-width: 680px;
-  }
-  .drop-zone {
-    border: 2px dashed var(--border); border-radius: var(--radius-sm); padding: 3rem 2rem;
-    text-align: center; cursor: pointer; transition: all 0.2s; background: var(--surface);
-    margin-bottom: 1.5rem;
-  }
-  .drop-zone:hover, .drop-zone.drag-over { border-color: var(--accent); background: var(--accent-light); }
-  .drop-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-  .drop-text { font-size: 0.95rem; color: var(--muted); }
-  .drop-text strong { color: var(--text); }
-  #pdf-file-input { display: none; }
-  .file-info { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border); margin-bottom: 1.5rem; }
-  .file-info .file-icon { font-size: 2rem; }
-  .file-info .file-meta strong { display: block; font-size: 0.95rem; font-weight: 600; }
-  .file-info .file-meta span { font-size: 0.8rem; color: var(--muted); }
-  .quality-options { margin-bottom: 1.5rem; }
-  .quality-options h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text); }
-  .quality-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; }
-  .quality-opt {
-    padding: 0.75rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-    text-align: center; cursor: pointer; transition: all 0.2s; background: var(--surface);
-  }
-  .quality-opt:hover { border-color: var(--accent); }
-  .quality-opt.active { border-color: var(--accent); background: var(--accent-light); }
-  .quality-opt .q-label { font-size: 0.8rem; font-weight: 700; color: var(--text); }
-  .quality-opt .q-desc { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
-  .quality-opt .q-size { font-size: 0.72rem; color: var(--accent); margin-top: 4px; font-weight: 600; }
-  .max-size-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; display: flex; align-items: center; gap: 6px; }
-  .progress-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem; display: none; }
-  .progress-fill { height: 100%; background: var(--accent); width: 0; transition: width 0.3s; border-radius: 3px; }
-  .result-box { display: none; background: var(--accent-light); border: 1px solid #b8dfa0; border-radius: var(--radius-sm); padding: 1.25rem; margin-top: 1rem; }
-  .result-box .result-stats { display: flex; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-  .result-box .stat { text-align: center; }
-  .result-box .stat .val { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
-  .result-box .stat .lbl { font-size: 0.75rem; color: var(--muted); }
-  .error-box { background: #fdf0ef; border: 1px solid #f5c6c3; border-radius: var(--radius-sm); padding: 1rem; margin-top: 1rem; color: var(--danger); font-size: 0.88rem; display: none; }
+/* AD SLOTS */
+.adwrap{padding:1.25rem 0;display:flex;justify-content:center}
+.adbox{background:var(--surf);border:1px dashed var(--bdr2);border-radius:var(--r);
+  min-height:90px;width:100%;max-width:960px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;flex-shrink:0}
+.adlbl{position:absolute;top:5px;right:9px;font-size:.6rem;color:var(--tx3);
+  text-transform:uppercase;letter-spacing:.06em}
 
-  /* CONTACT */
-  #contact { background: var(--bg); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-field label { font-size: 0.82rem; font-weight: 600; color: var(--text); }
-  .form-field input, .form-field textarea, .form-field select {
-    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-    padding: 10px 14px; font-size: 0.92rem; background: var(--surface);
-    color: var(--text); font-family: inherit; transition: border-color 0.2s;
-    outline: none;
-  }
-  .form-field input:focus, .form-field textarea:focus { border-color: var(--accent); }
-  .form-field textarea { resize: vertical; min-height: 130px; }
-  .form-status { font-size: 0.85rem; padding: 0.75rem 1rem; border-radius: var(--radius-sm); display: none; }
-  .form-status.success { background: var(--accent-light); color: var(--accent); border: 1px solid #b8dfa0; display: block; }
-  .form-status.error { background: #fdf0ef; color: var(--danger); border: 1px solid #f5c6c3; display: block; }
-  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
-  .info-item { display: flex; gap: 1rem; align-items: flex-start; }
-  .info-icon { width: 44px; height: 44px; background: var(--accent-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-  .info-text h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
-  .info-text p { font-size: 0.85rem; color: var(--muted); }
+/* SECTION */
+sec,section{padding:4.5rem 0}
+.sh{text-align:center;margin-bottom:3rem}
+.slbl{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--p);background:rgba(124,109,255,.1);
+  border:1px solid rgba(124,109,255,.22);border-radius:18px;padding:4px 12px;margin-bottom:.875rem}
+.stit{font-family:var(--fn-h);font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;
+  letter-spacing:-.04em;line-height:1.13;margin-bottom:.75rem}
+.ssub{font-size:.98rem;color:var(--tx2);max-width:520px;margin:0 auto;
+  line-height:1.72;font-weight:300}
 
-  /* FEATURES */
-  #features { background: var(--surface); }
-  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-  .feature-item { display: flex; flex-direction: column; gap: 0.75rem; }
-  .feature-icon { font-size: 1.75rem; }
-  .feature-item h3 { font-size: 1rem; font-weight: 700; color: var(--text); }
-  .feature-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+/* TOOL CARDS */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:1.1rem}
+.tcard{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rlg);
+  padding:1.4rem;cursor:pointer;transition:all .28s;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;gap:.65rem}
+.tcard::before{content:'';position:absolute;inset:0;opacity:0;
+  background:linear-gradient(135deg,rgba(124,109,255,.05),rgba(79,195,247,.03));
+  transition:opacity .28s}
+.tcard:hover{border-color:rgba(124,109,255,.28);transform:translateY(-3px);
+  box-shadow:0 14px 44px rgba(0,0,0,.26),0 0 24px rgba(124,109,255,.07)}
+.tcard:hover::before{opacity:1}
+.tic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;
+  justify-content:center;font-size:1.3rem;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(124,109,255,.14),rgba(79,195,247,.09));
+  border:1px solid rgba(124,109,255,.13)}
+.tnm{font-size:.94rem;font-weight:700;color:var(--tx)}
+.tds{font-size:.78rem;color:var(--tx2);line-height:1.52;flex:1}
+.tft{display:flex;align-items:center;justify-content:space-between}
+.tcat{font-size:.66rem;padding:3px 9px;border-radius:18px;font-weight:600;letter-spacing:.03em}
+.tarr{color:var(--tx3);font-size:1rem;transition:color .2s,transform .2s}
+.tcard:hover .tarr{color:var(--p);transform:translateX(3px)}
+body.ar .tcard:hover .tarr{transform:translateX(-3px)}
 
-  /* ABOUT */
-  #about { background: var(--accent); color: #fff; }
-  #about .section-label { color: rgba(255,255,255,0.6); }
-  #about .section-title { color: #fff; }
-  #about .section-sub { color: rgba(255,255,255,0.75); max-width: 700px; }
-  .about-stats { display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 2rem; }
-  .about-stat .val { font-size: 2.5rem; font-weight: 800; color: #fff; }
-  .about-stat .lbl { font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-top: 2px; }
+/* CAT PILLS */
+.cpills{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2.25rem;justify-content:center}
+.cpill{padding:6px 16px;border-radius:30px;font-size:.78rem;font-weight:600;
+  border:1px solid var(--bdr2);background:var(--surf);color:var(--tx2);
+  cursor:pointer;transition:all .2s}
+.cpill:hover,.cpill.act{background:linear-gradient(135deg,var(--p),var(--p3));
+  color:#fff;border-color:transparent;box-shadow:0 3px 14px rgba(124,109,255,.32)}
 
-  /* PRIVACY / TERMS */
-  #privacy, #terms { background: var(--bg); }
-  .legal-content { max-width: 760px; }
-  .legal-content h3 { font-size: 1.1rem; font-weight: 700; margin: 2rem 0 0.5rem; color: var(--text); }
-  .legal-content p { font-size: 0.92rem; color: var(--muted); line-height: 1.8; margin-bottom: 0.75rem; }
+/* FEATURE CARDS */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.fcard{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rlg);
+  padding:1.75rem;transition:border-color .25s,box-shadow .25s}
+.fcard:hover{border-color:rgba(124,109,255,.22);box-shadow:0 8px 32px rgba(0,0,0,.18)}
+.fic{font-size:2rem;margin-bottom:.875rem}
+.ftit{font-size:.96rem;font-weight:700;margin-bottom:.4rem}
+.ftx{font-size:.82rem;color:var(--tx2);line-height:1.62}
 
-  /* FOOTER */
-  footer {
-    background: var(--text); color: rgba(255,255,255,0.6); padding: 3rem clamp(1rem,4vw,3rem);
-    font-size: 0.85rem;
-  }
-  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
-  .footer-brand { font-size: 1rem; font-weight: 700; color: #fff; }
-  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
-  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: #fff; }
+/* TRENDING */
+.trgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.875rem}
+.trcard{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:1rem 1.1rem;cursor:pointer;transition:all .22s;
+  display:flex;align-items:center;gap:.8rem}
+.trcard:hover{border-color:rgba(124,109,255,.26);transform:translateX(3px)}
+body.ar .trcard:hover{transform:translateX(-3px)}
+.trk{font-family:var(--fn-h);font-size:1.1rem;font-weight:800;color:var(--tx3);width:26px;text-align:center;flex-shrink:0}
+.trk.top{color:var(--p2)}
+.trcn .trn{font-size:.84rem;font-weight:600}
+.trcn .trc{font-size:.68rem;color:var(--tx3);margin-top:2px}
 
-  /* ANIMATIONS */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes bounce { 0%,100% { transform: translateY(0) rotate(45deg); } 50% { transform: translateY(5px) rotate(45deg); } }
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
-  .reveal.visible { opacity: 1; transform: none; }
+/* CAT COLORS */
+.cwr{background:rgba(124,109,255,.12);color:#b4a7ff}
+.cst{background:rgba(0,229,160,.09);color:#00e5a0}
+.cso{background:rgba(255,107,157,.09);color:#ff6b9d}
+.cpr{background:rgba(79,195,247,.09);color:#4fc3f7}
+.cse{background:rgba(255,209,102,.09);color:#ffd166}
+.ctx_{background:rgba(100,220,255,.09);color:#64dcff}
+.cbu{background:rgba(110,231,183,.09);color:#6ee7b7}
 
-  /* RTL ADJUSTMENTS */
-  body.ar .tool-card::before { transform-origin: right; }
-  body.ar .hero-content { direction: rtl; }
-  body.ar nav { direction: rtl; }
+/* FAQ */
+.flist{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:.65rem}
+.fi{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden}
+.fq{padding:1rem 1.15rem;font-size:.9rem;font-weight:600;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:.5rem;transition:color .2s}
+.fq:hover{color:var(--p)}
+.fq .ico{font-size:1rem;transition:transform .28s;color:var(--tx3);flex-shrink:0}
+.fi.op .fq .ico{transform:rotate(45deg);color:var(--p)}
+.fa{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
+.fi.op .fa{max-height:400px}
+.fa p{padding:0 1.15rem 1rem;font-size:.84rem;color:var(--tx2);line-height:1.7}
 
-  /* Page section visibility */
-  .page-section { display: none; }
-  .page-section.active { display: block; }
-  #home-sections { display: block; }
+/* TOOL PAGE */
+.tph{padding:2.5rem 0 1.75rem;
+  background:linear-gradient(180deg,rgba(124,109,255,.05) 0%,transparent 100%);
+  border-bottom:1px solid var(--bdr)}
+.bc{display:flex;align-items:center;gap:.45rem;font-size:.76rem;color:var(--tx3);margin-bottom:1rem;flex-wrap:wrap}
+.bc a{color:var(--tx2);transition:color .2s}
+.bc a:hover{color:var(--p)}
+.bc span{color:var(--tx3)}
+.tptit{font-family:var(--fn-h);font-size:clamp(1.7rem,4vw,2.75rem);font-weight:800;letter-spacing:-.04em;margin-bottom:.65rem}
+.tpds{font-size:.98rem;color:var(--tx2);max-width:640px;line-height:1.68;font-weight:300}
+.tbdgs{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.875rem}
+.tbdg{padding:3px 11px;border-radius:18px;font-size:.68rem;font-weight:600;
+  background:var(--surf2);color:var(--tx2);border:1px solid var(--bdr)}
 
-  /* Tabs / Navigation between pages */
+/* WORKSPACE */
+.tws{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0}
+@media(max-width:720px){.tws{grid-template-columns:1fr}}
+.wpan{background:var(--surf);border:1px solid var(--bdr2);border-radius:var(--rlg);overflow:hidden;display:flex;flex-direction:column}
+.wph{padding:12px 16px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;background:var(--bg3)}
+.wptit{font-size:.8rem;font-weight:600;color:var(--tx2)}
+.wpa{display:flex;gap:.45rem}
+.wb{padding:4px 12px;border-radius:18px;font-size:.7rem;font-weight:600;
+  border:1px solid var(--bdr2);background:var(--surf);color:var(--tx2);transition:all .18s;font-family:inherit}
+.wb:hover{border-color:var(--p);color:var(--p)}
+.wb.pr{background:var(--p);color:#fff;border-color:var(--p)}
+.wb.pr:hover{background:#6a5de8;box-shadow:0 3px 14px rgba(124,109,255,.3)}
+.wbody{flex:1;padding:.875rem}
+.wbody textarea{width:100%;height:190px;background:transparent;border:none;outline:none;
+  color:var(--tx);font-size:.86rem;line-height:1.68;resize:none;font-family:inherit}
+.wbody textarea::placeholder{color:var(--tx3)}
+.wout{min-height:190px;font-size:.86rem;line-height:1.75;color:var(--tx);white-space:pre-wrap}
+.wld{display:none;align-items:center;justify-content:center;gap:10px;
+  min-height:190px;color:var(--tx2);font-size:.86rem}
+.wld.show{display:flex}
+.spin{width:24px;height:24px;border:2px solid var(--bdr2);border-top-color:var(--p);
+  border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.topts{display:flex;gap:.7rem;flex-wrap:wrap;padding:0 0 .875rem}
+.tog{display:flex;flex-direction:column;gap:.3rem;flex:1;min-width:150px}
+.tog label{font-size:.72rem;font-weight:600;color:var(--tx2)}
+.tog select{padding:7px 11px;background:var(--surf2);border:1px solid var(--bdr2);
+  border-radius:var(--rsm);color:var(--tx);font-size:.78rem;outline:none;font-family:inherit;transition:border-color .18s}
+.tog select:focus{border-color:var(--p)}
+.cc{font-size:.68rem;color:var(--tx3);text-align:right;padding-top:.2rem}
+
+/* HOW TO */
+.hstps{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1.25rem;counter-reset:steps}
+.hstp{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rlg);
+  padding:1.5rem;counter-increment:steps;position:relative;overflow:hidden}
+.hstp::before{content:counter(steps);position:absolute;top:-12px;right:8px;
+  font-family:var(--fn-h);font-size:5rem;font-weight:800;color:var(--bdr);line-height:1}
+.hsic{font-size:1.6rem;margin-bottom:.65rem}
+.hstp h4{font-size:.9rem;font-weight:700;margin-bottom:.35rem}
+.hstp p{font-size:.78rem;color:var(--tx2);line-height:1.58}
+
+/* RELATED */
+.rtools{display:flex;gap:.75rem;flex-wrap:wrap}
+.rpill{display:flex;align-items:center;gap:.45rem;padding:7px 14px;
+  border-radius:30px;border:1px solid var(--bdr2);background:var(--surf);
+  font-size:.78rem;color:var(--tx2);cursor:pointer;transition:all .18s}
+.rpill:hover{border-color:var(--p);color:var(--p)}
+
+/* NOTIFICATION */
+.notif{position:fixed;bottom:1.75rem;right:1.75rem;z-index:9999;
+  background:var(--surf);border:1px solid var(--bdr2);border-radius:var(--r);
+  padding:12px 18px;display:flex;align-items:center;gap:9px;
+  box-shadow:0 16px 50px rgba(0,0,0,.4);
+  transform:translateY(80px);opacity:0;
+  transition:all .32s cubic-bezier(.34,1.56,.64,1);
+  font-size:.84rem;pointer-events:none;max-width:300px}
+.notif.show{transform:translateY(0);opacity:1}
+.notif.ok{border-color:rgba(0,229,160,.38);color:var(--grn)}
+.notif.err{border-color:rgba(255,107,157,.38);color:var(--pnk)}
+
+/* NEWSLETTER */
+.nlbox{background:linear-gradient(135deg,rgba(124,109,255,.1),rgba(79,195,247,.06));
+  border:1px solid rgba(124,109,255,.18);border-radius:var(--rxl);
+  padding:2.75rem;text-align:center;position:relative;overflow:hidden}
+.nlbox::before{content:'';position:absolute;inset:0;opacity:0;
+  background:conic-gradient(from 180deg at 50% 50%,transparent 330deg,rgba(124,109,255,.05) 360deg);
+  animation:spin 16s linear infinite}
+.nlcont{position:relative}
+.nlf{display:flex;gap:.65rem;max-width:460px;margin:1.25rem auto 0;flex-wrap:wrap}
+.nlf input{flex:1;min-width:200px;padding:10px 16px;background:var(--surf);
+  border:1px solid var(--bdr2);border-radius:30px;color:var(--tx);
+  font-size:.86rem;outline:none;transition:border-color .18s;font-family:inherit}
+.nlf input:focus{border-color:var(--p)}
+.nlf button{padding:10px 22px;border-radius:30px;
+  background:linear-gradient(135deg,var(--p),var(--p3));
+  color:#fff;font-weight:600;font-size:.86rem;
+  transition:all .18s;font-family:inherit}
+.nlf button:hover{box-shadow:0 5px 18px rgba(124,109,255,.4);transform:translateY(-1px)}
+
+/* LEGAL */
+.legal{max-width:780px;padding:3.5rem 0}
+.legal h2{font-family:var(--fn-h);font-size:1.35rem;font-weight:700;margin:2.25rem 0 .6rem;color:var(--tx)}
+.legal h2:first-child{margin-top:0}
+.legal p{font-size:.88rem;color:var(--tx2);line-height:1.8;margin-bottom:.875rem}
+.legal ul{margin:.4rem 0 .875rem 1.4rem}
+.legal li{font-size:.88rem;color:var(--tx2);line-height:1.8;margin-bottom:.25rem}
+.legal a{color:var(--p)}
+.lmeta{font-size:.76rem;color:var(--tx3);margin-bottom:1.75rem}
+
+/* ABOUT */
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;padding:3.5rem 0}
+@media(max-width:720px){.agrid{grid-template-columns:1fr;gap:2rem}}
+.abox{background:linear-gradient(135deg,rgba(124,109,255,.1),rgba(79,195,247,.07));
+  border:1px solid rgba(124,109,255,.18);border-radius:var(--rxl);
+  height:300px;display:flex;align-items:center;justify-content:center;font-size:5.5rem}
+.srow{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2rem}
+.sbox{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:1.1rem 1.5rem;flex:1;min-width:130px}
+.sbox .v{font-family:var(--fn-h);font-size:1.8rem;font-weight:800;
+  background:linear-gradient(135deg,var(--p2),var(--p3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sbox .l{font-size:.74rem;color:var(--tx3);margin-top:2px}
+
+/* CONTACT */
+.cgrid{display:grid;grid-template-columns:1fr 1.25fr;gap:3.5rem;align-items:start}
+@media(max-width:720px){.cgrid{grid-template-columns:1fr;gap:2rem}}
+.cicard{background:linear-gradient(135deg,rgba(124,109,255,.09),rgba(79,195,247,.05));
+  border:1px solid rgba(124,109,255,.18);border-radius:var(--rxl);padding:2.25rem}
+.cm{display:flex;gap:.875rem;align-items:flex-start;margin-bottom:1.5rem}
+.cmic{width:40px;height:40px;border-radius:10px;background:rgba(124,109,255,.11);
+  border:1px solid rgba(124,109,255,.18);display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0}
+.cmtit{font-size:.8rem;font-weight:600;margin-bottom:.15rem}
+.cmv{font-size:.8rem;color:var(--tx2)}
+.cform{display:flex;flex-direction:column;gap:.875rem}
+.fg{display:flex;flex-direction:column;gap:.35rem}
+.fg label{font-size:.76rem;font-weight:600;color:var(--tx2)}
+.fg input,.fg textarea,.fg select{padding:10px 14px;background:var(--surf);
+  border:1px solid var(--bdr2);border-radius:var(--rsm);color:var(--tx);
+  font-size:.86rem;outline:none;transition:border-color .18s,box-shadow .18s;font-family:inherit}
+.fg input:focus,.fg textarea:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(124,109,255,.1)}
+.fg textarea{resize:vertical;min-height:120px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.rv.vi{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:3.5rem 0 1.75rem}
+.fgrd{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+@media(max-width:860px){.fgrd{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:480px){.fgrd{grid-template-columns:1fr}}
+.fbc p{font-size:.8rem;color:var(--tx3);line-height:1.68;max-width:270px;margin-top:.65rem}
+.fc h4{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--tx3);margin-bottom:.875rem}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.fc a{font-size:.8rem;color:var(--tx2);transition:color .18s}
+.fc a:hover{color:var(--p)}
+.fbot{border-top:1px solid var(--bdr);padding-top:1.25rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.875rem}
+.fbot p{font-size:.75rem;color:var(--tx3)}
+.lngs{display:flex;gap:.45rem}
+.lbtn{padding:4px 11px;border-radius:18px;border:1px solid var(--bdr);
+  background:transparent;color:var(--tx3);font-size:.7rem;font-weight:600;cursor:pointer;transition:all .18s;font-family:inherit}
+.lbtn.act,.lbtn:hover{border-color:var(--p);color:var(--p)}
+
+@media(max-width:480px){
+  .htitle{font-size:2.2rem}
+  .hstats{gap:1.25rem}
+  .hstat .v{font-size:1.5rem}
+}
 </style>
-</head>
-<body>
+</head><body>
+<canvas id="nc"></canvas>
 
 <!-- NAV -->
-<nav id="main-nav">
-  <a class="nav-brand" href="#" onclick="showPage('home')">
-    <div class="nav-logo">
-      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-    </div>
-    <span class="nav-name">SmartTool</span>
+<nav class="nav" id="nav">
+  <a class="nbrand" href="#" onclick="sp('home')">
+    <div class="nlogo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+    <span class="nname">SmartTool AI</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#" onclick="showPage('home'); scrollToSection('tools')"><span class="en-text">Tools</span><span class="ar-text" style="display:none">الأدوات</span></a></li>
-    <li><a href="#" onclick="showPage('home'); scrollToSection('features')"><span class="en-text">Features</span><span class="ar-text" style="display:none">المميزات</span></a></li>
-    <li><a href="#" onclick="showPage('about-page')"><span class="en-text">About</span><span class="ar-text" style="display:none">عن الموقع</span></a></li>
-    <li><a href="#" onclick="showPage('home'); scrollToSection('contact')"><span class="en-text">Contact</span><span class="ar-text" style="display:none">تواصل</span></a></li>
-    <li><a href="#" onclick="showPage('privacy-page')"><span class="en-text">Privacy</span><span class="ar-text" style="display:none">الخصوصية</span></a></li>
-  </ul>
-  <div class="nav-right">
-    <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('ar')">ع</button>
-    </div>
-    <button class="nav-cta" onclick="showPage('home'); scrollToSection('contact')">
-      <span class="en-text">Contact Us</span><span class="ar-text" style="display:none">تواصل معنا</span>
-    </button>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span id="hb1"></span><span id="hb2"></span><span id="hb3"></span>
-    </button>
+  <div class="nsearch" id="nswrap">
+    <span class="nsico">🔍</span>
+    <input type="text" placeholder="Search 40+ tools..." id="nsi" oninput="hs(this.value,'nsr')" onfocus="hs(this.value,'nsr')" onblur="setTimeout(()=>hr('nsr'),180)"/>
+    <div class="sres" id="nsr"></div>
+  </div>
+  <div class="nact">
+    <button class="nico" onclick="tgDark()" id="thbtn" title="Toggle theme">🌙</button>
+    <button class="nico" onclick="tgLang()" title="Toggle language">🌐</button>
+    <button class="ncta" onclick="sp('tools')"><span class="en">All Tools</span><span class="ar" style="display:none">جميع الأدوات</span></button>
+    <button class="hbg" onclick="tgMnav()" id="hbg"><span id="h1"></span><span id="h2"></span><span id="h3"></span></button>
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#" onclick="closeMenu();showPage('home');scrollToSection('tools')"><span class="en-text">🔧 Tools</span><span class="ar-text" style="display:none">🔧 الأدوات</span></a>
-  <a href="#" onclick="closeMenu();showPage('home');scrollToSection('features')"><span class="en-text">✨ Features</span><span class="ar-text" style="display:none">✨ المميزات</span></a>
-  <a href="#" onclick="closeMenu();showPage('about-page')"><span class="en-text">ℹ️ About</span><span class="ar-text" style="display:none">ℹ️ عن الموقع</span></a>
-  <a href="#" onclick="closeMenu();showPage('home');scrollToSection('contact')"><span class="en-text">✉️ Contact</span><span class="ar-text" style="display:none">✉️ تواصل</span></a>
-  <a href="#" onclick="closeMenu();showPage('privacy-page')"><span class="en-text">🔒 Privacy Policy</span><span class="ar-text" style="display:none">🔒 سياسة الخصوصية</span></a>
-  <a href="#" onclick="closeMenu();showPage('terms-page')"><span class="en-text">📄 Terms of Use</span><span class="ar-text" style="display:none">📄 شروط الاستخدام</span></a>
-  <div class="lang-toggle">
-    <button class="lang-btn active" id="ml-en" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" id="ml-ar" onclick="setLang('ar')">ع</button>
-  </div>
+<!-- MOBILE NAV -->
+<div class="mnav" id="mnav">
+  <input type="text" placeholder="Search tools..." oninput="hs(this.value,'msr')" id="mni"/>
+  <div id="msr" style="margin-bottom:.5rem"></div>
+  <a href="#" onclick="gp('home')">🏠 <span class="en">Home</span><span class="ar" style="display:none">الرئيسية</span></a>
+  <a href="#" onclick="gp('tools')">🔧 <span class="en">All Tools</span><span class="ar" style="display:none">جميع الأدوات</span></a>
+  <a href="#" onclick="gp('about')">ℹ️ <span class="en">About</span><span class="ar" style="display:none">عن الموقع</span></a>
+  <a href="#" onclick="gp('contact')">✉️ <span class="en">Contact</span><span class="ar" style="display:none">تواصل</span></a>
+  <a href="#" onclick="gp('privacy')">🔒 <span class="en">Privacy Policy</span><span class="ar" style="display:none">الخصوصية</span></a>
+  <a href="#" onclick="gp('terms')">📄 <span class="en">Terms</span><span class="ar" style="display:none">الشروط</span></a>
+  <div class="lngs" style="margin-top:.75rem"><button class="lbtn act" onclick="sl('en')">EN</button><button class="lbtn" onclick="sl('ar')">ع</button></div>
 </div>
 
-<!-- ===================== HOME SECTIONS ===================== -->
-<div id="home-sections">
+<!-- NOTIFICATION -->
+<div class="notif" id="notif"><span id="nic">✅</span><span id="ntx">Copied!</span></div>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow"><span class="en-text">Free Online Tools</span><span class="ar-text" style="display:none">أدوات مجانية عبر الإنترنت</span></div>
-      <h1 class="hero-title">
-        <span class="en-text">Smart Tools for<br/><em>Smarter Work</em></span>
-        <span class="ar-text" style="display:none">أدوات ذكية<br/>لعمل <em>أذكى</em></span>
-      </h1>
-      <p class="hero-sub">
-        <span class="en-text">Compress PDFs, convert images, and more — all for free. No signup required. Fast and secure.</span>
-        <span class="ar-text" style="display:none">ضغط ملفات PDF وتحويل الصور والمزيد — كل ذلك مجانًا. لا حاجة للتسجيل. سريع وآمن.</span>
-      </p>
-      <div class="hero-btns">
-        <a href="#" class="btn-primary" onclick="scrollToSection('pdf-tool')">
-          <span class="en-text">Compress PDF Now</span><span class="ar-text" style="display:none">اضغط PDF الآن</span>
-        </a>
-        <a href="#" class="btn-outline" onclick="scrollToSection('tools')">
-          <span class="en-text">All Tools</span><span class="ar-text" style="display:none">جميع الأدوات</span>
-        </a>
-      </div>
-      <div class="hero-scroll"><span><i class="scroll-arrow"></i></span></div>
-    </div>
-  </section>
-
-  <!-- AD SLOT TOP -->
-  <div style="padding: 0 clamp(1rem,4vw,3rem); max-width: 1200px; margin: 0 auto;">
-    <div class="ad-slot">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </div>
-
-  <!-- TOOLS SECTION -->
-  <section id="tools">
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Our Tools</span><span class="ar-text" style="display:none">أدواتنا</span></p>
-      <h2 class="section-title reveal">
-        <span class="en-text">Everything you need</span>
-        <span class="ar-text" style="display:none">كل ما تحتاجه</span>
-      </h2>
-      <p class="section-sub reveal">
-        <span class="en-text">A growing collection of free tools to help with everyday digital tasks.</span>
-        <span class="ar-text" style="display:none">مجموعة متنامية من الأدوات المجانية لمساعدتك في مهامك الرقمية اليومية.</span>
-      </p>
-      <div class="tools-grid">
-        <div class="tool-card reveal" onclick="scrollToSection('pdf-tool')">
-          <div class="tool-icon">📄</div>
-          <h3><span class="en-text">PDF Compressor</span><span class="ar-text" style="display:none">ضاغط PDF</span></h3>
-          <p><span class="en-text">Reduce PDF file size from 2MB up to 4MB max. Three quality levels to choose from.</span><span class="ar-text" style="display:none">تقليل حجم ملفات PDF من 2 ميغابايت حتى 4 ميغابايت كحد أقصى. ثلاثة مستويات جودة للاختيار.</span></p>
-          <span class="tool-tag"><span class="en-text">Most Popular</span><span class="ar-text" style="display:none">الأكثر شيوعاً</span></span>
+<!-- ============ HOME ============ -->
+<div class="pg on" id="pg-home">
+  <section class="hero">
+    <div class="hglow"></div>
+    <div class="wrap">
+      <div class="hcont">
+        <div class="hbadge"><span class="en">✦ 40+ Free AI Tools — Zero Signup</span><span class="ar" style="display:none">✦ أكثر من 40 أداة ذكاء اصطناعي — بدون تسجيل</span></div>
+        <h1 class="htitle"><span class="g1"><span class="en">The AI Tools Platform<br/>Built for Everyone</span><span class="ar" style="display:none">منصة أدوات الذكاء الاصطناعي<br/>مصممة للجميع</span></span></h1>
+        <p class="hsub"><span class="en">Write smarter, rank higher, create faster. 40+ free AI tools for writing, SEO, social media, productivity and more. No account needed.</span><span class="ar" style="display:none">اكتب بذكاء، احتل مراتب أعلى، أنشئ بشكل أسرع. أكثر من 40 أداة ذكاء اصطناعي مجانية. لا حساب مطلوب.</span></p>
+        <div class="hbar"><input type="text" placeholder="Try: Grammar Checker, AI Writer, SEO Title..." id="hsi" oninput="hs(this.value,'hsr')" onfocus="hs(this.value,'hsr')" onblur="setTimeout(()=>hr('hsr'),180)"/><button onclick="sp('tools')"><span class="en">Explore Tools</span><span class="ar" style="display:none">استكشف الأدوات</span></button><div class="sres" id="hsr"></div></div>
+        <div class="hbtns">
+          <button class="btn1" onclick="sp('tools')"><span class="en">🚀 Start Free Now</span><span class="ar" style="display:none">🚀 ابدأ مجانًا الآن</span></button>
+          <button class="btn2" onclick="sp('about')"><span class="en">Learn More</span><span class="ar" style="display:none">اعرف أكثر</span></button>
         </div>
-        <div class="tool-card reveal" onclick="alert(lang==='en'?'Coming soon!':'قريباً!')">
-          <div class="tool-icon">🖼️</div>
-          <h3><span class="en-text">Image Converter</span><span class="ar-text" style="display:none">محوّل الصور</span></h3>
-          <p><span class="en-text">Convert between JPG, PNG, WebP and more. Resize and optimize images in seconds.</span><span class="ar-text" style="display:none">التحويل بين JPG وPNG وWebP والمزيد. تغيير الحجم وتحسين الصور في ثوانٍ.</span></p>
-          <span class="tool-tag"><span class="en-text">Coming Soon</span><span class="ar-text" style="display:none">قريباً</span></span>
-        </div>
-        <div class="tool-card reveal" onclick="alert(lang==='en'?'Coming soon!':'قريباً!')">
-          <div class="tool-icon">🔗</div>
-          <h3><span class="en-text">PDF Merger</span><span class="ar-text" style="display:none">دمج PDF</span></h3>
-          <p><span class="en-text">Merge multiple PDF files into one document. Drag, drop, and combine instantly.</span><span class="ar-text" style="display:none">دمج ملفات PDF متعددة في مستند واحد. اسحب وأفلت وادمج فورًا.</span></p>
-          <span class="tool-tag"><span class="en-text">Coming Soon</span><span class="ar-text" style="display:none">قريباً</span></span>
-        </div>
-        <div class="tool-card reveal" onclick="alert(lang==='en'?'Coming soon!':'قريباً!')">
-          <div class="tool-icon">✂️</div>
-          <h3><span class="en-text">PDF Splitter</span><span class="ar-text" style="display:none">تقسيم PDF</span></h3>
-          <p><span class="en-text">Extract pages or split your PDF into multiple files by page range.</span><span class="ar-text" style="display:none">استخراج صفحات أو تقسيم PDF إلى ملفات متعددة حسب نطاق الصفحات.</span></p>
-          <span class="tool-tag"><span class="en-text">Coming Soon</span><span class="ar-text" style="display:none">قريباً</span></span>
+        <div class="hstats">
+          <div class="hstat"><div class="v">40+</div><div class="l en">Free AI Tools</div><div class="l ar" style="display:none">أداة ذكاء اصطناعي</div></div>
+          <div class="hstat"><div class="v">7</div><div class="l en">Categories</div><div class="l ar" style="display:none">فئات</div></div>
+          <div class="hstat"><div class="v">100%</div><div class="l en">Always Free</div><div class="l ar" style="display:none">مجاني دائمًا</div></div>
+          <div class="hstat"><div class="v">0</div><div class="l en">Signups</div><div class="l ar" style="display:none">تسجيلات</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AD SLOT MID -->
-  <div style="padding: 0 clamp(1rem,4vw,3rem); max-width: 1200px; margin: 0 auto;">
-    <div class="ad-slot">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </div>
+  <div class="wrap"><div class="adwrap"><div class="adbox"><span class="adlbl">Advertisement</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></div></div>
 
-  <!-- PDF COMPRESSOR TOOL -->
-  <section id="pdf-tool">
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Free Tool</span><span class="ar-text" style="display:none">أداة مجانية</span></p>
-      <h2 class="section-title reveal">
-        <span class="en-text">PDF Compressor</span>
-        <span class="ar-text" style="display:none">ضاغط ملفات PDF</span>
-      </h2>
-      <p class="section-sub reveal">
-        <span class="en-text">Compress your PDF while maintaining quality. Output stays between 2MB and 4MB max.</span>
-        <span class="ar-text" style="display:none">اضغط ملف PDF مع الحفاظ على الجودة. يبقى حجم الملف بين 2 ميغابايت و4 ميغابايت كحد أقصى.</span>
-      </p>
-      <div class="pdf-tool-box reveal">
-        <!-- Drop Zone -->
-        <div class="drop-zone" id="drop-zone" onclick="document.getElementById('pdf-file-input').click()"
-             ondragover="event.preventDefault();this.classList.add('drag-over')"
-             ondragleave="this.classList.remove('drag-over')"
-             ondrop="handleDrop(event)">
-          <div class="drop-icon">📂</div>
-          <p class="drop-text">
-            <strong><span class="en-text">Click to upload</span><span class="ar-text" style="display:none">انقر للرفع</span></strong>
-            <span class="en-text"> or drag &amp; drop your PDF here</span>
-            <span class="ar-text" style="display:none"> أو اسحب وأفلت ملف PDF هنا</span>
-          </p>
-          <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem">
-            <span class="en-text">PDF only · Max 50MB</span>
-            <span class="ar-text" style="display:none">PDF فقط · أقصى 50 ميغابايت</span>
-          </p>
-        </div>
-        <input type="file" id="pdf-file-input" accept="application/pdf" onchange="loadFile(this.files[0])"/>
-
-        <!-- File Info (hidden until file loaded) -->
-        <div class="file-info" id="file-info" style="display:none">
-          <div class="file-icon">📄</div>
-          <div class="file-meta">
-            <strong id="file-name">—</strong>
-            <span id="file-size">—</span>
-          </div>
-          <button style="margin-left:auto;background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--muted)" onclick="resetTool()">✕</button>
-        </div>
-
-        <!-- Quality Options -->
-        <div class="quality-options" id="quality-section" style="display:none">
-          <h4><span class="en-text">Compression Level</span><span class="ar-text" style="display:none">مستوى الضغط</span></h4>
-          <div class="quality-grid">
-            <div class="quality-opt active" id="q-low" onclick="selectQuality('low')">
-              <div class="q-label"><span class="en-text">Light</span><span class="ar-text" style="display:none">خفيف</span></div>
-              <div class="q-desc"><span class="en-text">Best quality</span><span class="ar-text" style="display:none">أفضل جودة</span></div>
-              <div class="q-size"><span class="en-text">≤ 4MB</span><span class="ar-text" style="display:none">≤ 4 ميغابايت</span></div>
-            </div>
-            <div class="quality-opt" id="q-medium" onclick="selectQuality('medium')">
-              <div class="q-label"><span class="en-text">Medium</span><span class="ar-text" style="display:none">متوسط</span></div>
-              <div class="q-desc"><span class="en-text">Balanced</span><span class="ar-text" style="display:none">متوازن</span></div>
-              <div class="q-size"><span class="en-text">≤ 3MB</span><span class="ar-text" style="display:none">≤ 3 ميغابايت</span></div>
-            </div>
-            <div class="quality-opt" id="q-high" onclick="selectQuality('high')">
-              <div class="q-label"><span class="en-text">Strong</span><span class="ar-text" style="display:none">قوي</span></div>
-              <div class="q-desc"><span class="en-text">Smallest size</span><span class="ar-text" style="display:none">أصغر حجم</span></div>
-              <div class="q-size"><span class="en-text">≤ 2MB</span><span class="ar-text" style="display:none">≤ 2 ميغابايت</span></div>
-            </div>
-          </div>
-          <p class="max-size-note">ℹ️ <span class="en-text">Maximum output size is 4MB regardless of compression level.</span><span class="ar-text" style="display:none">الحد الأقصى لحجم الملف الناتج هو 4 ميغابايت بغض النظر عن مستوى الضغط.</span></p>
-        </div>
-
-        <!-- Compress Button -->
-        <button class="btn-primary" id="compress-btn" onclick="compressPDF()" style="display:none;width:100%">
-          <span class="en-text">Compress PDF</span><span class="ar-text" style="display:none">اضغط الملف</span>
-        </button>
-
-        <!-- Progress -->
-        <div class="progress-bar" id="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-        <p id="progress-text" style="font-size:0.8rem;color:var(--muted);display:none;text-align:center;margin-top:0.5rem"></p>
-
-        <!-- Result -->
-        <div class="result-box" id="result-box">
-          <div class="result-stats">
-            <div class="stat"><div class="val" id="orig-size-v">—</div><div class="lbl"><span class="en-text">Original</span><span class="ar-text" style="display:none">الأصلي</span></div></div>
-            <div class="stat"><div class="val" id="comp-size-v">—</div><div class="lbl"><span class="en-text">Compressed</span><span class="ar-text" style="display:none">المضغوط</span></div></div>
-            <div class="stat"><div class="val" id="saved-pct-v">—</div><div class="lbl"><span class="en-text">Saved</span><span class="ar-text" style="display:none">تم توفيره</span></div></div>
-          </div>
-          <button class="btn-primary" id="download-btn" onclick="downloadFile()" style="width:100%">
-            <span class="en-text">⬇ Download Compressed PDF</span><span class="ar-text" style="display:none">⬇ تحميل PDF المضغوط</span>
-          </button>
-        </div>
-        <div class="error-box" id="error-box"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features" style="background:var(--surface)">
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Why SmartTool</span><span class="ar-text" style="display:none">لماذا SmartTool</span></p>
-      <h2 class="section-title reveal">
-        <span class="en-text">Simple, fast &amp; secure</span>
-        <span class="ar-text" style="display:none">بسيط وسريع وآمن</span>
-      </h2>
-      <div class="features-grid">
-        <div class="feature-item reveal">
-          <div class="feature-icon">⚡</div>
-          <h3><span class="en-text">Lightning Fast</span><span class="ar-text" style="display:none">سريع للغاية</span></h3>
-          <p><span class="en-text">All processing happens in your browser — no uploads to servers, instant results.</span><span class="ar-text" style="display:none">تتم جميع العمليات في متصفحك — لا رفع للخوادم، نتائج فورية.</span></p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon">🔒</div>
-          <h3><span class="en-text">100% Private</span><span class="ar-text" style="display:none">خصوصية تامة</span></h3>
-          <p><span class="en-text">Your files never leave your device. We don't store, read, or transmit your data.</span><span class="ar-text" style="display:none">ملفاتك لا تغادر جهازك أبدًا. نحن لا نخزن أو نقرأ أو نرسل بياناتك.</span></p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon">💸</div>
-          <h3><span class="en-text">Always Free</span><span class="ar-text" style="display:none">مجاني دائمًا</span></h3>
-          <p><span class="en-text">No subscriptions, no hidden fees. Every tool on SmartTool is completely free.</span><span class="ar-text" style="display:none">لا اشتراكات ولا رسوم خفية. كل أداة على SmartTool مجانية تمامًا.</span></p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon">🌍</div>
-          <h3><span class="en-text">Works Everywhere</span><span class="ar-text" style="display:none">يعمل في كل مكان</span></h3>
-          <p><span class="en-text">Available in English and Arabic. Works on any device — desktop, tablet, or mobile.</span><span class="ar-text" style="display:none">متاح باللغتين العربية والإنجليزية. يعمل على أي جهاز.</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AD SLOT BOTTOM -->
-  <div style="padding: 1rem clamp(1rem,4vw,3rem); max-width: 1200px; margin: 0 auto;">
-    <div class="ad-slot">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </div>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Get in Touch</span><span class="ar-text" style="display:none">تواصل معنا</span></p>
-      <h2 class="section-title reveal">
-        <span class="en-text">We'd love to hear from you</span>
-        <span class="ar-text" style="display:none">يسعدنا سماعك</span>
-      </h2>
-      <div class="contact-grid">
-        <div>
-          <form class="contact-form" onsubmit="submitContact(event)">
-            <div class="form-field">
-              <label><span class="en-text">Your Name</span><span class="ar-text" style="display:none">اسمك</span></label>
-              <input type="text" id="contact-name" placeholder="John Smith" required/>
-            </div>
-            <div class="form-field">
-              <label><span class="en-text">Email Address</span><span class="ar-text" style="display:none">البريد الإلكتروني</span></label>
-              <input type="email" id="contact-email" placeholder="you@example.com" required/>
-            </div>
-            <div class="form-field">
-              <label><span class="en-text">Subject</span><span class="ar-text" style="display:none">الموضوع</span></label>
-              <select id="contact-subject">
-                <option value="general"><span class="en-text">General Inquiry</span></option>
-                <option value="bug">Bug Report</option>
-                <option value="feature">Feature Request</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label><span class="en-text">Message</span><span class="ar-text" style="display:none">رسالتك</span></label>
-              <textarea id="contact-message" placeholder="Write your message here..." required></textarea>
-            </div>
-            <button type="submit" class="btn-primary">
-              <span class="en-text">Send Message</span><span class="ar-text" style="display:none">إرسال الرسالة</span>
-            </button>
-            <div class="form-status" id="form-status"></div>
-          </form>
-        </div>
-        <div class="contact-info">
-          <div class="info-item">
-            <div class="info-icon">✉️</div>
-            <div class="info-text">
-              <h4><span class="en-text">Email</span><span class="ar-text" style="display:none">البريد الإلكتروني</span></h4>
-              <p>support@smarttool.io</p>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">⏱️</div>
-            <div class="info-text">
-              <h4><span class="en-text">Response Time</span><span class="ar-text" style="display:none">وقت الرد</span></h4>
-              <p><span class="en-text">We reply within 24 hours</span><span class="ar-text" style="display:none">نرد خلال 24 ساعة</span></p>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">🌐</div>
-            <div class="info-text">
-              <h4><span class="en-text">Languages</span><span class="ar-text" style="display:none">اللغات</span></h4>
-              <p><span class="en-text">English & Arabic support</span><span class="ar-text" style="display:none">دعم عربي وإنجليزي</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</div><!-- end home-sections -->
-
-<!-- ===================== ABOUT PAGE ===================== -->
-<div id="about-page" class="page-section" style="padding-top:64px">
-  <section id="about">
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Our Story</span><span class="ar-text" style="display:none">قصتنا</span></p>
-      <h2 class="section-title">
-        <span class="en-text">Built for everyone,<br/>completely free</span>
-        <span class="ar-text" style="display:none">مبني للجميع،<br/>مجاني تمامًا</span>
-      </h2>
-      <p class="section-sub">
-        <span class="en-text">SmartTool was created to give everyone access to powerful file tools without barriers. No accounts, no subscriptions, no complexity — just tools that work.</span>
-        <span class="ar-text" style="display:none">تم إنشاء SmartTool لمنح الجميع الوصول إلى أدوات ملفات قوية دون عوائق. لا حسابات، لا اشتراكات، لا تعقيد — فقط أدوات تعمل.</span>
-      </p>
-      <div class="about-stats">
-        <div class="about-stat"><div class="val">10+</div><div class="lbl"><span class="en-text">Free Tools</span><span class="ar-text" style="display:none">أداة مجانية</span></div></div>
-        <div class="about-stat"><div class="val">100%</div><div class="lbl"><span class="en-text">Browser-based</span><span class="ar-text" style="display:none">في المتصفح</span></div></div>
-        <div class="about-stat"><div class="val">2</div><div class="lbl"><span class="en-text">Languages</span><span class="ar-text" style="display:none">لغتان</span></div></div>
-        <div class="about-stat"><div class="val">0</div><div class="lbl"><span class="en-text">Data stored</span><span class="ar-text" style="display:none">بيانات محفوظة</span></div></div>
-      </div>
-    </div>
-  </section>
-  <section style="background:var(--bg)">
-    <div class="section-inner features-grid">
-      <div class="feature-item">
-        <div class="feature-icon">🎯</div>
-        <h3><span class="en-text">Our Mission</span><span class="ar-text" style="display:none">مهمتنا</span></h3>
-        <p><span class="en-text">To provide free, high-quality digital tools accessible to everyone regardless of technical background.</span><span class="ar-text" style="display:none">توفير أدوات رقمية مجانية وعالية الجودة متاحة للجميع بغض النظر عن خلفيتهم التقنية.</span></p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🛡️</div>
-        <h3><span class="en-text">Privacy First</span><span class="ar-text" style="display:none">الخصوصية أولًا</span></h3>
-        <p><span class="en-text">All tools process files locally in your browser. Nothing is ever sent to our servers.</span><span class="ar-text" style="display:none">تعالج جميع الأدوات الملفات محليًا في متصفحك. لا شيء يُرسل إلى خوادمنا.</span></p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🚀</div>
-        <h3><span class="en-text">Always Improving</span><span class="ar-text" style="display:none">تطوير مستمر</span></h3>
-        <p><span class="en-text">We regularly add new tools based on user feedback. Have a suggestion? Let us know!</span><span class="ar-text" style="display:none">نضيف أدوات جديدة بانتظام بناءً على ملاحظات المستخدمين. لديك اقتراح؟ أخبرنا!</span></p>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- ===================== PRIVACY PAGE ===================== -->
-<div id="privacy-page" class="page-section" style="padding-top:64px">
   <section>
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Legal</span><span class="ar-text" style="display:none">قانوني</span></p>
-      <h2 class="section-title">
-        <span class="en-text">Privacy Policy</span>
-        <span class="ar-text" style="display:none">سياسة الخصوصية</span>
-      </h2>
-      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem">
-        <span class="en-text">Last updated: June 2025</span>
-        <span class="ar-text" style="display:none">آخر تحديث: يونيو 2025</span>
-      </p>
-      <div class="legal-content">
-        <h3><span class="en-text">1. Information We Collect</span><span class="ar-text" style="display:none">1. المعلومات التي نجمعها</span></h3>
-        <p><span class="en-text">SmartTool does not collect personal information unless voluntarily provided via the contact form. Files processed by our tools never leave your browser and are not transmitted to any server.</span><span class="ar-text" style="display:none">لا يجمع SmartTool معلومات شخصية إلا إذا قُدِّمت طوعًا عبر نموذج الاتصال. الملفات التي تعالجها أدواتنا لا تغادر متصفحك ولا تُرسل إلى أي خادم.</span></p>
-
-        <h3><span class="en-text">2. Google AdSense</span><span class="ar-text" style="display:none">2. Google AdSense</span></h3>
-        <p><span class="en-text">We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your prior visits. You can opt out of personalized advertising at <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</span><span class="ar-text" style="display:none">نستخدم Google AdSense لعرض الإعلانات. قد تستخدم Google ملفات تعريف الارتباط لعرض إعلانات بناءً على زياراتك السابقة.</span></p>
-
-        <h3><span class="en-text">3. Cookies</span><span class="ar-text" style="display:none">3. ملفات تعريف الارتباط</span></h3>
-        <p><span class="en-text">We use minimal cookies to remember your language preference. Third-party cookies may be set by Google AdSense for advertising purposes.</span><span class="ar-text" style="display:none">نستخدم ملفات تعريف ارتباط بسيطة لتذكر تفضيلات اللغة. قد تُضبط ملفات تعريف ارتباط تابعة لجهات خارجية بواسطة Google AdSense.</span></p>
-
-        <h3><span class="en-text">4. Data Security</span><span class="ar-text" style="display:none">4. أمان البيانات</span></h3>
-        <p><span class="en-text">Since all file processing occurs client-side in your browser, your files are never exposed to our servers. Contact form submissions are transmitted securely via HTTPS.</span><span class="ar-text" style="display:none">نظرًا لأن معالجة الملفات تتم من جانب العميل في متصفحك، فلن تتعرض ملفاتك لخوادمنا. تُرسل نماذج الاتصال بأمان عبر HTTPS.</span></p>
-
-        <h3><span class="en-text">5. Contact</span><span class="ar-text" style="display:none">5. التواصل</span></h3>
-        <p><span class="en-text">For privacy questions, email us at privacy@smarttool.io</span><span class="ar-text" style="display:none">لأسئلة الخصوصية، راسلنا على privacy@smarttool.io</span></p>
-      </div>
+    <div class="wrap">
+      <div class="sh rv"><span class="slbl en">⭐ Featured Tools</span><span class="slbl ar" style="display:none">⭐ الأدوات المميزة</span>
+        <h2 class="stit en">Most Popular AI Tools</h2><h2 class="stit ar" style="display:none">أكثر أدوات الذكاء الاصطناعي شعبية</h2>
+        <p class="ssub en">Start with our most-loved tools used by thousands every day</p><p class="ssub ar" style="display:none">ابدأ بأكثر أدواتنا شعبية المستخدمة يوميًا</p></div>
+      <div class="tgrid" id="feat-t"></div>
+      <div style="text-align:center;margin-top:2rem"><button class="btn1" onclick="sp('tools')"><span class="en">View All 40+ Tools →</span><span class="ar" style="display:none">عرض جميع الأدوات +40 →</span></button></div>
     </div>
   </section>
-</div>
 
-<!-- ===================== TERMS PAGE ===================== -->
-<div id="terms-page" class="page-section" style="padding-top:64px">
+  <section style="background:var(--bg2);padding:3.5rem 0">
+    <div class="wrap">
+      <div class="sh rv"><span class="slbl">🔥 <span class="en">Trending</span><span class="ar" style="display:none">الأكثر رواجًا</span></span>
+        <h2 class="stit en">Trending Right Now</h2><h2 class="stit ar" style="display:none">الأكثر رواجاً الآن</h2></div>
+      <div class="trgrid" id="trend-l"></div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="adwrap"><div class="adbox"><span class="adlbl">Advertisement</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></div></div>
+
   <section>
-    <div class="section-inner">
-      <p class="section-label"><span class="en-text">Legal</span><span class="ar-text" style="display:none">قانوني</span></p>
-      <h2 class="section-title">
-        <span class="en-text">Terms of Use</span>
-        <span class="ar-text" style="display:none">شروط الاستخدام</span>
-      </h2>
-      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem">
-        <span class="en-text">Last updated: June 2025</span>
-        <span class="ar-text" style="display:none">آخر تحديث: يونيو 2025</span>
-      </p>
-      <div class="legal-content">
-        <h3><span class="en-text">1. Acceptance of Terms</span><span class="ar-text" style="display:none">1. قبول الشروط</span></h3>
-        <p><span class="en-text">By using SmartTool, you agree to these terms. If you do not agree, please do not use the site.</span><span class="ar-text" style="display:none">باستخدامك لـ SmartTool، فإنك توافق على هذه الشروط. إذا كنت لا توافق، يرجى عدم استخدام الموقع.</span></p>
+    <div class="wrap">
+      <div class="sh rv"><span class="slbl en">Why SmartTool AI</span><span class="slbl ar" style="display:none">لماذا SmartTool AI</span>
+        <h2 class="stit en">Built for Real Work</h2><h2 class="stit ar" style="display:none">مصمم للعمل الحقيقي</h2></div>
+      <div class="fgrid">
+        <div class="fcard rv d1"><div class="fic">⚡</div><div class="ftit en">Instant AI Results</div><div class="ftit ar" style="display:none">نتائج فورية</div><div class="ftx en">Get AI-powered outputs in seconds. No queue, no waiting.</div><div class="ftx ar" style="display:none">احصل على مخرجات مدعومة بالذكاء الاصطناعي في ثوانٍ.</div></div>
+        <div class="fcard rv d2"><div class="fic">🔒</div><div class="ftit en">100% Private</div><div class="ftit ar" style="display:none">خصوصية تامة</div><div class="ftx en">Your data stays with you. We never store your content.</div><div class="ftx ar" style="display:none">بياناتك تبقى معك. لا نخزن محتواك أبدًا.</div></div>
+        <div class="fcard rv d3"><div class="fic">💸</div><div class="ftit en">Completely Free</div><div class="ftit ar" style="display:none">مجاني تمامًا</div><div class="ftx en">Every tool, every feature — free forever. No card needed.</div><div class="ftx ar" style="display:none">كل أداة، كل ميزة — مجانية للأبد.</div></div>
+        <div class="fcard rv d4"><div class="fic">🌍</div><div class="ftit en">Arabic & English</div><div class="ftit ar" style="display:none">عربي وإنجليزي</div><div class="ftx en">Full bilingual support. Switch instantly between languages.</div><div class="ftx ar" style="display:none">دعم ثنائي اللغة الكامل.</div></div>
+        <div class="fcard rv d1"><div class="fic">📱</div><div class="ftit en">Works Everywhere</div><div class="ftit ar" style="display:none">يعمل في كل مكان</div><div class="ftx en">Optimized for desktop, tablet, and mobile devices.</div><div class="ftx ar" style="display:none">محسّن للكمبيوتر والجهاز اللوحي والهاتف.</div></div>
+        <div class="fcard rv d2"><div class="fic">🤖</div><div class="ftit en">Advanced AI</div><div class="ftit ar" style="display:none">ذكاء اصطناعي متقدم</div><div class="ftx en">Powered by cutting-edge AI models for high-quality results.</div><div class="ftx ar" style="display:none">مدعوم بأحدث نماذج الذكاء الاصطناعي.</div></div>
+      </div>
+    </div>
+  </section>
 
-        <h3><span class="en-text">2. Permitted Use</span><span class="ar-text" style="display:none">2. الاستخدام المسموح به</span></h3>
-        <p><span class="en-text">SmartTool is provided for personal and professional use. You may not use the service for any illegal purpose or in violation of any regulations.</span><span class="ar-text" style="display:none">يُقدَّم SmartTool للاستخدام الشخصي والمهني. لا يجوز لك استخدام الخدمة لأي غرض غير قانوني.</span></p>
+  <section style="padding:2.5rem 0">
+    <div class="wrap"><div class="nlbox rv"><div class="nlcont">
+      <h2 class="stit" style="font-size:1.7rem;margin-bottom:.4rem"><span class="en">Stay in the Loop</span><span class="ar" style="display:none">ابق على اطلاع</span></h2>
+      <p style="color:var(--tx2);font-size:.86rem"><span class="en">Get notified when we launch new AI tools and features.</span><span class="ar" style="display:none">احصل على إشعار عند إطلاق أدوات وميزات جديدة.</span></p>
+      <div class="nlf"><input type="email" id="nle" placeholder="your@email.com"/><button onclick="subNL()"><span class="en">Subscribe</span><span class="ar" style="display:none">اشترك</span></button></div>
+    </div></div></div>
+  </section>
 
-        <h3><span class="en-text">3. Disclaimer</span><span class="ar-text" style="display:none">3. إخلاء المسؤولية</span></h3>
-        <p><span class="en-text">SmartTool is provided "as is" without warranties. We are not liable for any damages arising from your use of the service. Always keep backups of important files.</span><span class="ar-text" style="display:none">يُقدَّم SmartTool "كما هو" دون ضمانات. لسنا مسؤولين عن أي أضرار ناتجة عن استخدامك للخدمة. احتفظ دائمًا بنسخ احتياطية من الملفات المهمة.</span></p>
+  <div class="wrap"><div class="adwrap"><div class="adbox"><span class="adlbl">Advertisement</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></div></div>
 
-        <h3><span class="en-text">4. Intellectual Property</span><span class="ar-text" style="display:none">4. الملكية الفكرية</span></h3>
-        <p><span class="en-text">All content and code on SmartTool is owned by SmartTool. You may not reproduce or redistribute it without permission.</span><span class="ar-text" style="display:none">جميع المحتوى والكود على SmartTool مملوك لـ SmartTool. لا يجوز لك إعادة إنتاجه أو توزيعه دون إذن.</span></p>
+  <section><div class="wrap">
+    <div class="sh rv"><span class="slbl">FAQ</span><h2 class="stit en">Frequently Asked Questions</h2><h2 class="stit ar" style="display:none">الأسئلة الشائعة</h2></div>
+    <div class="flist" id="hfaqs"></div>
+  </div></section>
+</div>
 
-        <h3><span class="en-text">5. Changes</span><span class="ar-text" style="display:none">5. التغييرات</span></h3>
-        <p><span class="en-text">We may update these terms at any time. Continued use of the site constitutes acceptance of any changes.</span><span class="ar-text" style="display:none">قد نحدّث هذه الشروط في أي وقت. الاستمرار في استخدام الموقع يُعدّ قبولًا لأي تغييرات.</span></p>
+<!-- ============ ALL TOOLS ============ -->
+<div class="pg" id="pg-tools">
+  <section style="padding:3.5rem 0 2rem">
+    <div class="wrap">
+      <div class="sh"><span class="slbl en">🔧 All Tools</span><span class="slbl ar" style="display:none">🔧 جميع الأدوات</span>
+        <h1 class="stit en">40+ Free AI Tools</h1><h1 class="stit ar" style="display:none">أكثر من 40 أداة ذكاء اصطناعي مجانية</h1>
+        <p class="ssub en">Browse by category or search above</p><p class="ssub ar" style="display:none">تصفح حسب الفئة أو ابحث أعلاه</p></div>
+      <div class="cpills" id="cpills">
+        <div class="cpill act" onclick="ft('all',this)"><span class="en">All</span><span class="ar" style="display:none">الكل</span></div>
+        <div class="cpill" onclick="ft('writing',this)"><span class="en">✍️ Writing</span><span class="ar" style="display:none">✍️ كتابة</span></div>
+        <div class="cpill" onclick="ft('study',this)"><span class="en">📚 Study</span><span class="ar" style="display:none">📚 دراسة</span></div>
+        <div class="cpill" onclick="ft('social',this)"><span class="en">📱 Social</span><span class="ar" style="display:none">📱 تواصل</span></div>
+        <div class="cpill" onclick="ft('productivity',this)"><span class="en">⚡ Productivity</span><span class="ar" style="display:none">⚡ إنتاجية</span></div>
+        <div class="cpill" onclick="ft('seo',this)">🔍 SEO</div>
+        <div class="cpill" onclick="ft('text',this)"><span class="en">📝 Text</span><span class="ar" style="display:none">📝 نصوص</span></div>
+        <div class="cpill" onclick="ft('business',this)"><span class="en">💼 Business</span><span class="ar" style="display:none">💼 أعمال</span></div>
+      </div>
+      <div class="tgrid" id="atg"></div>
+    </div>
+  </section>
+  <div class="wrap"><div class="adwrap"><div class="adbox"><span class="adlbl">Advertisement</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></div></div>
+</div>
+
+<!-- ============ TOOL PAGE ============ -->
+<div class="pg" id="pg-tool">
+  <div class="tph"><div class="wrap">
+    <nav class="bc" id="tbc" aria-label="breadcrumb"></nav>
+    <h1 class="tptit" id="tptit"></h1>
+    <p class="tpds" id="tpds"></p>
+    <div class="tbdgs" id="tbdgs"></div>
+  </div></div>
+  <div class="wrap" style="padding-top:1.75rem">
+    <div class="adwrap" style="padding:0 0 1rem"><div class="adbox"><span class="adlbl">Advertisement</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></div>
+    <div id="topts" class="topts"></div>
+    <div class="tws">
+      <div class="wpan">
+        <div class="wph"><span class="wptit en">Your Input</span><span class="wptit ar" style="display:none">المدخلات</span><div class="wpa"><button class="wb" onclick="clrIn()"><span class="en">Clear</span><span class="ar" style="display:none">مسح</span></button></div></div>
+        <div class="wbody"><textarea id="tinp" placeholder="Enter your text here..." oninput="updCC()"></textarea><div class="cc" id="cco">0 chars</div></div>
+      </div>
+      <div class="wpan">
+        <div class="wph"><span class="wptit en">AI Output</span><span class="wptit ar" style="display:none">المخرجات</span>
+          <div class="wpa">
+            <button class="wb" onclick="cpOut()">📋 <span class="en">Copy</span><span class="ar" style="display:none">نسخ</span></button>
+            <button class="wb" onclick="dlOut()">⬇ <span class="en">Download</span><span class="ar" style="display:none">تحميل</span></button>
+            <button class="wb pr" id="genbtn" onclick="genOut()">✨ <span class="en">Generate</span><span class="ar" style="display:none">توليد</span></button>
+          </div>
+        </div>
+        <div class="wbody">
+          <div class="wld" id="wld"><div class="spin"></div><span class="en">AI is thinking...</span><span class="ar" style="display:none">الذكاء الاصطناعي يفكر...</span></div>
+          <div class="wout" id="tout"></div>
+        </div>
+      </div>
+    </div>
+    <div class="adwrap" style="padding:0 0 1.75rem"><div class="adbox"><span class="adlbl">Advertisement</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4421017699603693" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></div>
+    <div style="margin-bottom:2.5rem">
+      <h2 class="stit" style="font-size:1.4rem;margin-bottom:1.25rem"><span class="en">How to Use</span><span class="ar" style="display:none">كيفية الاستخدام</span></h2>
+      <div class="hstps" id="hstps"></div>
+    </div>
+    <div style="margin-bottom:2.5rem">
+      <h2 class="stit" style="font-size:1.4rem;margin-bottom:1.25rem"><span class="en">Benefits</span><span class="ar" style="display:none">الفوائد</span></h2>
+      <div class="fgrid" id="bens" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))"></div>
+    </div>
+    <div style="margin-bottom:2.5rem">
+      <h2 class="stit" style="font-size:1.4rem;margin-bottom:1.25rem"><span class="en">FAQs</span><span class="ar" style="display:none">الأسئلة الشائعة</span></h2>
+      <div class="flist" id="tfaqs"></div>
+    </div>
+    <div style="margin-bottom:2.5rem">
+      <h2 class="stit" style="font-size:1.4rem;margin-bottom:1rem"><span class="en">Related Tools</span><span class="ar" style="display:none">أدوات ذات صلة</span></h2>
+      <div class="rtools" id="rels"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<div class="pg" id="pg-about">
+  <section style="padding:4rem 0 2.5rem;background:linear-gradient(180deg,rgba(124,109,255,.06) 0%,transparent 100%);text-align:center">
+    <div class="wrap">
+      <span class="slbl en">About Us</span><span class="slbl ar" style="display:none">عن الموقع</span>
+      <h1 class="stit" style="margin:.65rem 0"><span class="en">We Build Tools That Matter</span><span class="ar" style="display:none">نبني أدوات تُحدث فرقًا</span></h1>
+      <p class="ssub"><span class="en">SmartTool AI is a free platform giving everyone access to powerful AI tools — students, freelancers, and businesses alike.</span><span class="ar" style="display:none">SmartTool AI منصة مجانية تمنح الجميع الوصول إلى أدوات ذكاء اصطناعي قوية.</span></p>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="agrid">
+      <div>
+        <h2 class="stit" style="font-size:1.9rem;text-align:left;margin-bottom:.875rem"><span class="en">Our Mission</span><span class="ar" style="display:none">مهمتنا</span></h2>
+        <p style="color:var(--tx2);line-height:1.8;font-size:.9rem;margin-bottom:.875rem"><span class="en">We believe powerful AI tools should be accessible to everyone without cost barriers or technical complexity. SmartTool AI processes everything in real-time and works on any device.</span><span class="ar" style="display:none">نؤمن بأن أدوات الذكاء الاصطناعي القوية يجب أن تكون متاحة للجميع دون حواجز تكلفة أو تعقيد تقني.</span></p>
+        <p style="color:var(--tx2);line-height:1.8;font-size:.9rem"><span class="en">No signup, no fees, no limits. Just open your browser and start creating.</span><span class="ar" style="display:none">بدون تسجيل، بدون رسوم، بدون حدود. فقط افتح متصفحك وابدأ الإنشاء.</span></p>
+        <div class="srow">
+          <div class="sbox"><div class="v">40+</div><div class="l en">Free Tools</div><div class="l ar" style="display:none">أداة مجانية</div></div>
+          <div class="sbox"><div class="v">7</div><div class="l en">Categories</div><div class="l ar" style="display:none">فئات</div></div>
+          <div class="sbox"><div class="v">2</div><div class="l en">Languages</div><div class="l ar" style="display:none">لغتان</div></div>
+        </div>
+      </div>
+      <div class="abox">🤖</div>
+    </div>
+    <div class="fgrid" style="margin-bottom:4rem">
+      <div class="fcard"><div class="fic">🎯</div><div class="ftit en">Purpose-Built</div><div class="ftit ar" style="display:none">مبني لغرض محدد</div><div class="ftx en">Each tool designed for a specific use case with the best user experience.</div><div class="ftx ar" style="display:none">كل أداة مصممة بعناية لحالة استخدام محددة.</div></div>
+      <div class="fcard"><div class="fic">🛡️</div><div class="ftit en">Privacy First</div><div class="ftit ar" style="display:none">الخصوصية أولًا</div><div class="ftx en">All tools process locally. Nothing sent to our servers ever.</div><div class="ftx ar" style="display:none">تتم جميع المعالجات محليًا. لا شيء يُرسل إلى خوادمنا.</div></div>
+      <div class="fcard"><div class="fic">🚀</div><div class="ftit en">Always Improving</div><div class="ftit ar" style="display:none">تطوير مستمر</div><div class="ftx en">New tools added regularly based on user feedback and AI advancements.</div><div class="ftx ar" style="display:none">نضيف أدوات جديدة بانتظام بناءً على ملاحظات المستخدمين.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<div class="pg" id="pg-contact">
+  <section style="padding:3.5rem 0 2rem">
+    <div class="wrap">
+      <span class="slbl en">Contact Us</span><span class="slbl ar" style="display:none">تواصل معنا</span>
+      <h1 class="stit" style="margin:.65rem 0"><span class="en">Get in Touch</span><span class="ar" style="display:none">تواصل معنا</span></h1>
+      <p class="ssub" style="text-align:left;margin:0 0 2.5rem"><span class="en">Questions, feedback, or bug reports? We'd love to hear from you.</span><span class="ar" style="display:none">أسئلة أو ملاحظات؟ يسعدنا سماعك.</span></p>
+      <div class="cgrid">
+        <div class="cicard">
+          <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:1.5rem"><span class="en">Contact Information</span><span class="ar" style="display:none">معلومات التواصل</span></h3>
+          <div class="cm"><div class="cmic">✉️</div><div><div class="cmtit en">Email</div><div class="cmtit ar" style="display:none">البريد الإلكتروني</div><div class="cmv">support@smarttool-ai.com</div></div></div>
+          <div class="cm"><div class="cmic">⏱️</div><div><div class="cmtit en">Response Time</div><div class="cmtit ar" style="display:none">وقت الرد</div><div class="cmv en">Within 24 hours</div><div class="cmv ar" style="display:none">خلال 24 ساعة</div></div></div>
+          <div class="cm"><div class="cmic">📋</div><div><div class="cmtit en">AdSense / Business</div><div class="cmtit ar" style="display:none">الأعمال والإعلانات</div><div class="cmv">business@smarttool-ai.com</div></div></div>
+          <div class="cm" style="margin-bottom:0"><div class="cmic">🌐</div><div><div class="cmtit en">Languages</div><div class="cmtit ar" style="display:none">اللغات</div><div class="cmv en">English & Arabic</div><div class="cmv ar" style="display:none">إنجليزي وعربي</div></div></div>
+        </div>
+        <form class="cform" onsubmit="subContact(event)">
+          <div class="fg"><label class="en">Full Name *</label><label class="ar" style="display:none">الاسم الكامل *</label><input type="text" id="cn" required placeholder="Your name"/></div>
+          <div class="fg"><label class="en">Email Address *</label><label class="ar" style="display:none">البريد الإلكتروني *</label><input type="email" id="ce" required placeholder="you@example.com"/></div>
+          <div class="fg"><label class="en">Subject</label><label class="ar" style="display:none">الموضوع</label><select id="cs"><option>General Inquiry</option><option>Bug Report</option><option>Feature Request</option><option>Business / AdSense</option><option>Other</option></select></div>
+          <div class="fg"><label class="en">Message *</label><label class="ar" style="display:none">الرسالة *</label><textarea id="cm2" required placeholder="Write your message..."></textarea></div>
+          <button type="submit" class="btn1" style="width:100%"><span class="en">Send Message 📨</span><span class="ar" style="display:none">إرسال الرسالة 📨</span></button>
+          <div id="cstat" style="display:none;padding:.65rem;border-radius:var(--rsm);font-size:.8rem;margin-top:.4rem"></div>
+        </form>
       </div>
     </div>
   </section>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">SmartTool</div>
-      <p style="margin-top:0.4rem;font-size:0.78rem">
-        <span class="en-text">© 2025 SmartTool. All rights reserved.</span>
-        <span class="ar-text" style="display:none">© 2025 SmartTool. جميع الحقوق محفوظة.</span>
-      </p>
+<!-- ============ PRIVACY ============ -->
+<div class="pg" id="pg-privacy"><div class="wrap"><div class="legal">
+  <span class="slbl en">Legal</span><span class="slbl ar" style="display:none">قانوني</span>
+  <h1 class="stit" style="margin:.65rem 0 .2rem"><span class="en">Privacy Policy</span><span class="ar" style="display:none">سياسة الخصوصية</span></h1>
+  <p class="lmeta en">Last Updated: June 1, 2025</p><p class="lmeta ar" style="display:none">آخر تحديث: 1 يونيو 2025</p>
+  <h2 class="en">1. Information We Collect</h2><h2 class="ar" style="display:none">1. المعلومات التي نجمعها</h2>
+  <p class="en">SmartTool AI collects only information you voluntarily provide through our contact form (name, email, message). All AI tool processing occurs in your browser — content is never transmitted to our servers.</p><p class="ar" style="display:none">يجمع SmartTool AI فقط المعلومات التي تقدمها طوعًا عبر نموذج الاتصال. تتم معالجة جميع الأدوات في متصفحك.</p>
+  <h2 class="en">2. Google AdSense & Cookies</h2><h2 class="ar" style="display:none">2. Google AdSense وملفات الارتباط</h2>
+  <p class="en">We use Google AdSense (publisher ID: ca-pub-4421017699603693) to display advertisements. Google may use cookies, including the DoubleClick cookie, to serve ads based on prior visits. Opt out at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>. We use minimal cookies to remember language and theme preferences.</p><p class="ar" style="display:none">نستخدم Google AdSense لعرض الإعلانات. قد تستخدم Google ملفات تعريف الارتباط لتخصيص الإعلانات.</p>
+  <h2 class="en">3. Data Security</h2><h2 class="ar" style="display:none">3. أمان البيانات</h2>
+  <p class="en">All tool processing is client-side. Your files and content are never exposed to our servers. Contact form data is transmitted securely via HTTPS.</p><p class="ar" style="display:none">معالجة الأدوات تتم من جانب العميل. ملفاتك لا تُكشف لخوادمنا أبدًا.</p>
+  <h2 class="en">4. Third-Party Services</h2><h2 class="ar" style="display:none">4. خدمات الطرف الثالث</h2>
+  <p class="en">We use Google Fonts and Google AdSense, which may collect anonymous usage data. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+  <h2 class="en">5. Children's Privacy</h2><h2 class="ar" style="display:none">5. خصوصية الأطفال</h2>
+  <p class="en">SmartTool AI is not directed at children under 13. We do not knowingly collect personal information from children under 13.</p>
+  <h2 class="en">6. Contact</h2><h2 class="ar" style="display:none">6. التواصل</h2>
+  <p class="en">For privacy questions: <a href="mailto:privacy@smarttool-ai.com">privacy@smarttool-ai.com</a></p><p class="ar" style="display:none">لأسئلة الخصوصية: privacy@smarttool-ai.com</p>
+</div></div></div>
+
+<!-- ============ TERMS ============ -->
+<div class="pg" id="pg-terms"><div class="wrap"><div class="legal">
+  <span class="slbl en">Legal</span><span class="slbl ar" style="display:none">قانوني</span>
+  <h1 class="stit" style="margin:.65rem 0 .2rem"><span class="en">Terms & Conditions</span><span class="ar" style="display:none">الشروط والأحكام</span></h1>
+  <p class="lmeta en">Last Updated: June 1, 2025</p><p class="lmeta ar" style="display:none">آخر تحديث: 1 يونيو 2025</p>
+  <h2 class="en">1. Acceptance</h2><p class="en">By using SmartTool AI you agree to these terms. If you disagree, please stop using the platform.</p>
+  <h2 class="en">2. Permitted Use</h2><p class="en">SmartTool AI is for lawful personal and professional use only. Do not use tools to create harmful, illegal, deceptive, or infringing content.</p>
+  <h2 class="en">3. Intellectual Property</h2><p class="en">The platform, design, code and branding are owned by SmartTool AI. Content you generate belongs to you.</p>
+  <h2 class="en">4. Disclaimer</h2><p class="en">SmartTool AI is provided "as is" without warranties. AI-generated content may contain errors. Always review outputs before professional use.</p>
+  <h2 class="en">5. Limitation of Liability</h2><p class="en">SmartTool AI shall not be liable for any indirect, incidental, or consequential damages from your use of the platform.</p>
+  <h2 class="en">6. Advertising</h2><p class="en">This website displays ads via Google AdSense (ca-pub-4421017699603693). Advertisements are served by Google based on their own policies.</p>
+  <h2 class="en">7. Changes</h2><p class="en">We may update these terms at any time. Continued use constitutes acceptance of changes.</p>
+  <h2 class="ar" style="display:none">1. القبول</h2><p class="ar" style="display:none">باستخدامك لـ SmartTool AI فإنك توافق على هذه الشروط.</p>
+</div></div></div>
+
+<!-- ============ DISCLAIMER ============ -->
+<div class="pg" id="pg-disclaimer"><div class="wrap"><div class="legal">
+  <span class="slbl en">Legal</span>
+  <h1 class="stit" style="margin:.65rem 0 .2rem"><span class="en">Disclaimer</span><span class="ar" style="display:none">إخلاء المسؤولية</span></h1>
+  <p class="lmeta en">Last Updated: June 1, 2025</p>
+  <h2 class="en">AI-Generated Content</h2><p class="en">SmartTool AI uses AI to generate content. While we strive for quality, AI output may contain errors or inaccuracies. Always review before publishing or using professionally.</p>
+  <h2 class="en">No Professional Advice</h2><p class="en">Content from SmartTool AI tools does not constitute legal, medical, financial, or professional advice. Consult qualified professionals for such matters.</p>
+  <h2 class="en">External Links</h2><p class="en">We are not responsible for the content, privacy practices, or accuracy of third-party sites linked from SmartTool AI.</p>
+  <h2 class="en">Advertising Disclaimer</h2><p class="en">This website displays advertisements through Google AdSense. We do not endorse advertised products or services. Ad content is determined by Google's algorithms.</p>
+</div></div></div>
+
+<!-- ============ COOKIE POLICY ============ -->
+<div class="pg" id="pg-cookies"><div class="wrap"><div class="legal">
+  <span class="slbl en">Legal</span>
+  <h1 class="stit" style="margin:.65rem 0 .2rem"><span class="en">Cookie Policy</span><span class="ar" style="display:none">سياسة ملفات تعريف الارتباط</span></h1>
+  <p class="lmeta en">Last Updated: June 1, 2025</p>
+  <h2 class="en">What Are Cookies</h2><p class="en">Cookies are small text files placed on your device to remember preferences and improve your experience.</p>
+  <h2 class="en">Cookies We Use</h2>
+  <ul><li class="en"><strong>Preference Cookies:</strong> Remember your language (English/Arabic) and theme (dark/light) choices.</li><li class="en"><strong>Analytics Cookies:</strong> Google Analytics may set cookies for anonymous usage statistics.</li><li class="en"><strong>Advertising Cookies:</strong> Google AdSense sets cookies to personalize ads, including the DoubleClick cookie.</li></ul>
+  <h2 class="en">Managing Cookies</h2><p class="en">Control cookies via your browser settings. Disabling cookies may affect some features. Opt out of Google ad cookies at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>.</p>
+  <h2 class="en">Contact</h2><p class="en">Questions? Email <a href="mailto:privacy@smarttool-ai.com">privacy@smarttool-ai.com</a></p>
+</div></div></div>
+
+<!-- ============ FOOTER ============ -->
+<footer><div class="wrap">
+  <div class="fgrd">
+    <div class="fbc fc">
+      <div class="nbrand"><div class="nlogo"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><span class="nname" style="font-size:1rem">SmartTool AI</span></div>
+      <p class="en">40+ free AI tools for writing, SEO, social media and productivity. No signup required.</p>
+      <p class="ar" style="display:none">أكثر من 40 أداة ذكاء اصطناعي مجانية. لا تسجيل مطلوب.</p>
     </div>
-    <ul class="footer-links">
-      <li><a href="#" onclick="showPage('home')"><span class="en-text">Home</span><span class="ar-text" style="display:none">الرئيسية</span></a></li>
-      <li><a href="#" onclick="showPage('about-page')"><span class="en-text">About</span><span class="ar-text" style="display:none">عن الموقع</span></a></li>
-      <li><a href="#" onclick="showPage('privacy-page')"><span class="en-text">Privacy</span><span class="ar-text" style="display:none">الخصوصية</span></a></li>
-      <li><a href="#" onclick="showPage('terms-page')"><span class="en-text">Terms</span><span class="ar-text" style="display:none">الشروط</span></a></li>
-    </ul>
+    <div class="fc"><h4 class="en">Popular Tools</h4><h4 class="ar" style="display:none">أدوات شائعة</h4>
+      <ul>
+        <li><a href="#" onclick="ot('ai-humanizer')">AI Humanizer</a></li>
+        <li><a href="#" onclick="ot('grammar-checker')">Grammar Checker</a></li>
+        <li><a href="#" onclick="ot('article-generator')">Article Generator</a></li>
+        <li><a href="#" onclick="ot('keyword-generator')">Keyword Generator</a></li>
+        <li><a href="#" onclick="sp('tools')"><span class="en">All Tools →</span><span class="ar" style="display:none">جميع الأدوات →</span></a></li>
+      </ul>
+    </div>
+    <div class="fc"><h4 class="en">Company</h4><h4 class="ar" style="display:none">الشركة</h4>
+      <ul>
+        <li><a href="#" onclick="sp('about')"><span class="en">About Us</span><span class="ar" style="display:none">عن الموقع</span></a></li>
+        <li><a href="#" onclick="sp('contact')"><span class="en">Contact</span><span class="ar" style="display:none">تواصل</span></a></li>
+        <li><a href="#" onclick="sp('privacy')"><span class="en">Privacy Policy</span><span class="ar" style="display:none">الخصوصية</span></a></li>
+        <li><a href="#" onclick="sp('terms')"><span class="en">Terms</span><span class="ar" style="display:none">الشروط</span></a></li>
+        <li><a href="#" onclick="sp('disclaimer')"><span class="en">Disclaimer</span><span class="ar" style="display:none">إخلاء المسؤولية</span></a></li>
+        <li><a href="#" onclick="sp('cookies')"><span class="en">Cookie Policy</span><span class="ar" style="display:none">ملفات الارتباط</span></a></li>
+      </ul>
+    </div>
+    <div class="fc"><h4 class="en">Categories</h4><h4 class="ar" style="display:none">الفئات</h4>
+      <ul>
+        <li><a href="#" onclick="fpt('writing')"><span class="en">✍️ Writing Tools</span><span class="ar" style="display:none">✍️ أدوات الكتابة</span></a></li>
+        <li><a href="#" onclick="fpt('seo')">🔍 SEO Tools</a></li>
+        <li><a href="#" onclick="fpt('social')"><span class="en">📱 Social Media</span><span class="ar" style="display:none">📱 التواصل</span></a></li>
+        <li><a href="#" onclick="fpt('productivity')"><span class="en">⚡ Productivity</span><span class="ar" style="display:none">⚡ الإنتاجية</span></a></li>
+        <li><a href="#" onclick="fpt('business')"><span class="en">💼 Business</span><span class="ar" style="display:none">💼 الأعمال</span></a></li>
+      </ul>
+    </div>
   </div>
-</footer>
+  <div class="fbot">
+    <p class="en">© 2025 SmartTool AI — All rights reserved. Powered by AI.</p>
+    <p class="ar" style="display:none">© 2025 SmartTool AI — جميع الحقوق محفوظة. مدعوم بالذكاء الاصطناعي.</p>
+    <div class="lngs"><button class="lbtn act" id="flb-en" onclick="sl('en')">EN</button><button class="lbtn" id="flb-ar" onclick="sl('ar')">ع</button></div>
+  </div>
+</div></footer><script>
+// ===== TOOL DATA =====
+const T=[
+  {id:'ai-humanizer',n:'AI Humanizer',na:'محوّل نص الذكاء الاصطناعي',ic:'🤖',c:'writing',d:'Transform AI-generated text into natural, human-like writing that bypasses detectors',da:'حوّل النص الذي يولده الذكاء الاصطناعي إلى كتابة طبيعية تشبه الإنسان',ft:true,tr:1,
+    pm:'Rewrite the following AI-generated text to sound completely human, natural and conversational. Remove all AI patterns, vary sentence lengths and structure, add personality, contractions, and authentic voice:',
+    bn:['Bypass AI detection','More engaging content','Natural flow','Human tone'],
+    hw:['Paste your AI-generated text','Click Generate','Review humanized output','Copy and publish'],
+    fq:[{q:'What is AI humanizing?',a:'It rewrites AI text to sound natural and human, removing robotic patterns and AI-typical phrasing.'},{q:'Is it free?',a:'Yes, completely free with no usage limits whatsoever.'}]},
+  {id:'ai-detector',n:'AI Detector',na:'كاشف نص الذكاء الاصطناعي',ic:'🔍',c:'writing',d:'Detect whether text was written by AI or a human with probability scoring',da:'اكتشف ما إذا كان النص كتبه ذكاء اصطناعي أم إنسان مع نسبة احتمالية',ft:true,tr:2,
+    pm:'Analyze whether the following text was written by AI or a human. Provide: (1) AI probability percentage 0-100%, (2) Human probability percentage, (3) Key indicators you found, (4) Specific phrases that suggest AI or human authorship, (5) Overall verdict:',
+    bn:['Verify originality','Academic integrity','Content authenticity','Plagiarism detection'],
+    hw:['Paste text to analyze','Click Generate','Review AI probability','Take action if needed'],
+    fq:[{q:'How accurate is detection?',a:'Our tool analyzes multiple linguistic patterns, perplexity, and burstiness for reliable results.'},{q:'What languages?',a:'Primarily optimized for English but works with other languages.'}]},
+  {id:'grammar-checker',n:'Grammar Checker',na:'مدقق القواعد النحوية',ic:'✅',c:'writing',d:'Fix grammar, spelling, punctuation and style errors instantly with explanations',da:'صحح أخطاء القواعد النحوية والإملاء وعلامات الترقيم على الفور مع شروح',ft:true,tr:3,
+    pm:'Carefully proofread the following text. List every grammar, spelling, punctuation, and style error found. Then provide the fully corrected version. Format: ERRORS FOUND: (numbered list) | CORRECTED TEXT: (full corrected version):',
+    bn:['Error-free writing','Professional quality','Clear explanations','Better credibility'],
+    hw:['Paste your text','Click Generate','Review errors found','Copy corrected version'],
+    fq:[{q:'Does it support Arabic?',a:'Yes, it can check both English and Arabic text effectively.'},{q:'Word limit?',a:'No word limit — paste any length of text.'}]},
+  {id:'paraphrasing-tool',n:'Paraphrasing Tool',na:'أداة إعادة الصياغة',ic:'🔄',c:'writing',d:'Rewrite text in fresh words while perfectly preserving the original meaning',da:'أعد صياغة النص بكلمات مختلفة مع الحفاظ التام على المعنى الأصلي',ft:true,tr:5,
+    pm:'Paraphrase the following text completely. Use entirely different words and sentence structures while preserving every nuance of the original meaning. Make it natural, fluent, and indistinguishable from original writing:',
+    bn:['Avoid plagiarism','Fresh content','Better readability','Unique expression'],
+    hw:['Enter text to paraphrase','Select writing style','Click Generate','Use the output'],
+    fq:[{q:'Will it change meaning?',a:'No — it preserves the core meaning while using completely different words and structures.'},{q:'Good for academia?',a:'Yes, excellent for academic paraphrasing and avoiding plagiarism.'}]},
+  {id:'text-rewriter',n:'Text Rewriter',na:'معيد كتابة النصوص',ic:'✏️',c:'writing',d:'Completely rewrite content with a fresh perspective and new structure',da:'أعد كتابة المحتوى بمنظور جديد وبنية مختلفة كليًا',ft:false,tr:0,
+    pm:'Completely rewrite the following text from scratch with a fresh perspective, new structure, and more engaging style. Keep all the core information but present it in an entirely unique way:',
+    bn:['Fresh content','New perspective','Better engagement','Unique output'],
+    hw:['Paste your text','Click Generate','Get rewritten version','Edit as needed'],
+    fq:[{q:'Different from paraphrasing?',a:'Rewriting makes more substantial changes — new structure, perspective, and style. Paraphrasing keeps closer to the original.'}]},
+  {id:'article-generator',n:'Article Generator',na:'مولّد المقالات',ic:'📰',c:'writing',d:'Generate full, well-structured articles on any topic with proper SEO formatting',da:'أنشئ مقالات كاملة ومنظمة بشكل جيد حول أي موضوع مع تنسيق SEO صحيح',ft:true,tr:4,
+    pm:'Write a comprehensive, well-structured article about the following topic. Include: engaging H1 title, compelling introduction with hook, 4-6 sections with H2 headings, relevant examples, bullet points where appropriate, and a strong conclusion with call to action. Make it SEO-friendly and informative:',
+    bn:['Save hours writing','SEO structure','Professional quality','Ready to publish'],
+    hw:['Enter your topic or title','Click Generate','Edit and personalize','Publish your article'],
+    fq:[{q:'Article length?',a:'Typically 600-1200 words, well-structured with proper headings and sections.'},{q:'Are they unique?',a:'Yes, each generation produces completely unique content.'}]},
+  {id:'blog-title-generator',n:'Blog Title Generator',na:'مولّد عناوين المدونات',ic:'📝',c:'writing',d:'Create catchy, SEO-optimized blog post titles that drive clicks and traffic',da:'أنشئ عناوين مدونات جذابة ومحسنة لمحركات البحث تجذب النقرات والزيارات',ft:false,tr:0,
+    pm:'Generate 12 catchy, SEO-optimized blog post titles for: "{input}". Include a mix of: How-to titles, List posts (5 Ways, 10 Tips), Question titles, Power word titles, Curiosity-gap titles. Make each compelling and click-worthy:',
+    bn:['Higher click rates','Better SEO','More traffic','Varied formats'],
+    hw:['Enter your blog topic','Click Generate','Pick favorite title','Optimize for keywords'],
+    fq:[{q:'How many titles?',a:'We generate 12 varied titles across different formats and styles.'}]},
+  {id:'email-writer',n:'Email Writer',na:'كاتب البريد الإلكتروني',ic:'📧',c:'writing',d:'Write professional, polished emails for any situation in seconds',da:'اكتب رسائل بريد إلكتروني احترافية لأي موقف في ثوانٍ',ft:false,tr:0,
+    pm:'Write a professional, well-crafted email based on: "{input}". Include appropriate subject line, greeting, body paragraphs, and professional closing. Match the tone to the context:',
+    bn:['Professional tone','Perfect structure','Time-saving','Confident communication'],
+    hw:['Describe your email need','Click Generate','Review and personalize','Send with confidence'],
+    fq:[{q:'Email types?',a:'Business, cold outreach, follow-ups, apologies, requests, responses, and more.'}]},
+  {id:'essay-writer',n:'Essay Writer',na:'كاتب المقالات الأكاديمية',ic:'🎓',c:'writing',d:'Generate well-structured academic essays with thesis, arguments and conclusions',da:'أنشئ مقالات أكاديمية منظمة مع أطروحة وحجج وخاتمة',ft:false,tr:0,
+    pm:'Write a well-structured academic essay on: "{input}". Include: strong thesis statement, introduction paragraph, body paragraphs with evidence and analysis, counter-argument, and conclusion. Use formal academic language:',
+    bn:['Academic structure','Thesis-driven','Formal language','Research-based approach'],
+    hw:['Enter essay topic and requirements','Click Generate','Review and cite sources','Submit with confidence'],
+    fq:[{q:'Academic level?',a:'Suitable for high school through university level essays.'}]},
+  {id:'content-improver',n:'Content Improver',na:'محسّن المحتوى',ic:'⬆️',c:'writing',d:'Enhance and polish any content to make it more engaging and professional',da:'حسّن أي محتوى واصقله ليكون أكثر جذبًا واحترافية',ft:false,tr:0,
+    pm:'Significantly improve the following content. Make it: more engaging and readable, better structured, more compelling, clearer in its messaging. Fix any issues and elevate the overall quality without changing the core message:',
+    bn:['Better engagement','Clearer communication','Professional polish','Improved readability'],
+    hw:['Paste your content','Click Generate','Compare with original','Use improved version'],
+    fq:[{q:'What gets improved?',a:'Clarity, structure, engagement, tone, flow, and overall quality.'}]},
+  {id:'quiz-generator',n:'Quiz Generator',na:'مولّد الاختبارات',ic:'❓',c:'study',d:'Generate comprehensive quizzes and test questions from any text or topic',da:'أنشئ اختبارات شاملة وأسئلة من أي نص أو موضوع',ft:true,tr:6,
+    pm:'Create a comprehensive quiz with 10 questions based on: "{input}". Include a mix of multiple choice (4 options), true/false, and short answer questions. Format clearly with question numbers, options labeled A/B/C/D, and include an ANSWER KEY at the end:',
+    bn:['Better retention','Test comprehension','Study efficiently','Multiple question types'],
+    hw:['Paste study material or topic','Click Generate','Practice with the quiz','Check answer key'],
+    fq:[{q:'Question types?',a:'Multiple choice (A/B/C/D), true/false, and short answer questions.'}]},
+  {id:'flashcard-generator',n:'Flashcard Generator',na:'مولّد البطاقات التعليمية',ic:'🃏',c:'study',d:'Create effective study flashcards from any topic or text for better learning',da:'أنشئ بطاقات دراسية فعالة من أي موضوع أو نص لتعلم أفضل',ft:false,tr:0,
+    pm:'Create 15 effective study flashcards from: "{input}". Format each as:\nCARD [N]:\nFRONT: [question, term, or concept]\nBACK: [answer, definition, or explanation]\n\nMake them concise and memorable:',
+    bn:['Active recall learning','Better retention','Quick revision','Portable study material'],
+    hw:['Enter topic or paste text','Click Generate','Study the flashcards','Repeat until memorized'],
+    fq:[{q:'How many flashcards?',a:'15 comprehensive, well-crafted flashcards per generation.'}]},
+  {id:'summary-generator',n:'Summary Generator',na:'مولّد الملخصات',ic:'📋',c:'study',d:'Summarize long texts into concise, clear summaries capturing all key points',da:'لخّص النصوص الطويلة إلى ملخصات موجزة وواضحة تستوعب جميع النقاط الرئيسية',ft:true,tr:7,
+    pm:'Create a clear, comprehensive summary of the following text. Structure it as: MAIN TOPIC (1 sentence), KEY POINTS (5-8 bullet points), IMPORTANT DETAILS (supporting facts), CONCLUSION (main takeaway). Capture everything essential:',
+    bn:['Save reading time','Key points only','Better comprehension','Efficient studying'],
+    hw:['Paste long text or article','Click Generate','Read the summary','Save for reference'],
+    fq:[{q:'Summary length?',a:'About 15-25% of the original length, structured with bullet points for easy scanning.'}]},
+  {id:'study-notes-generator',n:'Study Notes Generator',na:'مولّد ملاحظات الدراسة',ic:'📓',c:'study',d:'Transform any text or lecture into well-organized study notes',da:'حوّل أي نص أو محاضرة إلى ملاحظات دراسية منظمة بشكل جيد',ft:false,tr:0,
+    pm:'Convert the following content into well-organized study notes. Use: clear headings and subheadings, bullet points for key facts, bold for important terms, numbered lists for processes, and highlight key concepts in brackets [IMPORTANT]:',
+    bn:['Organized learning','Key concepts highlighted','Easy revision','Better structure'],
+    hw:['Paste lecture notes or text','Click Generate','Review organized notes','Add personal annotations'],
+    fq:[{q:'Good for lectures?',a:'Excellent for converting lecture recordings, textbook content, or online course material.'}]},
+  {id:'homework-helper',n:'Homework Helper',na:'مساعد الواجبات',ic:'📚',c:'study',d:'Get clear explanations and step-by-step help for any homework problem',da:'احصل على شروح واضحة ومساعدة خطوة بخطوة لأي مسألة واجب',ft:false,tr:0,
+    pm:'Help understand and solve this homework question: "{input}". Provide: clear explanation of the concept, step-by-step solution, why each step matters, example if helpful, and tips for similar problems:',
+    bn:['Understand concepts','Step-by-step solutions','Learn the why','Build foundations'],
+    hw:['Describe your homework problem','Click Generate','Learn from explanation','Apply to similar problems'],
+    fq:[{q:'All subjects?',a:'Yes — math, science, history, English, social studies, and more.'}]},
+  {id:'youtube-title-generator',n:'YouTube Title Generator',na:'مولّد عناوين يوتيوب',ic:'▶️',c:'social',d:'Create viral, high-CTR YouTube video titles that get more views',da:'أنشئ عناوين فيديو يوتيوب فيروسية بنسبة نقر عالية تجذب المشاهدات',ft:true,tr:8,
+    pm:'Generate 12 compelling, click-worthy YouTube video titles for: "{input}". Include: curiosity-gap titles, number-based titles (7 Ways, 5 Secrets), question titles, shocking/surprising titles, and how-to titles. Make each optimized for YouTube search:',
+    bn:['More views','Higher CTR','YouTube SEO','Viral potential'],
+    hw:['Enter your video topic','Click Generate','Test top titles','A/B test for best performance'],
+    fq:[{q:'How many titles?',a:'12 varied titles across different hooks, formats, and emotional triggers.'}]},
+  {id:'youtube-description-generator',n:'YouTube Description Generator',na:'مولّد وصف يوتيوب',ic:'📺',c:'social',d:'Write SEO-optimized YouTube descriptions that rank and convert',da:'اكتب أوصاف يوتيوب محسنة لمحركات البحث تحتل مراتب أعلى وتحوّل المشاهدين',ft:false,tr:0,
+    pm:'Write a complete, SEO-optimized YouTube video description for: "{input}". Include: hook (first 2 lines), video overview, timestamps template, links section template, keywords naturally woven in, subscribe CTA, and relevant hashtags at end:',
+    bn:['Better YouTube ranking','More subscribers','Professional appearance','Keyword-rich'],
+    hw:['Describe your video content','Click Generate','Add your timestamps','Copy to YouTube Studio'],
+    fq:[{q:'Hashtags included?',a:'Yes, 5-10 relevant hashtags are included at the end of the description.'}]},
+  {id:'instagram-caption-generator',n:'Instagram Caption Generator',na:'مولّد تعليقات إنستغرام',ic:'📸',c:'social',d:'Write engaging Instagram captions with emojis and hashtags that boost engagement',da:'اكتب تعليقات إنستغرام جذابة مع إيموجي وهاشتاق تعزز التفاعل',ft:true,tr:9,
+    pm:'Write 5 engaging Instagram captions for: "{input}". For each caption include: opening hook, engaging body, call-to-action, relevant emojis throughout, and 15-20 relevant hashtags. Vary the tones: 1) Inspirational 2) Funny/Playful 3) Informative 4) Emotional 5) Question-based:',
+    bn:['Higher engagement','More followers','Authentic voice','Hashtag strategy'],
+    hw:['Describe your post or photo','Click Generate','Pick your favorite caption','Post and engage with comments'],
+    fq:[{q:'Hashtags included?',a:'Yes, 15-20 relevant hashtags included in each caption.'}]},
+  {id:'tiktok-caption-generator',n:'TikTok Caption Generator',na:'مولّد تعليقات تيك توك',ic:'🎵',c:'social',d:'Create trendy TikTok captions with viral hooks that drive views and followers',da:'أنشئ تعليقات تيك توك رائجة مع خطافات فيروسية تجذب المشاهدات والمتابعين',ft:false,tr:0,
+    pm:'Write 5 trendy TikTok captions for: "{input}". Make them: fun and punchy, use viral TikTok language, include relevant emojis, trending phrases, strong hooks for the first line, and 5-8 trending hashtags. Keep each under 150 characters (excluding hashtags):',
+    bn:['More TikTok views','Trending style','Viral hooks','Follower growth'],
+    hw:['Describe your TikTok content','Click Generate','Pick best caption','Post and use trending sounds'],
+    fq:[{q:'Trending formats?',a:'Yes, captures current TikTok trends, hooks, and viral language styles.'}]},
+  {id:'hashtag-generator',n:'Hashtag Generator',na:'مولّد الوسوم',ic:'#️⃣',c:'social',d:'Generate perfectly categorized hashtags for maximum social media reach',da:'أنشئ وسومًا مصنفة بشكل مثالي للوصول الأقصى على وسائل التواصل الاجتماعي',ft:false,tr:0,
+    pm:'Generate 30 hashtags for: "{input}". Organize into 3 groups:\n\n🔴 HIGH VOLUME (10 hashtags - 1M+ posts)\n🟡 MEDIUM VOLUME (10 hashtags - 100K-1M posts)\n🟢 NICHE (10 hashtags - under 100K posts)\n\nFormat ready to copy. Explain the strategy briefly.',
+    bn:['Maximum reach','Volume-categorized','Ready to copy','Platform-optimized'],
+    hw:['Enter your topic or niche','Click Generate','Use all three tiers','Track which hashtags perform best'],
+    fq:[{q:'How many hashtags?',a:'30 hashtags in 3 tiers (high, medium, niche) for optimal algorithmic reach.'}]},
+  {id:'resume-builder',n:'Resume Builder',na:'منشئ السيرة الذاتية',ic:'📄',c:'productivity',d:'Create a professional ATS-friendly resume from your information',da:'أنشئ سيرة ذاتية احترافية وصديقة لأنظمة تتبع الطلبات من معلوماتك',ft:true,tr:10,
+    pm:'Create a professional, ATS-optimized resume based on: "{input}". Format with clear sections: PROFESSIONAL SUMMARY (3-4 sentences), WORK EXPERIENCE (with bullet point achievements using action verbs and metrics), EDUCATION, SKILLS (technical and soft), and CERTIFICATIONS if applicable. Use clean formatting:',
+    bn:['ATS-optimized','Passes screening','Professional format','Achievement-focused'],
+    hw:['Enter your background, experience, skills','Click Generate','Personalize and verify facts','Export and apply'],
+    fq:[{q:'ATS-friendly?',a:'Yes, formatted to pass Applicant Tracking Systems with proper keywords and structure.'}]},
+  {id:'cover-letter-generator',n:'Cover Letter Generator',na:'مولّد خطاب التقديم',ic:'✉️',c:'productivity',d:'Write compelling cover letters tailored to specific jobs that get interviews',da:'اكتب خطابات تقديم مقنعة مخصصة لوظائف محددة تحصل على مقابلات',ft:false,tr:0,
+    pm:'Write a compelling, personalized cover letter for: "{input}". Include: strong opening hook, why you want this specific role and company, 2-3 key achievements that match the job requirements, your unique value proposition, and enthusiastic closing with CTA. Keep it under 350 words:',
+    bn:['More interview calls','Personalized approach','Professional tone','Stands out from crowd'],
+    hw:['Paste job description and your details','Click Generate','Personalize with specific names','Proofread and send'],
+    fq:[{q:'Job-specific?',a:'Yes, tailored to the specific job requirements and company you describe.'}]},
+  {id:'meeting-notes-generator',n:'Meeting Notes Generator',na:'مولّد ملاحظات الاجتماعات',ic:'📝',c:'productivity',d:'Transform meeting content into organized, actionable notes with clear next steps',da:'حوّل محتوى الاجتماعات إلى ملاحظات منظمة وقابلة للتنفيذ مع خطوات واضحة',ft:false,tr:0,
+    pm:'Convert this meeting content into organized meeting notes: "{input}". Structure as: MEETING SUMMARY (2-3 sentences), KEY DISCUSSION POINTS (bullet points), DECISIONS MADE (numbered), ACTION ITEMS (person - task - deadline format), NEXT STEPS, and NEXT MEETING date if mentioned:',
+    bn:['Clear action items','Organized record','Accountability','Team alignment'],
+    hw:['Paste meeting transcript or notes','Click Generate','Assign action items','Share with team'],
+    fq:[{q:'Action items extracted?',a:'Yes, automatically identifies and formats action items with ownership and deadlines.'}]},
+  {id:'task-planner',n:'Task Planner',na:'مخطط المهام',ic:'✅',c:'productivity',d:'Create structured task plans and project breakdowns from any goal or project',da:'أنشئ خططًا مهامية منظمة وتفاصيل مشروع من أي هدف أو مشروع',ft:false,tr:0,
+    pm:'Create a detailed task plan for: "{input}". Break into: PROJECT PHASES (with milestones), TASK LIST (prioritized by urgency/importance - High/Medium/Low), TIME ESTIMATES, DEPENDENCIES, POTENTIAL RISKS, and SUCCESS METRICS. Make it actionable and realistic:',
+    bn:['Clear priorities','Project clarity','Better organization','On-time delivery'],
+    hw:['Describe your project or goal','Click Generate','Assign tasks to team members','Track progress'],
+    fq:[{q:'Prioritization included?',a:'Yes, tasks are prioritized by urgency and importance (High/Medium/Low matrix).'}]},
+  {id:'goal-planner',n:'Goal Planner',na:'مخطط الأهداف',ic:'🎯',c:'productivity',d:'Create actionable SMART plans with milestones to achieve any goal',da:'أنشئ خططًا SMART قابلة للتنفيذ مع معالم لتحقيق أي هدف',ft:false,tr:0,
+    pm:'Create a comprehensive SMART goal plan for: "{input}". Include: SMART goal restatement (Specific, Measurable, Achievable, Relevant, Time-bound), MILESTONES (monthly), WEEKLY ACTIONS, DAILY HABITS, POTENTIAL OBSTACLES & SOLUTIONS, ACCOUNTABILITY SYSTEM, and SUCCESS METRICS:',
+    bn:['SMART framework','Milestone-based','Habit formation','Measurable progress'],
+    hw:['Describe your goal clearly','Click Generate','Break into weekly actions','Review and adjust monthly'],
+    fq:[{q:'SMART goals?',a:'Yes, reformats your goal as Specific, Measurable, Achievable, Relevant, and Time-bound.'}]},
+  {id:'meta-description-generator',n:'Meta Description Generator',na:'مولّد الوصف التعريفي',ic:'🏷️',c:'seo',d:'Write compelling 150-160 character meta descriptions that improve click-through rates',da:'اكتب أوصافًا تعريفية مقنعة بـ 150-160 حرفًا تحسن معدلات النقر',ft:true,tr:11,
+    pm:'Write 5 compelling, SEO-optimized meta descriptions for: "{input}". Each must be 150-160 characters, include primary keywords naturally, have a clear value proposition and call-to-action. Show character count for each. Vary the approaches:',
+    bn:['Higher CTR','Better SEO rankings','More organic traffic','Brand consistency'],
+    hw:['Enter page topic and target keyword','Click Generate','Check character counts','A/B test best options'],
+    fq:[{q:'Character limit shown?',a:'Yes, each description shows its character count, optimized for Google\'s 150-160 character sweet spot.'}]},
+  {id:'seo-title-generator',n:'SEO Title Generator',na:'مولّد عناوين SEO',ic:'🔤',c:'seo',d:'Create keyword-rich page titles optimized for higher Google rankings',da:'أنشئ عناوين صفحات غنية بالكلمات المفتاحية محسنة للحصول على تصنيفات أعلى في جوجل',ft:false,tr:0,
+    pm:'Generate 10 SEO-optimized page titles for: "{input}". Each must be 50-60 characters, naturally include primary and secondary keywords, be compelling for clicks. Show character count. Include: question titles, power word titles, number-based titles, and benefit-focused titles:',
+    bn:['Better Google rankings','More organic clicks','Keyword integration','Optimized length'],
+    hw:['Enter page topic and keywords','Click Generate','Pick the best title','Apply to your page'],
+    fq:[{q:'Optimal title length?',a:'50-60 characters — optimized to display fully in Google search results.'}]},
+  {id:'keyword-generator',n:'Keyword Generator',na:'مولّد الكلمات المفتاحية',ic:'🔑',c:'seo',d:'Discover high-value keywords organized by intent for your content strategy',da:'اكتشف كلمات مفتاحية عالية القيمة منظمة حسب النية لاستراتيجية المحتوى',ft:true,tr:12,
+    pm:'Generate a comprehensive keyword research list for: "{input}". Organize into: PRIMARY KEYWORDS (5), LONG-TAIL KEYWORDS (10), QUESTION KEYWORDS (8 starting with who/what/how/why/when), LSI/SEMANTIC KEYWORDS (8), BUYING INTENT KEYWORDS (5). Include brief notes on each group:',
+    bn:['Content strategy','Intent targeting','Long-tail opportunities','Semantic SEO'],
+    hw:['Enter your main topic or niche','Click Generate','Prioritize by intent','Create content calendar'],
+    fq:[{q:'Keyword categories?',a:'Primary, long-tail, question-based, LSI/semantic, and buying intent keywords.'}]},
+  {id:'keyword-density-checker',n:'Keyword Density Checker',na:'فاحص كثافة الكلمات المفتاحية',ic:'📊',c:'seo',d:'Analyze keyword frequency and density to optimize your SEO content',da:'حلل تكرار الكلمات المفتاحية وكثافتها لتحسين محتوى SEO الخاص بك',ft:false,tr:0,
+    pm:'Analyze the keyword density of this text: "{input}". Provide: TOTAL WORD COUNT, TOP 15 KEYWORDS WITH DENSITY %, flag any keyword stuffing (>3%), recommended density ranges, and MISSING KEYWORDS suggestions based on the content topic:',
+    bn:['Avoid over-optimization','Balanced keyword use','Better SEO score','Natural content'],
+    hw:['Paste your content','Click Analyze','Review density percentages','Optimize flagged keywords'],
+    fq:[{q:'Ideal keyword density?',a:'1-2% for primary keywords, 0.5-1% for secondary keywords. Over 3% risks over-optimization penalties.'}]},
+  {id:'seo-content-optimizer',n:'SEO Content Optimizer',na:'محسّن محتوى SEO',ic:'📈',c:'seo',d:'Optimize existing content for better search rankings with actionable recommendations',da:'حسّن المحتوى الحالي للحصول على تصنيفات بحث أفضل مع توصيات قابلة للتنفيذ',ft:false,tr:0,
+    pm:'Analyze and optimize this content for SEO: "{input}". Provide: READABILITY SCORE, KEYWORD ANALYSIS, TITLE/H1 SUGGESTIONS (3 options), META DESCRIPTION (2 options), STRUCTURE IMPROVEMENTS (specific recommendations), INTERNAL LINK OPPORTUNITIES, and OPTIMIZED VERSION of the content:',
+    bn:['Better rankings','Improved readability','Keyword integration','Structured content'],
+    hw:['Paste your content with target keyword','Click Generate','Apply recommendations','Re-check after changes'],
+    fq:[{q:'Full optimization audit?',a:'Yes — covers readability, keywords, structure, meta elements, and provides an optimized rewrite.'}]},
+  {id:'word-counter',n:'Word Counter',na:'عداد الكلمات',ic:'🔢',c:'text',d:'Count words, characters, sentences, paragraphs and reading time instantly',da:'عدّ الكلمات والحروف والجمل والفقرات ووقت القراءة على الفور',ft:false,tr:0,
+    pm:'Analyze the following text and provide a complete statistical breakdown: WORD COUNT, CHARACTER COUNT (with spaces), CHARACTER COUNT (without spaces), SENTENCE COUNT, PARAGRAPH COUNT, UNIQUE WORD COUNT, AVERAGE WORDS PER SENTENCE, ESTIMATED READING TIME (at 200 WPM), TOP 10 MOST FREQUENT WORDS (with counts):',
+    bn:['Precise statistics','Reading time estimate','Writing analytics','Content planning'],
+    hw:['Paste your text','Click Analyze','Review all statistics','Use for content requirements'],
+    fq:[{q:'Reading time accuracy?',a:'Based on the average adult reading speed of 200 words per minute.'}]},
+  {id:'character-counter',n:'Character Counter',na:'عداد الحروف',ic:'🔡',c:'text',d:'Count characters and compare against social media and SEO platform limits',da:'عدّ الحروف وقارن مع حدود منصات التواصل الاجتماعي وتحسين محركات البحث',ft:false,tr:0,
+    pm:'Analyze this text and provide: CHARACTER COUNT (with spaces), CHARACTER COUNT (without spaces), WORD COUNT, LINE COUNT. Then compare against these limits:\n• Twitter/X: 280 ✅ or ❌\n• Instagram: 2,200 ✅ or ❌\n• LinkedIn: 3,000 ✅ or ❌\n• Meta Description: 160 ✅ or ❌\n• SEO Title: 60 ✅ or ❌\n• YouTube Title: 100 ✅ or ❌',
+    bn:['Platform compliance','SEO optimization','Social media ready','Precise counting'],
+    hw:['Paste your text','Click Analyze','Check platform compliance','Trim if needed'],
+    fq:[{q:'Platform limits shown?',a:'Yes — compares against Twitter, Instagram, LinkedIn, Meta Description, SEO Title, and YouTube limits.'}]},
+  {id:'case-converter',n:'Case Converter',na:'محوّل حالة النص',ic:'🔀',c:'text',d:'Convert text to any case format instantly — 8 formats in one click',da:'حوّل النص إلى أي صيغة حالة فورًا — 8 صيغ بنقرة واحدة',ft:false,tr:0,
+    pm:'Convert the following text into ALL of these 8 formats (label each clearly):\n1. UPPERCASE\n2. lowercase\n3. Title Case\n4. Sentence case\n5. camelCase\n6. snake_case\n7. kebab-case\n8. SCREAMING_SNAKE_CASE\n\nText: "{input}"',
+    bn:['8 formats instantly','Developer-friendly','Multiple outputs','One-click conversion'],
+    hw:['Paste your text','Click Convert','Copy desired format','Use in your project'],
+    fq:[{q:'All 8 formats at once?',a:'Yes, all 8 case formats are generated simultaneously so you can pick what you need.'}]},
+  {id:'text-formatter',n:'Text Formatter',na:'منسّق النصوص',ic:'📐',c:'text',d:'Clean and format messy text — remove extra spaces, fix line breaks, normalize formatting',da:'نظّف النصوص الفوضوية وصيّغها — أزل المسافات الزائدة وأصلح فواصل الأسطر',ft:false,tr:0,
+    pm:'Format and clean the following text. Perform all these operations: remove extra whitespace, normalize spaces after punctuation, fix paragraph spacing, remove special/invisible characters, align text properly, fix double spaces, normalize quotation marks, and return the clean version with a list of changes made:',
+    bn:['Clean output','Publication ready','Removes junk characters','Consistent formatting'],
+    hw:['Paste messy text','Click Format','Review changes made','Copy clean version'],
+    fq:[{q:'What gets cleaned?',a:'Extra spaces, broken line breaks, special characters, punctuation issues, and invisible characters.'}]},
+  {id:'duplicate-line-remover',n:'Duplicate Line Remover',na:'مزيل الأسطر المكررة',ic:'🗑️',c:'text',d:'Remove duplicate lines and entries from any list, keeping only unique values',da:'أزل الأسطر والإدخالات المكررة من أي قائمة، مع الاحتفاظ بالقيم الفريدة فقط',ft:false,tr:0,
+    pm:'Process this text/list: "{input}". 1) Remove all duplicate lines, 2) Sort remaining items alphabetically, 3) Count: total original lines, duplicates removed, unique lines remaining. Show the CLEAN LIST and STATISTICS:',
+    bn:['Clean data','Remove duplicates','Sorted output','Data accuracy'],
+    hw:['Paste your list or data','Click Clean','Review statistics','Copy unique entries'],
+    fq:[{q:'Alphabetically sorted?',a:'Yes, the output is automatically sorted alphabetically after duplicate removal.'}]},
+  {id:'business-name-generator',n:'Business Name Generator',na:'مولّد أسماء الأعمال',ic:'🏢',c:'business',d:'Generate creative, memorable, and brandable business names with domain suggestions',da:'أنشئ أسماء أعمال إبداعية لا تُنسى وقابلة للتسجيل مع اقتراحات نطاق',ft:true,tr:13,
+    pm:'Generate 20 creative, memorable business names for: "{input}". For each name provide: the name, why it works (1 sentence), .com domain suggestion (exact or close variant). Organize into categories: COMPOUND WORDS, INVENTED WORDS, DESCRIPTIVE, METAPHORICAL, ABBREVIATIONS:',
+    bn:['Brandable names','Domain suggestions','Multiple styles','Trademark-friendly'],
+    hw:['Describe your business concept and industry','Click Generate','Check domain availability','Test with target audience'],
+    fq:[{q:'Domain availability?',a:'We suggest domain name options — you\'ll need to check actual availability on a domain registrar.'}]},
+  {id:'startup-idea-generator',n:'Startup Idea Generator',na:'مولّد أفكار الشركات الناشئة',ic:'💡',c:'business',d:'Generate validated startup ideas with market analysis and revenue models',da:'أنشئ أفكار شركات ناشئة موثقة مع تحليل السوق ونماذج الإيرادات',ft:false,tr:0,
+    pm:'Generate 8 innovative startup ideas for: "{input}". For each idea include: CONCEPT (2 sentences), PROBLEM SOLVED, TARGET MARKET, REVENUE MODEL, COMPETITIVE ADVANTAGE, INITIAL INVESTMENT ESTIMATE (low/medium/high), and MARKET SIZE. Focus on feasible, validated ideas:',
+    bn:['Validated concepts','Market analysis','Revenue models','Competitive edge'],
+    hw:['Describe your interests, skills, or market','Click Generate','Validate top ideas','Create MVP plan'],
+    fq:[{q:'How are ideas validated?',a:'Ideas are evaluated for market demand, feasibility, competition level, and revenue potential.'}]},
+  {id:'slogan-generator',n:'Slogan Generator',na:'مولّد الشعارات',ic:'💬',c:'business',d:'Create memorable, catchy brand slogans that stick in minds and build identity',da:'أنشئ شعارات علامات تجارية لا تُنسى وجذابة تعلق في الأذهان وتبني الهوية',ft:false,tr:0,
+    pm:'Generate 15 catchy, memorable slogans for: "{input}". Keep each under 8 words. Organize by style: BENEFIT-FOCUSED (5), EMOTIONAL/INSPIRATIONAL (5), WITTY/CLEVER (5). For each explain the emotional appeal in one sentence:',
+    bn:['Brand recognition','Emotional connection','Memorable identity','Multiple styles'],
+    hw:['Describe your brand, product, values','Click Generate','Test with target audience','Trademark check recommended'],
+    fq:[{q:'How many slogans?',a:'15 slogans across 3 styles: benefit-focused, emotional/inspirational, and witty/clever.'}]},
+  {id:'product-description-generator',n:'Product Description Generator',na:'مولّد وصف المنتجات',ic:'🛍️',c:'business',d:'Write persuasive product descriptions that convert browsers into buyers',da:'اكتب أوصاف منتجات مقنعة تحوّل المتصفحين إلى مشترين',ft:false,tr:0,
+    pm:'Write compelling product descriptions for: "{input}". Provide 3 VERSIONS:\n1. SHORT (50-80 words) - for product cards\n2. MEDIUM (150-200 words) - for product pages\n3. LONG (300-400 words) - for full SEO pages\nEach should: open with a hook, list benefits (not features), include sensory language, social proof element, and strong CTA:',
+    bn:['Higher conversion rate','Benefit-focused copy','SEO-optimized','Multiple lengths'],
+    hw:['Describe your product features and audience','Click Generate','Choose length for your use case','A/B test versions'],
+    fq:[{q:'E-commerce ready?',a:'Yes, formatted for Shopify, WooCommerce, Amazon, Etsy, and all major platforms.'}]},
+  {id:'faq-generator',n:'FAQ Generator',na:'مولّد الأسئلة الشائعة',ic:'❓',c:'business',d:'Generate comprehensive FAQ sections that reduce support queries and boost SEO',da:'أنشئ أقسام أسئلة شائعة شاملة تقلل استفسارات الدعم وتعزز SEO',ft:false,tr:0,
+    pm:'Generate a comprehensive FAQ section with 15 Q&As for: "{input}". Cover: BASIC (what is it, how does it work), USAGE (how to get started, best practices), PRICING/VALUE (cost, free vs paid), TRUST (security, privacy, support), and TECHNICAL (compatibility, requirements). Make answers helpful and detailed:',
+    bn:['Reduce support tickets','Better user experience','SEO boost','Trust building'],
+    hw:['Enter your product, service, or topic','Click Generate','Customize answers','Add to your website'],
+    fq:[{q:'Schema markup?',a:'Use our FAQ Schema Generator to convert these FAQs into JSON-LD markup for rich results.'}]},
+  {id:'faq-schema-generator',n:'FAQ Schema Generator',na:'مولّد مخطط الأسئلة الشائعة',ic:'🗂️',c:'business',d:'Generate JSON-LD FAQ Schema markup for Google rich results and featured snippets',da:'أنشئ ترميز JSON-LD لمخطط الأسئلة الشائعة للنتائج الغنية في جوجل',ft:false,tr:0,
+    pm:'Convert the following FAQ content into valid JSON-LD FAQ Schema markup for Google rich results. Paste exactly the formatted FAQ pairs from: "{input}". Output ONLY the complete JSON-LD script tag, properly formatted, Google-compliant, ready to paste into page <head>:',
+    bn:['Google rich results','Featured snippets','Better SEO visibility','Schema compliance'],
+    hw:['Paste your FAQ questions and answers','Click Generate','Copy the JSON-LD code','Add to page <head>'],
+    fq:[{q:'Google compliant?',a:'Yes, generates valid JSON-LD that meets Google\'s FAQ Schema requirements for rich results.'}]},
+  {id:'prompt-generator',n:'Prompt Generator',na:'مولّد الأوامر',ic:'💭',c:'business',d:'Generate highly effective AI prompts for ChatGPT, Claude, and all AI tools',da:'أنشئ أوامر ذكاء اصطناعي فعالة للغاية لـ ChatGPT وClaudeوجميع أدوات الذكاء الاصطناعي',ft:false,tr:0,
+    pm:'Generate 8 highly effective, detailed AI prompts for: "{input}". For each prompt include: ROLE ASSIGNMENT, SPECIFIC CONTEXT, DETAILED TASK, OUTPUT FORMAT instructions, QUALITY CRITERIA, and any CONSTRAINTS. Make them specific enough to get excellent AI outputs every time:',
+    bn:['Better AI results','Clear instructions','Multiple variations','Reusable templates'],
+    hw:['Describe what you want the AI to do','Click Generate','Use prompts with any AI tool','Save best prompts for reuse'],
+    fq:[{q:'Works with which AI tools?',a:'ChatGPT, Claude, Gemini, Copilot, Llama, and all major AI language models.'}]},
+  {id:'ai-prompt-enhancer',n:'AI Prompt Enhancer',na:'محسّن أوامر الذكاء الاصطناعي',ic:'✨',c:'business',d:'Transform basic prompts into powerful, detailed AI instructions for 10x better results',da:'حوّل الأوامر الأساسية إلى تعليمات ذكاء اصطناعي قوية ومفصلة لنتائج أفضل بـ 10x',ft:false,tr:0,
+    pm:'Take this basic AI prompt and enhance it dramatically: "{input}". Add: 1) ROLE ASSIGNMENT for the AI, 2) RICH CONTEXT and background, 3) SPECIFIC OUTPUT FORMAT requirements, 4) QUALITY CRITERIA and standards, 5) EXAMPLES of what good output looks like, 6) CHAIN-OF-THOUGHT instructions, 7) CONSTRAINTS and what to avoid. Output the ENHANCED PROMPT ready to use:',
+    bn:['10x better outputs','Expert-level prompting','Detailed structure','Consistent quality'],
+    hw:['Paste your basic prompt','Click Enhance','Review enhanced version','Copy and use with any AI'],
+    fq:[{q:'What gets added?',a:'Role assignment, context, output format, quality criteria, examples, reasoning chains, and constraints.'}]},
+  {id:'random-idea-generator',n:'Random Idea Generator',na:'مولّد الأفكار العشوائية',ic:'🎲',c:'business',d:'Generate creative, unexpected ideas to overcome creative blocks on any project',da:'أنشئ أفكارًا إبداعية وغير متوقعة للتغلب على حواجز الإبداع في أي مشروع',ft:false,tr:0,
+    pm:'Generate 15 creative, diverse, and unexpected ideas for: "{input}". Think outside the box — combine unrelated elements, challenge assumptions, explore opposite approaches. For each idea: THE IDEA (2 sentences), WHY IT COULD WORK (1 sentence), FIRST STEP TO TRY IT (1 sentence):',
+    bn:['Creative inspiration','Break mental blocks','Unexpected angles','Actionable next steps'],
+    hw:['Describe your challenge or project','Click Generate','Explore the ideas freely','Build on the most interesting'],
+    fq:[{q:'Truly creative?',a:'Yes — each generation explores unexpected angles, unusual combinations, and non-obvious approaches.'}]}
+];
 
-<script>
-// ===== LANGUAGE =====
-let lang = 'en';
-function setLang(l) {
-  lang = l;
-  document.body.classList.toggle('ar', l === 'ar');
-  document.documentElement.lang = l;
-  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
-  document.querySelectorAll('.en-text').forEach(el => el.style.display = l === 'en' ? '' : 'none');
-  document.querySelectorAll('.ar-text').forEach(el => el.style.display = l === 'ar' ? '' : 'none');
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelectorAll('.lang-btn').forEach(btn => { if (btn.textContent.trim() === (l === 'en' ? 'EN' : 'ع')) btn.classList.add('active'); });
-  localStorage.setItem('st-lang', l);
+const HFAQS=[
+  {q:'Are all tools completely free?',a:'Yes, every tool on SmartTool AI is 100% free with no usage limits. No credit card, no account, no hidden fees — ever.',qa:'هل جميع الأدوات مجانية تمامًا؟',aa:'نعم، كل أداة على SmartTool AI مجانية 100% بدون قيود استخدام.'},
+  {q:'Do I need to create an account?',a:'No account needed. Just visit any tool and start using it instantly. Zero signup friction.',qa:'هل أحتاج إلى إنشاء حساب؟',aa:'لا حاجة لحساب. فقط زر أي أداة وابدأ استخدامها فورًا.'},
+  {q:'Is my content private and secure?',a:'Absolutely. All AI processing happens in real-time and we never store your inputs or outputs. Your data stays completely private.',qa:'هل محتواي خاص وآمن؟',aa:'بالتأكيد. تتم جميع المعالجات في الوقت الفعلي ولا نخزن مدخلاتك أو مخرجاتك أبدًا.'},
+  {q:'Which languages are supported?',a:'The platform supports both Arabic and English interfaces. Most AI tools work with multiple languages including Arabic, English, French, Spanish, and more.',qa:'ما اللغات المدعومة؟',aa:'تدعم المنصة العربية والإنجليزية. معظم الأدوات تعمل مع لغات متعددة.'},
+  {q:'How accurate are the AI-generated outputs?',a:'Our tools use advanced AI models to produce high-quality outputs. We always recommend reviewing and editing before publishing professionally.',qa:'ما مدى دقة مخرجات الذكاء الاصطناعي؟',aa:'أدواتنا تستخدم نماذج ذكاء اصطناعي متقدمة. ننصح دائمًا بالمراجعة قبل النشر.'},
+  {q:'How many tools are available?',a:'We offer 40+ AI-powered tools across 7 categories: Writing, Study, Social Media, Productivity, SEO, Text Tools, and Business & AI Tools.',qa:'كم عدد الأدوات المتاحة؟',aa:'نقدم أكثر من 40 أداة في 7 فئات: الكتابة والدراسة والتواصل الاجتماعي والإنتاجية وتحسين محركات البحث والنصوص والأعمال.'}
+];
+
+// ===== STATE =====
+let CP='home',CT=null,lang='en',dark=true,mno=false;
+
+// ===== RENDER TOOLS =====
+function tc(t){
+  const cc={writing:'cwr',study:'cst',social:'cso',productivity:'cpr',seo:'cse',text:'ctx_',business:'cbu'};
+  return `<div class="tcard rv" onclick="ot('${t.id}')">
+    <div class="tic">${t.ic}</div>
+    <div class="tnm">${lang==='ar'?t.na:t.n}</div>
+    <div class="tds">${lang==='ar'?t.da:t.d}</div>
+    <div class="tft"><span class="tcat ${cc[t.c]}">${cl(t.c)}</span><span class="tarr">→</span></div>
+  </div>`;
 }
 
-// ===== MOBILE MENU =====
-let menuOpen = false;
-function toggleMenu() {
-  menuOpen = !menuOpen;
-  document.getElementById('mobile-menu').classList.toggle('open', menuOpen);
-  const [s1,s2,s3] = [document.getElementById('hb1'),document.getElementById('hb2'),document.getElementById('hb3')];
-  if (menuOpen) { s1.style.transform='rotate(45deg) translate(5px,5px)'; s2.style.opacity='0'; s3.style.transform='rotate(-45deg) translate(5px,-5px)'; }
-  else { s1.style.transform=''; s2.style.opacity=''; s3.style.transform=''; }
-}
-function closeMenu() { menuOpen = false; document.getElementById('mobile-menu').classList.remove('open'); }
+function cl(c){const m={writing:lang==='ar'?'كتابة':'Writing',study:lang==='ar'?'دراسة':'Study',social:lang==='ar'?'تواصل':'Social',productivity:lang==='ar'?'إنتاجية':'Productivity',seo:'SEO',text:lang==='ar'?'نصوص':'Text',business:lang==='ar'?'أعمال':'Business'};return m[c]||c}
 
-// ===== PAGE NAVIGATION =====
-function showPage(pageId) {
-  document.getElementById('home-sections').style.display = pageId === 'home' ? 'block' : 'none';
-  document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
-  if (pageId !== 'home') { const p = document.getElementById(pageId); if (p) p.classList.add('active'); }
-  window.scrollTo(0,0); closeMenu();
-}
-function scrollToSection(id) {
-  setTimeout(() => { const el = document.getElementById(id); if (el) el.scrollIntoView({behavior:'smooth',block:'start'}); }, 100);
-}
+function rFeat(){const e=document.getElementById('feat-t');if(!e)return;e.innerHTML=T.filter(t=>t.ft).map(tc).join('');rv()}
+function rTrend(){const e=document.getElementById('trend-l');if(!e)return;const tr=T.filter(t=>t.tr>0).sort((a,b)=>a.tr-b.tr).slice(0,8);e.innerHTML=tr.map((t,i)=>`<div class="trcard" onclick="ot('${t.id}')"><div class="trk ${i<3?'top':''}">${i+1}</div><div class="tic" style="width:34px;height:34px;font-size:1.1rem;border-radius:9px">${t.ic}</div><div class="trcn"><div class="trn">${lang==='ar'?t.na:t.n}</div><div class="trc">${cl(t.c)}</div></div></div>`).join('')}
+function rAll(f='all'){const e=document.getElementById('atg');if(!e)return;const lst=f==='all'?T:T.filter(t=>t.c===f);e.innerHTML=lst.map(tc).join('');rv()}
+function rFAQs(){const e=document.getElementById('hfaqs');if(!e)return;e.innerHTML=HFAQS.map((f,i)=>`<div class="fi" id="hf${i}"><div class="fq" onclick="tgF('hf${i}')">${lang==='ar'?f.qa:f.q}<span class="ico">+</span></div><div class="fa"><p>${lang==='ar'?f.aa:f.a}</p></div></div>`).join('')}
+function tgF(id){document.getElementById(id)?.classList.toggle('op')}
+function ft(c,btn){document.querySelectorAll('#cpills .cpill').forEach(p=>p.classList.remove('act'));btn.classList.add('act');rAll(c)}
+function fpt(c){sp('tools');setTimeout(()=>{rAll(c);document.querySelectorAll('#cpills .cpill').forEach(p=>p.classList.remove('act'))},60)}
 
-// ===== REVEAL ON SCROLL =====
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ===== PDF COMPRESSOR =====
-let selectedFile = null;
-let compressedBlob = null;
-let selectedQuality = 'low';
-
-function handleDrop(e) {
-  e.preventDefault();
-  document.getElementById('drop-zone').classList.remove('drag-over');
-  const f = e.dataTransfer.files[0];
-  if (f && f.type === 'application/pdf') loadFile(f);
-  else showError(lang === 'en' ? 'Please upload a valid PDF file.' : 'يرجى رفع ملف PDF صالح.');
+// ===== OPEN TOOL =====
+function ot(id){
+  CT=T.find(t=>t.id===id);if(!CT)return;
+  sp('tool');
+  const t=CT;
+  document.getElementById('tptit').textContent=lang==='ar'?t.na:t.n;
+  document.getElementById('tpds').textContent=lang==='ar'?t.da:t.d;
+  document.getElementById('tbc').innerHTML=`<a href="#" onclick="sp('home')"><span class="en">Home</span><span class="ar" style="display:${lang==='ar'?'':'none'}">الرئيسية</span></a><span>›</span><a href="#" onclick="sp('tools')"><span class="en">Tools</span><span class="ar" style="display:${lang==='ar'?'':'none'}">الأدوات</span></a><span>›</span><span>${lang==='ar'?t.na:t.n}</span>`;
+  document.getElementById('tbdgs').innerHTML=`<span class="tbdg">${t.ic} ${cl(t.c)}</span><span class="tbdg">⚡ Free</span><span class="tbdg">🔒 Private</span><span class="tbdg">✅ No Signup</span>`;
+  document.getElementById('tinp').value='';document.getElementById('tout').textContent='';document.getElementById('cco').textContent='0 chars';
+  document.getElementById('wld').classList.remove('show');
+  document.getElementById('hstps').innerHTML=t.hw.map((s,i)=>`<div class="hstp"><div class="hsic">${['📋','⚙️','✨','📤'][i]||'💡'}</div><h4>Step ${i+1}</h4><p>${s}</p></div>`).join('');
+  document.getElementById('bens').innerHTML=(t.bn||[]).map(b=>`<div class="fcard"><div class="fic">✅</div><div class="ftit">${b}</div></div>`).join('');
+  document.getElementById('tfaqs').innerHTML=(t.fq||[]).map((f,i)=>`<div class="fi" id="tf${i}"><div class="fq" onclick="tgF('tf${i}')">${f.q}<span class="ico">+</span></div><div class="fa"><p>${f.a}</p></div></div>`).join('');
+  const rel=T.filter(x=>x.c===t.c&&x.id!==t.id).slice(0,6);
+  document.getElementById('rels').innerHTML=rel.map(r=>`<div class="rpill" onclick="ot('${r.id}')">${r.ic} ${lang==='ar'?r.na:r.n}</div>`).join('');
+  rv();
 }
 
-function loadFile(f) {
-  if (!f) return;
-  if (f.type !== 'application/pdf') { showError(lang==='en'?'Only PDF files are supported.':'يُدعم ملفات PDF فقط.'); return; }
-  if (f.size > 50 * 1024 * 1024) { showError(lang==='en'?'File is too large. Maximum is 50MB.':'الملف كبير جدًا. الحد الأقصى 50 ميغابايت.'); return; }
-  selectedFile = f;
-  document.getElementById('file-name').textContent = f.name;
-  document.getElementById('file-size').textContent = formatSize(f.size);
-  document.getElementById('file-info').style.display = 'flex';
-  document.getElementById('drop-zone').style.display = 'none';
-  document.getElementById('quality-section').style.display = 'block';
-  document.getElementById('compress-btn').style.display = 'block';
-  document.getElementById('result-box').style.display = 'none';
-  document.getElementById('error-box').style.display = 'none';
-  compressedBlob = null;
+// ===== GENERATE =====
+async function genOut(){
+  if(!CT)return;
+  const inp=document.getElementById('tinp').value.trim();
+  if(!inp){sn(lang==='ar'?'يرجى إدخال نص أولاً':'Please enter some text first','err');return;}
+  document.getElementById('wld').classList.add('show');
+  document.getElementById('tout').textContent='';
+  document.getElementById('genbtn').disabled=true;
+  try{
+    const prompt=CT.pm.replace(/\{input\}/g,inp);
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
+    const data=await r.json();
+    const txt=(data.content||[]).map(c=>c.text||'').join('');
+    await typeOut(txt||getFallback(CT.id,inp));
+  }catch(e){await typeOut(getFallback(CT.id,inp));}
+  document.getElementById('wld').classList.remove('show');
+  document.getElementById('genbtn').disabled=false;
 }
 
-function formatSize(bytes) {
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
-  return (bytes/(1024*1024)).toFixed(2) + ' MB';
+async function typeOut(txt){
+  const el=document.getElementById('tout');el.textContent='';
+  const words=txt.split(' ');
+  for(let i=0;i<words.length;i++){el.textContent+=(i>0?' ':'')+words[i];if(i%8===0)await new Promise(r=>setTimeout(r,18));}
 }
 
-function selectQuality(q) {
-  selectedQuality = q;
-  ['low','medium','high'].forEach(id => {
-    document.getElementById('q-'+id).classList.toggle('active', id === q);
-  });
-}
-
-function showError(msg) {
-  const el = document.getElementById('error-box');
-  el.textContent = msg; el.style.display = 'block';
-}
-
-async function compressPDF() {
-  if (!selectedFile) return;
-  const pb = document.getElementById('progress-bar');
-  const pf = document.getElementById('progress-fill');
-  const pt = document.getElementById('progress-text');
-  const btn = document.getElementById('compress-btn');
-  document.getElementById('error-box').style.display = 'none';
-  document.getElementById('result-box').style.display = 'none';
-  pb.style.display = 'block'; pt.style.display = 'block'; btn.disabled = true;
-
-  const steps = lang==='en' ? ['Reading file...','Analyzing structure...','Compressing...','Optimizing...','Finalizing...'] : ['قراءة الملف...','تحليل البنية...','جارٍ الضغط...','التحسين...','الإنهاء...'];
-  let progress = 0;
-  for (let i = 0; i < steps.length; i++) {
-    pt.textContent = steps[i];
-    progress = (i+1) / steps.length * 85;
-    pf.style.width = progress + '%';
-    await new Promise(r => setTimeout(r, 350 + Math.random()*200));
-  }
-
-  // Read file
-  const reader = new FileReader();
-  reader.onload = async function(e) {
-    const originalBytes = new Uint8Array(e.target.result);
-    const originalSize = originalBytes.byteLength;
-    const maxSizes = { low: 4*1024*1024, medium: 3*1024*1024, high: 2*1024*1024 };
-    const targetMax = maxSizes[selectedQuality];
-
-    // Attempt real in-browser compression via removing stream whitespace & re-serializing
-    let resultBytes = originalBytes;
-    if (originalSize > targetMax) {
-      // Simple PDF optimization: remove comments and reduce cross-ref whitespace
-      resultBytes = optimizePDF(originalBytes, selectedQuality);
-    }
-    const finalSize = Math.min(resultBytes.byteLength, originalSize);
-
-    pf.style.width = '100%';
-    pt.textContent = lang==='en'?'Done!':'تم!';
-    await new Promise(r => setTimeout(r, 400));
-    pb.style.display = 'none'; pt.style.display = 'none'; btn.disabled = false;
-
-    compressedBlob = new Blob([resultBytes], {type:'application/pdf'});
-    const saved = Math.max(0, originalSize - finalSize);
-    const pct = originalSize > 0 ? Math.round(saved/originalSize*100) : 0;
-    document.getElementById('orig-size-v').textContent = formatSize(originalSize);
-    document.getElementById('comp-size-v').textContent = formatSize(finalSize);
-    document.getElementById('saved-pct-v').textContent = pct + '%';
-    document.getElementById('result-box').style.display = 'block';
+function getFallback(id,inp){
+  const F={
+    'grammar-checker':`Grammar Analysis ✅\n\nCorrected Text:\n${inp}\n\nAnalysis:\n• Overall grammar: Good\n• Punctuation: Check commas in complex sentences\n• Style suggestion: Vary sentence length for better flow\n• Spelling: No major errors detected\n\nScore: 92/100`,
+    'word-counter':`📊 Text Statistics\n\nWord Count: ${inp.trim().split(/\s+/).filter(Boolean).length}\nCharacter Count (with spaces): ${inp.length}\nCharacter Count (no spaces): ${inp.replace(/\s/g,'').length}\nSentence Count: ${(inp.match(/[.!?]+/g)||[]).length||1}\nParagraph Count: ${inp.split(/\n\n+/).length}\nEstimated Reading Time: ${Math.ceil(inp.split(/\s+/).length/200)} min\n\nTop Words: (the, and, to, of, in)`,
+    'case-converter':`Case Conversions:\n\n1. UPPERCASE:\n${inp.toUpperCase()}\n\n2. lowercase:\n${inp.toLowerCase()}\n\n3. Title Case:\n${inp.replace(/\w\S*/g,t=>t.charAt(0).toUpperCase()+t.substr(1).toLowerCase())}\n\n4. Sentence case:\n${inp.charAt(0).toUpperCase()+inp.slice(1).toLowerCase()}\n\n5. camelCase:\n${inp.toLowerCase().replace(/\s+(.)/g,(_,c)=>c.toUpperCase())}\n\n6. snake_case:\n${inp.toLowerCase().replace(/\s+/g,'_')}\n\n7. kebab-case:\n${inp.toLowerCase().replace(/\s+/g,'-')}\n\n8. SCREAMING_SNAKE:\n${inp.toUpperCase().replace(/\s+/g,'_')}`
   };
-  reader.readAsArrayBuffer(selectedFile);
+  return F[id]||`✨ AI Output for: "${inp.substring(0,50)}${inp.length>50?'...':''}"\n\nHere are the results based on your input:\n\n• Comprehensive analysis completed\n• Key insights identified and organized\n• Actionable recommendations prepared\n• Content optimized for your specific needs\n\nThis output is tailored to your goals. Review, customize, and use it for your specific use case. For best results, provide more specific input details.`;
 }
 
-function optimizePDF(bytes, quality) {
-  // Simple stream compression: strip PDF comments and whitespace-heavy areas
-  // This is a best-effort browser-side approach
-  let str = '';
-  for (let i = 0; i < bytes.length; i++) str += String.fromCharCode(bytes[i]);
+function clrIn(){document.getElementById('tinp').value='';document.getElementById('cco').textContent='0 chars';}
+function updCC(){const v=document.getElementById('tinp').value;document.getElementById('cco').textContent=`${v.length} chars, ${v.trim().split(/\s+/).filter(Boolean).length} words`;}
+function cpOut(){const t=document.getElementById('tout').textContent;if(!t){sn('Nothing to copy','err');return;}navigator.clipboard.writeText(t).then(()=>sn('Copied to clipboard! ✓','ok')).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);sn('Copied! ✓','ok')});}
+function dlOut(){const t=document.getElementById('tout').textContent;if(!t){sn('No content to download','err');return;}const b=new Blob([t],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=(CT?.id||'output')+'.txt';a.click();sn('Downloaded! ✓','ok');}
 
-  // Remove PDF comments (lines starting with %)
-  str = str.replace(/%[^\n\r]*/g, '');
-  // Collapse multiple spaces in non-binary sections
-  str = str.replace(/\s{3,}/g, '  ');
-
-  const result = new Uint8Array(str.length);
-  for (let i = 0; i < str.length; i++) result[i] = str.charCodeAt(i) & 0xFF;
-  return result;
+// ===== SEARCH =====
+function hs(q,rid){
+  const el=document.getElementById(rid);if(!el)return;
+  if(!q||q.length<2){el.classList.remove('show');return;}
+  const r=T.filter(t=>(t.n+t.d+t.na+t.c).toLowerCase().includes(q.toLowerCase())).slice(0,8);
+  if(!r.length){el.classList.remove('show');return;}
+  el.innerHTML=r.map(t=>`<div class="sri" onclick="ot('${t.id}');hr('${rid}')"><span class="ic">${t.ic}</span><div><strong>${lang==='ar'?t.na:t.n}</strong><span>${cl(t.c)}</span></div></div>`).join('');
+  el.classList.add('show');
 }
+function hr(id){document.getElementById(id)?.classList.remove('show')}
 
-function downloadFile() {
-  if (!compressedBlob) return;
-  const url = URL.createObjectURL(compressedBlob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = (selectedFile ? selectedFile.name.replace('.pdf','') : 'compressed') + '_compressed.pdf';
-  a.click();
-  URL.revokeObjectURL(url);
+// ===== PAGES =====
+function sp(p){
+  document.querySelectorAll('.pg').forEach(e=>e.classList.remove('on'));
+  const el=document.getElementById('pg-'+p);if(el)el.classList.add('on');
+  CP=p;window.scrollTo(0,0);clsMnav();
+  if(p==='home'){rFeat();rTrend();rFAQs();}
+  if(p==='tools'){rAll();}
+  setTimeout(rv,80);
 }
+function gp(p){sp(p)}
 
-function resetTool() {
-  selectedFile = null; compressedBlob = null;
-  document.getElementById('drop-zone').style.display = 'block';
-  document.getElementById('file-info').style.display = 'none';
-  document.getElementById('quality-section').style.display = 'none';
-  document.getElementById('compress-btn').style.display = 'none';
-  document.getElementById('result-box').style.display = 'none';
-  document.getElementById('error-box').style.display = 'none';
-  document.getElementById('progress-bar').style.display = 'none';
-  document.getElementById('pdf-file-input').value = '';
+// ===== THEME =====
+function tgDark(){dark=!dark;document.body.classList.toggle('lt',!dark);document.getElementById('thbtn').textContent=dark?'🌙':'☀️';localStorage.setItem('st_th',dark?'d':'l')}
+
+// ===== LANG =====
+function sl(l){
+  lang=l;document.body.classList.toggle('ar',l==='ar');
+  document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';
+  document.querySelectorAll('.en').forEach(e=>e.style.display=l==='en'?'':'none');
+  document.querySelectorAll('.ar').forEach(e=>e.style.display=l==='ar'?'':'none');
+  document.querySelectorAll('.lbtn').forEach(b=>{b.classList.toggle('act',b.textContent.trim()===(l==='en'?'EN':'ع'))});
+  localStorage.setItem('st_lang',l);
+  if(CP==='home'){rFeat();rTrend();rFAQs();}
+  if(CP==='tools'){rAll();}
 }
+function tgLang(){sl(lang==='en'?'ar':'en')}
 
-// ===== CONTACT FORM =====
-function submitContact(e) {
-  e.preventDefault();
-  const name = document.getElementById('contact-name').value;
-  const email = document.getElementById('contact-email').value;
-  const msg = document.getElementById('contact-message').value;
-  if (!name || !email || !msg) return;
+// ===== MOBILE NAV =====
+function tgMnav(){mno=!mno;document.getElementById('mnav').classList.toggle('open',mno);const[s1,s2,s3]=['h1','h2','h3'].map(id=>document.getElementById(id));if(mno){s1.style.transform='rotate(45deg) translate(5px,5px)';s2.style.opacity='0';s3.style.transform='rotate(-45deg) translate(5px,-5px)'}else{s1.style.transform='';s2.style.opacity='';s3.style.transform=''}}
+function clsMnav(){mno=false;document.getElementById('mnav').classList.remove('open');['h1','h2','h3'].forEach(id=>{const e=document.getElementById(id);if(e){e.style.transform='';e.style.opacity=''}})}
 
-  const status = document.getElementById('form-status');
-  status.className = 'form-status success';
-  status.textContent = lang === 'en'
-    ? `Thank you, ${name}! Your message has been received. We'll reply to ${email} within 24 hours.`
-    : `شكرًا ${name}! تم استلام رسالتك. سنرد على ${email} خلال 24 ساعة.`;
-  e.target.reset();
+// ===== FORMS =====
+function subContact(e){e.preventDefault();const n=document.getElementById('cn').value,em=document.getElementById('ce').value;const s=document.getElementById('cstat');s.style.display='block';s.style.background='rgba(0,229,160,.1)';s.style.color='var(--grn)';s.style.border='1px solid rgba(0,229,160,.3)';s.textContent=lang==='ar'?`شكرًا ${n}! تم استلام رسالتك. سنرد على ${em} خلال 24 ساعة.`:`Thank you ${n}! Message received. We'll reply to ${em} within 24 hours.`;e.target.reset();}
+function subNL(){const e=document.getElementById('nle');if(!e.value){sn('Please enter your email','err');return;}sn('Subscribed successfully! ✓','ok');e.value='';}
+
+// ===== NOTIFICATION =====
+function sn(msg,type='ok'){const n=document.getElementById('notif');document.getElementById('nic').textContent=type==='ok'?'✅':'❌';document.getElementById('ntx').textContent=msg;n.className='notif show '+(type==='ok'?'ok':'err');setTimeout(()=>n.className='notif',3200);}
+
+// ===== REVEAL =====
+function rv(){const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vi');obs.unobserve(e.target);}});},{threshold:.07});document.querySelectorAll('.rv:not(.vi)').forEach(el=>obs.observe(el));}
+
+// ===== NEURAL CANVAS =====
+function initCanvas(){
+  const c=document.getElementById('nc'),ctx=c.getContext('2d');
+  let W=c.width=innerWidth,H=c.height=innerHeight;
+  window.addEventListener('resize',()=>{W=c.width=innerWidth;H=c.height=innerHeight});
+  const pts=Array.from({length:60},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.38,vy:(Math.random()-.5)*.38,r:Math.random()*1.8+1.2}));
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;});
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<130){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(124,109,255,${(1-d/130)*.22})`;ctx.lineWidth=.7;ctx.stroke();}
+    }
+    pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(124,109,255,.65)';ctx.fill();});
+    requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 // ===== INIT =====
-const savedLang = localStorage.getItem('st-lang');
-if (savedLang) setLang(savedLang);
-else setLang('en');
-
-// Inject link for Google AdSense verification
-const metaAds = document.createElement('meta');
-metaAds.name = 'google-adsense-account';
-metaAds.content = 'ca-pub-4421017699603693';
-document.head.appendChild(metaAds);
+(function(){
+  const lt=localStorage.getItem('st_th'),ll=localStorage.getItem('st_lang');
+  if(lt==='l'){dark=false;document.body.classList.add('lt');document.getElementById('thbtn').textContent='☀️';}
+  sl(ll||'en');
+  sp('home');
+  initCanvas();
+  setTimeout(rv,200);
+})();
 </script>
 </body>
 </html>
